@@ -166,6 +166,12 @@
   .plan-map-row .site-plan, .plan-map-row .map-embed{margin:0; max-width:none}
   .plan-map-row .map-embed iframe{height:clamp(300px,34vw,430px)}
   @media (max-width:860px){ .plan-map-row{grid-template-columns:1fr} .plan-map-row .map-embed iframe{height:clamp(280px,60vw,420px)} }
+  #zonesMap{width:100%; height:clamp(300px,34vw,430px); border-radius:8px; z-index:0}
+  .plan-map-row #zonesMap{height:clamp(300px,34vw,430px)}
+  @media (max-width:860px){ .plan-map-row #zonesMap{height:clamp(280px,60vw,420px)} }
+  .zpin{width:30px!important; height:30px!important; margin:-15px 0 0 -15px!important; border-radius:50%; background:#2f6b4f; color:#fff; border:2px solid #fff; box-shadow:0 1px 6px rgba(0,0,0,.5); font:600 11px 'IBM Plex Mono',monospace; display:flex; align-items:center; justify-content:center}
+  .zpin.rec{background:#2e6b82} .zpin.util{background:#716a5a} .zpin.land{background:#b8761f}
+  .zpop button{font-family:'IBM Plex Mono',monospace; font-size:.68rem; text-transform:uppercase; border:1px solid #2f6b4f; color:#2f6b4f; background:#fff; border-radius:999px; padding:3px 9px; cursor:pointer; margin-top:6px}
   .site-plan{margin:0 0 30px; max-width:420px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px; box-shadow:var(--shadow)}
   .site-plan img{width:100%; height:auto; display:block; border-radius:8px}
   .site-plan figcaption{font-size:.8rem; color:var(--muted); margin-top:10px; text-align:center}
@@ -469,7 +475,9 @@
       <div class="chips" id="mapChips" style="margin-bottom:12px">
         <button type="button" class="chip active" data-m="map">Map</button>
         <button type="button" class="chip" data-m="street">Street View</button>
+        <button type="button" class="chip" data-m="zones">All zones</button>
       </div>
+      <div id="zonesMap" hidden></div>
       <iframe id="mapFrame" title="Map of Vidya Academy of Science and Technology, Thalakkottukara" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2321.603501455726!2d76.14402316458491!3d10.624861053357645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ea4d0e584607%3A0x2664e7fe1daf242e!2sVidya%20Academy%20of%20Science%20and%20Technology%20Thalakottukara!5e1!3m2!1sen!2sin!4v1794595613434!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
       <iframe id="streetFrame" title="Street View of the VAST campus" src="https://www.google.com/maps/embed?pb=!4v1794595857182!6m8!1m7!1sPGStk_fwkT_Kq7D1YnbV8Q!2m2!1d10.62644437765971!2d76.14425349990029!3f44.901985!4f0!5f0.7820865974627469" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
       <div class="map-card" style="box-shadow:none; border:0; padding:14px 6px 2px; margin:0">
@@ -811,6 +819,8 @@
   </div>
 </footer>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 (function(){
   "use strict";
@@ -1110,16 +1120,43 @@
     showToast("Downloaded " + (lines.length - 1) + " rows as CSV.");
   });
 
-  // map / street view toggle
+  // map / street view / all-zones toggle
+  var zonesMapInst = null;
   (function(){
     var chips = document.querySelectorAll("#mapChips .chip");
-    var mapF = document.getElementById("mapFrame"), stF = document.getElementById("streetFrame");
+    var mapF = document.getElementById("mapFrame"), stF = document.getElementById("streetFrame"), zm = document.getElementById("zonesMap");
+    function initZonesMap(){
+      if (zonesMapInst || typeof L === "undefined") return;
+      zonesMapInst = L.map(zm, {maxZoom:19, scrollWheelZoom:false});
+      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        {maxZoom:19, attribution:"Imagery &copy; Esri, Maxar, Earthstar Geographics"}).addTo(zonesMapInst);
+      var pts = [];
+      Object.keys(ZONE_COORDS).forEach(function(z){
+        var c = ZONE_COORDS[z], card = document.querySelector('.zone-view[data-zone="' + z + '"]');
+        var box = card ? card.closest(".zone") : null;
+        var name = box ? box.querySelector("h4").textContent : z;
+        var codeEl = box ? box.querySelector(".code") : null;
+        var cls = codeEl ? (codeEl.classList.contains("rec") ? "rec" : codeEl.classList.contains("util") ? "util" : "") : "";
+        var icon = L.divIcon({className:"zpin " + cls, html:z, iconSize:[30,30]});
+        var m = L.marker(c, {icon:icon, title:z + " \u2014 " + name}).addTo(zonesMapInst);
+        var pop = document.createElement("div"); pop.className = "zpop";
+        var b = document.createElement("b"); b.textContent = z + " \u2014 " + name; pop.appendChild(b);
+        pop.appendChild(document.createElement("br"));
+        var btn = document.createElement("button"); btn.type = "button"; btn.textContent = "Open zone view";
+        btn.addEventListener("click", function(){ if (card) card.click(); });
+        pop.appendChild(btn);
+        m.bindPopup(pop);
+        pts.push(c);
+      });
+      zonesMapInst.fitBounds(pts, {padding:[30,30], maxZoom:18});
+    }
     chips.forEach(function(c){
       c.addEventListener("click", function(){
         chips.forEach(function(x){ x.classList.remove("active"); });
         c.classList.add("active");
-        var street = c.dataset.m === "street";
-        stF.hidden = !street; mapF.hidden = street;
+        var m = c.dataset.m;
+        mapF.hidden = m !== "map"; stF.hidden = m !== "street"; zm.hidden = m !== "zones";
+        if (m === "zones"){ initZonesMap(); if (zonesMapInst) setTimeout(function(){ zonesMapInst.invalidateSize(); }, 50); }
       });
     });
   })();
