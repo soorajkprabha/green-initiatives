@@ -1131,6 +1131,8 @@
       L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
         {maxZoom:19, attribution:"Imagery &copy; Esri, Maxar, Earthstar Geographics"}).addTo(zonesMapInst);
       var pts = [];
+      var polyGroup = L.layerGroup().addTo(zonesMapInst), pinGroup = L.layerGroup().addTo(zonesMapInst);
+      var COLORS = {"":"#3f9b6b", rec:"#3b8fb0", util:"#c9bfa3"};
       Object.keys(ZONE_COORDS).forEach(function(z){
         var c = ZONE_COORDS[z], card = document.querySelector('.zone-view[data-zone="' + z + '"]');
         var box = card ? card.closest(".zone") : null;
@@ -1138,7 +1140,12 @@
         var codeEl = box ? box.querySelector(".code") : null;
         var cls = codeEl ? (codeEl.classList.contains("rec") ? "rec" : codeEl.classList.contains("util") ? "util" : "") : "";
         var icon = L.divIcon({className:"zpin " + cls, html:z, iconSize:[30,30]});
-        var m = L.marker(c, {icon:icon, title:z + " \u2014 " + name}).addTo(zonesMapInst);
+        var m = L.marker(c, {icon:icon, title:z + " \u2014 " + name}).addTo(pinGroup);
+        if (ZONE_POLYS[z]){
+          var poly = L.polygon(ZONE_POLYS[z], {color:COLORS[cls] || "#3f9b6b", weight:2, fillOpacity:.28}).addTo(polyGroup);
+          poly.on("click", function(){ m.openPopup(); });
+          ZONE_POLYS[z].forEach(function(q){ pts.push(q); });
+        }
         var pop = document.createElement("div"); pop.className = "zpop";
         var b = document.createElement("b"); b.textContent = z + " \u2014 " + name; pop.appendChild(b);
         pop.appendChild(document.createElement("br"));
@@ -1148,6 +1155,7 @@
         m.bindPopup(pop);
         pts.push(c);
       });
+      L.control.layers(null, {"Zone boundaries":polyGroup, "Zone pins":pinGroup}, {collapsed:false}).addTo(zonesMapInst);
       zonesMapInst.fitBounds(pts, {padding:[30,30], maxZoom:18});
     }
     chips.forEach(function(c){
@@ -1181,6 +1189,21 @@
     A9:[10.626576,76.146082],
     A10:[10.626642,76.145438],
     A11:[10.627147,76.145231]
+  };
+  // Approximate zone boundaries [[lat, lng], ...], traced from the site plan (hatched areas) and fitted to the map.
+  var ZONE_POLYS = {
+    A0:[[10.626589,76.144442],[10.626401,76.144515],[10.626344,76.144393],[10.626542,76.144317]],
+    A1:[[10.626999,76.14467],[10.626303,76.14494],[10.626189,76.144765],[10.626302,76.144578],[10.626785,76.144391],[10.626912,76.144486]],
+    A2:[[10.627879,76.144941],[10.627574,76.145059],[10.62737,76.144514],[10.627676,76.144396]],
+    A3:[[10.628094,76.145632],[10.627714,76.145779],[10.627639,76.145577],[10.628019,76.14543]],
+    A4:[[10.628936,76.146292],[10.628487,76.146403],[10.628299,76.145852],[10.628728,76.145686]],
+    A5:[[10.629319,76.146955],[10.628558,76.14725],[10.628285,76.146469],[10.629179,76.146367]],
+    A6:[[10.629166,76.148056],[10.628577,76.148284],[10.628305,76.148296],[10.628122,76.148136],[10.628154,76.147892],[10.628363,76.147712],[10.628952,76.147484],[10.629226,76.147478],[10.629382,76.147649],[10.629377,76.147881]],
+    A7:[[10.628481,76.147242],[10.628037,76.147414],[10.62783,76.147319],[10.627777,76.147177],[10.628367,76.146936]],
+    A8:[[10.628334,76.14665],[10.627864,76.146819],[10.627627,76.146187],[10.628201,76.145965]],
+    A9:[[10.626607,76.146345],[10.62638,76.146345],[10.62626,76.145942],[10.626582,76.145818],[10.626688,76.146101]],
+    A10:[[10.626793,76.14548],[10.626455,76.145611],[10.626366,76.145371],[10.626703,76.14524]],
+    A11:[[10.627336,76.145507],[10.627064,76.14555],[10.62681,76.144868],[10.627094,76.144759]]
   };
   var ZONE_VIEWS = {
     A0:{map:"",street:""}, A1:{map:"",street:""}, A2:{map:"",street:""}, A3:{map:"",street:""},
