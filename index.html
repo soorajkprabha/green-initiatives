@@ -1,4 +1,5 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>Green Campus</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,7 +85,10 @@
   .hero, .hero h1, .hero .dek, .hero .eyebrow, .hero .meta{color:#eef3ec}
   .hero .eyebrow{color:#b9ccc0}
   .hero .eyebrow b{color:var(--gold)}
-  .hero-canopy{position:absolute; inset:0; z-index:0; opacity:.9}
+  .hero-photo{position:absolute; inset:0; z-index:0; width:100%; height:100%; object-fit:cover; object-position:82% center}
+  .hero-scrim{position:absolute; inset:0; z-index:0; background:
+    linear-gradient(0deg, rgba(10,20,15,.82) 0%, rgba(10,20,15,0) 42%),
+    linear-gradient(90deg, rgba(10,20,15,.97) 0%, rgba(10,20,15,.92) 30%, rgba(10,20,15,.68) 52%, rgba(10,20,15,.28) 74%, rgba(10,20,15,.05) 100%)}
   .hero-inner{position:relative; z-index:1}
   .hero h1{font-size:clamp(2.3rem,6vw,4.1rem); line-height:1.03; margin-top:18px; max-width:16ch}
   .hero .dek{font-family:'Source Serif 4',serif; font-size:clamp(1.05rem,2vw,1.3rem); color:#cfe0d4; max-width:52ch; margin-top:18px}
@@ -144,6 +148,12 @@
   .target.open b{color:var(--rust); font-size:1.7rem}
 
   /* ---------- zones ---------- */
+  .site-plan{margin:0 0 30px; max-width:420px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px; box-shadow:var(--shadow)}
+  .site-plan img{width:100%; height:auto; display:block; border-radius:8px}
+  .site-plan figcaption{font-size:.8rem; color:var(--muted); margin-top:10px; text-align:center}
+  .review-photo{margin:0 0 34px; border-radius:14px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow)}
+  .review-photo img{width:100%; height:auto; max-height:360px; object-fit:cover; display:block}
+  .review-photo figcaption{font-size:.8rem; color:var(--muted); padding:12px 16px; background:var(--surface)}
   .zone-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
   @media (max-width:860px){ .zone-grid{grid-template-columns:repeat(2,1fr)} }
   @media (max-width:560px){ .zone-grid{grid-template-columns:1fr} }
@@ -302,22 +312,8 @@
 </header>
 
 <section class="hero" id="hero">
-  <svg class="hero-canopy" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-    <defs>
-      <radialGradient id="g1" cx="30%" cy="10%" r="80%"><stop offset="0%" stop-color="#2c5b43"/><stop offset="100%" stop-color="#16281f"/></radialGradient>
-    </defs>
-    <rect width="1200" height="600" fill="url(#g1)"/>
-    <g opacity=".5" fill="#1f3c2c">
-      <ellipse cx="140" cy="560" rx="260" ry="130"/>
-      <ellipse cx="520" cy="610" rx="320" ry="150"/>
-      <ellipse cx="980" cy="580" rx="300" ry="160"/>
-      <ellipse cx="1220" cy="540" rx="260" ry="140"/>
-    </g>
-    <g opacity=".35" fill="#28492f">
-      <ellipse cx="260" cy="600" rx="200" ry="100"/>
-      <ellipse cx="760" cy="620" rx="260" ry="120"/>
-    </g>
-  </svg>
+  <img class="hero-photo" src="images/hero_entrance.jpg" alt="The Vidya Academy of Science &amp; Technology main entrance, Thalakkottukara, Thrissur" loading="eager">
+  <div class="hero-scrim" aria-hidden="true"></div>
   <div class="wrap hero-inner">
     <div class="eyebrow"><b>VIDYA MISSION 33</b><span class="sep">|</span><span>VAST · THRISSUR</span><span class="sep">|</span><span>GREEN CAMPUS</span></div>
     <h1>Green Campus,<br>Vision Revisited</h1>
@@ -415,6 +411,24 @@
       <div class="target open"><b class="mono">??</b><span>Low-carbon mobility &amp; resource optimisation — still to be defined</span></div>
     </div>
     <p class="cite reveal" style="margin-top:16px">* 49.02 tCO₂e/yr is the minimum additional mitigation expected from identified energy-efficiency and demand-reduction measures. Further mitigation must come from sequestration, mobility, resource optimisation and initiatives not yet scoped.</p>
+
+    <div class="progress-block reveal" style="margin-top:22px">
+      <div class="progress-head">
+        <span class="progress-label">Plus 500 Tree Club — <strong id="factsProgressCount">0</strong> of <span id="factsProgressTotal">0</span> sample entries pledged or dedicated</span>
+        <span class="progress-pct mono" id="factsProgressPct">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="seg dedicated" id="factsSegDedicated"></div>
+        <div class="seg pledged" id="factsSegPledged"></div>
+        <div class="seg remaining" id="factsSegRemaining"></div>
+      </div>
+      <div class="progress-legend">
+        <span><i class="dot dedicated"></i>Dedicated</span>
+        <span><i class="dot pledged"></i>Pledged</span>
+        <span><i class="dot remaining"></i>Open / pending audit</span>
+      </div>
+      <p class="cite" style="margin-top:10px">Mirrors the same dummy data as the full <a href="#register" data-tab-link="register">Tree Register</a> — not a count of real sponsorships.</p>
+    </div>
   </div>
 </section>
 
@@ -425,6 +439,10 @@
       <h2>Twelve zones, twelve owners</h2>
       <p class="dek">Restore &amp; Enhance begins by naming the campus itself — each zone gets an owner accountable for its condition, activity and upkeep.</p>
     </div>
+    <figure class="site-plan reveal">
+      <img src="images/site_plan.jpg" alt="VAST campus site plan, scale 1:400, showing the layout referenced by zones A0 through A11" loading="lazy">
+      <figcaption>The actual VAST Thrissur site plan — zone codes A0–A11 on the cards below correspond to this layout.</figcaption>
+    </figure>
     <div class="zone-grid reveal">
       <div class="zone"><div class="code">A0</div><div><h4>The Main Entrance</h4><p>Reflects the institution's legacy.</p><span class="zone-tag">Arrival</span></div></div>
       <div class="zone"><div class="code">A1</div><div><h4>Lawns</h4><p>South, main &amp; north block.</p><span class="zone-tag">Landscape</span></div></div>
@@ -629,6 +647,10 @@
       <div class="eyebrow"><b>VIDYA MISSION 33</b><span class="sep">|</span><span>VAST TCR</span><span class="sep">|</span><span>GREEN CAMPUS</span><span class="sep">|</span><span class="cur">Proposal Approval Request</span></div>
       <h2>What we're asking the Executive Committee for</h2>
     </div>
+    <figure class="review-photo reveal">
+      <img src="images/campus_review.jpg" alt="Institution leadership at the campus site-plan board during the Green Campus review" loading="lazy">
+      <figcaption>Campus review, 20 August 2026 — the walk-through that shaped this proposal.</figcaption>
+    </figure>
     <div class="steps reveal">
       <div class="step">
         <div class="idx mono">01</div>
@@ -853,12 +875,14 @@
     regBody.appendChild(tr);
   });
 
-  var progressCount = document.getElementById("progressCount");
-  var progressTotal = document.getElementById("progressTotal");
-  var progressPct = document.getElementById("progressPct");
-  var segDedicated = document.getElementById("segDedicated");
-  var segPledged = document.getElementById("segPledged");
-  var segRemaining = document.getElementById("segRemaining");
+  var progressEls = [
+    {count: document.getElementById("progressCount"), total: document.getElementById("progressTotal"),
+     pct: document.getElementById("progressPct"), dedicated: document.getElementById("segDedicated"),
+     pledged: document.getElementById("segPledged"), remaining: document.getElementById("segRemaining")},
+    {count: document.getElementById("factsProgressCount"), total: document.getElementById("factsProgressTotal"),
+     pct: document.getElementById("factsProgressPct"), dedicated: document.getElementById("factsSegDedicated"),
+     pledged: document.getElementById("factsSegPledged"), remaining: document.getElementById("factsSegRemaining")}
+  ];
   function updateProgress(){
     var rows = regBody.querySelectorAll("tr");
     var dedicated = 0, pledged = 0, total = rows.length;
@@ -869,12 +893,15 @@
     });
     var claimed = dedicated + pledged;
     var pct = total ? Math.round((claimed / total) * 100) : 0;
-    progressCount.textContent = claimed;
-    progressTotal.textContent = total;
-    progressPct.textContent = pct + "%";
-    segDedicated.style.flex = dedicated || 0;
-    segPledged.style.flex = pledged || 0;
-    segRemaining.style.flex = Math.max(total - claimed, 0.0001);
+    progressEls.forEach(function(els){
+      if (!els.count) return;
+      els.count.textContent = claimed;
+      els.total.textContent = total;
+      els.pct.textContent = pct + "%";
+      els.dedicated.style.flex = dedicated || 0;
+      els.pledged.style.flex = pledged || 0;
+      els.remaining.style.flex = Math.max(total - claimed, 0.0001);
+    });
   }
   updateProgress();
 
@@ -1006,8 +1033,13 @@
   });
   window.addEventListener("popstate", function(){ showTab(location.hash.slice(1), false, true); });
 
+  document.querySelectorAll("[data-tab-link]").forEach(function(a){
+    a.addEventListener("click", function(e){
+      e.preventDefault();
+      showTab(a.dataset.tabLink, true, true);
+    });
+  });
+
   showTab(location.hash.slice(1) || "facts", false, false);
 })();
 </script>
-
-</body></html>
