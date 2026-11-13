@@ -162,6 +162,10 @@
   .zone-modal iframe{display:block; width:100%; height:clamp(260px,55vw,420px); border:0; border-radius:8px}
   .zone-modal iframe[hidden]{display:none}
   .zone-modal .zm-note{font-size:.8rem; color:var(--muted); margin-top:10px}
+  .plan-map-row{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.25fr); gap:18px; align-items:start; margin-bottom:30px}
+  .plan-map-row .site-plan, .plan-map-row .map-embed{margin:0; max-width:none}
+  .plan-map-row .map-embed iframe{height:clamp(300px,34vw,430px)}
+  @media (max-width:860px){ .plan-map-row{grid-template-columns:1fr} .plan-map-row .map-embed iframe{height:clamp(280px,60vw,420px)} }
   .site-plan{margin:0 0 30px; max-width:420px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px; box-shadow:var(--shadow)}
   .site-plan img{width:100%; height:auto; display:block; border-radius:8px}
   .site-plan figcaption{font-size:.8rem; color:var(--muted); margin-top:10px; text-align:center}
@@ -456,6 +460,7 @@
       <h2>Twelve zones, twelve owners</h2>
       <p class="dek">Restore &amp; Enhance begins by naming the campus itself — each zone gets an owner accountable for its condition, activity and upkeep.</p>
     </div>
+    <div class="plan-map-row">
     <figure class="site-plan reveal">
       <img src="images/site_plan.jpg" alt="VAST campus site plan, scale 1:400, showing the layout referenced by zones A0 through A11" loading="lazy">
       <figcaption>The actual VAST Thrissur site plan — zone codes A0–A11 on the cards below correspond to this layout.</figcaption>
@@ -471,6 +476,7 @@
         <div><h3>VAST on the map</h3><p>Switch between the satellite map and street-level view of the campus, to read alongside the zone layout above.</p></div>
         <a class="map-btn" href="https://maps.app.goo.gl/tu4jRrDwKLRzewMo7" target="_blank" rel="noopener noreferrer">Open in Google Maps &#8599;</a>
       </div>
+    </div>
     </div>
     <div class="zone-grid reveal">
       <div class="zone"><div class="code">A0</div><div><h4>The Main Entrance</h4><p>Reflects the institution's legacy.</p><span class="zone-tag">Arrival</span><button type="button" class="zone-view" data-zone="A0">View on map</button></div></div>
