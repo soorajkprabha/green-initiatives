@@ -153,6 +153,8 @@
   .map-card p{font-size:.86rem; color:var(--muted); margin-top:4px}
   .map-card a.map-btn{font-family:'IBM Plex Mono',monospace; font-size:.74rem; letter-spacing:.03em; text-transform:uppercase; background:var(--accent); color:#fff; padding:11px 16px; border-radius:10px; text-decoration:none; white-space:nowrap}
   .map-card a.map-btn:hover{background:var(--accent-strong)}
+  .map-embed{margin:0 0 30px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px; box-shadow:var(--shadow)}
+  .map-embed iframe{display:block; width:100%; height:clamp(280px,50vw,450px); border:0; border-radius:8px}
   .site-plan{margin:0 0 30px; max-width:420px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px; box-shadow:var(--shadow)}
   .site-plan img{width:100%; height:auto; display:block; border-radius:8px}
   .site-plan figcaption{font-size:.8rem; color:var(--muted); margin-top:10px; text-align:center}
@@ -451,9 +453,12 @@
       <img src="images/site_plan.jpg" alt="VAST campus site plan, scale 1:400, showing the layout referenced by zones A0 through A11" loading="lazy">
       <figcaption>The actual VAST Thrissur site plan — zone codes A0–A11 on the cards below correspond to this layout.</figcaption>
     </figure>
-    <div class="map-card reveal">
-      <div><h3>Find the campus on Google Maps</h3><p>Open the VAST campus location for directions, satellite view and street-level context alongside the zone layout above.</p></div>
-      <a class="map-btn" href="https://maps.app.goo.gl/tu4jRrDwKLRzewMo7" target="_blank" rel="noopener noreferrer">Open in Google Maps &#8599;</a>
+    <div class="map-embed reveal">
+      <iframe title="Map of Vidya Academy of Science and Technology, Thalakkottukara" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2321.603501455726!2d76.14402316458491!3d10.624861053357645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ea4d0e584607%3A0x2664e7fe1daf242e!2sVidya%20Academy%20of%20Science%20and%20Technology%20Thalakottukara!5e1!3m2!1sen!2sin!4v1794595613434!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="map-card" style="box-shadow:none; border:0; padding:14px 6px 2px; margin:0">
+        <div><h3>VAST on the map</h3><p>Satellite view of the campus, to read alongside the zone layout above.</p></div>
+        <a class="map-btn" href="https://maps.app.goo.gl/tu4jRrDwKLRzewMo7" target="_blank" rel="noopener noreferrer">Open in Google Maps &#8599;</a>
+      </div>
     </div>
     <div class="zone-grid reveal">
       <div class="zone"><div class="code">A0</div><div><h4>The Main Entrance</h4><p>Reflects the institution's legacy.</p><span class="zone-tag">Arrival</span></div></div>
