@@ -454,13 +454,15 @@
       <figcaption>The actual VAST Thrissur site plan — zone codes A0–A11 on the cards below correspond to this layout.</figcaption>
     </figure>
     <div class="map-embed reveal">
-      <iframe title="Map of Vidya Academy of Science and Technology, Thalakkottukara" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2321.603501455726!2d76.14402316458491!3d10.624861053357645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ea4d0e584607%3A0x2664e7fe1daf242e!2sVidya%20Academy%20of%20Science%20and%20Technology%20Thalakottukara!5e1!3m2!1sen!2sin!4v1794595613434!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="chips" id="mapChips" style="margin-bottom:12px">
+        <button type="button" class="chip active" data-m="map">Map</button>
+        <button type="button" class="chip" data-m="street">Street View</button>
+      </div>
+      <iframe id="mapFrame" title="Map of Vidya Academy of Science and Technology, Thalakkottukara" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2321.603501455726!2d76.14402316458491!3d10.624861053357645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ea4d0e584607%3A0x2664e7fe1daf242e!2sVidya%20Academy%20of%20Science%20and%20Technology%20Thalakottukara!5e1!3m2!1sen!2sin!4v1794595613434!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <iframe id="streetFrame" title="Street View of the VAST campus" src="https://www.google.com/maps/embed?pb=!4v1794595857182!6m8!1m7!1sPGStk_fwkT_Kq7D1YnbV8Q!2m2!1d10.62644437765971!2d76.14425349990029!3f44.901985!4f0!5f0.7820865974627469" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
       <div class="map-card" style="box-shadow:none; border:0; padding:14px 6px 2px; margin:0">
-        <div><h3>VAST on the map</h3><p>Satellite view of the campus, to read alongside the zone layout above. Use Street View to look at the streets and approach roads.</p></div>
-        <span style="display:flex; gap:10px; flex-wrap:wrap">
-          <a class="map-btn" href="https://www.google.com/maps/@?api=1&amp;map_action=pano&amp;viewpoint=10.624861,76.144023" target="_blank" rel="noopener noreferrer">Street View &#8599;</a>
-          <a class="map-btn" href="https://maps.app.goo.gl/tu4jRrDwKLRzewMo7" target="_blank" rel="noopener noreferrer">Open in Google Maps &#8599;</a>
-        </span>
+        <div><h3>VAST on the map</h3><p>Switch between the satellite map and street-level view of the campus, to read alongside the zone layout above.</p></div>
+        <a class="map-btn" href="https://maps.app.goo.gl/tu4jRrDwKLRzewMo7" target="_blank" rel="noopener noreferrer">Open in Google Maps &#8599;</a>
       </div>
     </div>
     <div class="zone-grid reveal">
@@ -1080,6 +1082,20 @@
     setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
     showToast("Downloaded " + (lines.length - 1) + " rows as CSV.");
   });
+
+  // map / street view toggle
+  (function(){
+    var chips = document.querySelectorAll("#mapChips .chip");
+    var mapF = document.getElementById("mapFrame"), stF = document.getElementById("streetFrame");
+    chips.forEach(function(c){
+      c.addEventListener("click", function(){
+        chips.forEach(function(x){ x.classList.remove("active"); });
+        c.classList.add("active");
+        var street = c.dataset.m === "street";
+        stF.hidden = !street; mapF.hidden = street;
+      });
+    });
+  })();
 
   // mobile nav
   var navbtn = document.getElementById("navbtn");
