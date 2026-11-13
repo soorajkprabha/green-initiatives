@@ -1,0 +1,1013 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Green Campus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* Layout concept: a long scrolling "soil core" of alternating strata bands,
+     with a fixed-width mono "ring" of section codes down the left rail on wide screens. */
+  :root{
+    --bg:#eef3ec; --surface:#ffffff; --surface-2:#e3ebe0; --surface-dark:#16281f;
+    --fg:#15241c; --muted:#52645a; --muted-2:#7c8d80;
+    --accent:#2f6b4f; --accent-strong:#1c3f2d; --accent-soft:#dbe8df;
+    --gold:#a9792a; --gold-soft:#f1e3c7;
+    --rust:#9c4a34; --rust-soft:#f3ddd4;
+    --line:rgba(21,36,28,.14); --line-strong:rgba(21,36,28,.28);
+    --shadow:0 1px 2px rgba(21,36,28,.06), 0 8px 24px -12px rgba(21,36,28,.18);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0e1a14; --surface:#142a1f; --surface-2:#18311f; --surface-dark:#0a140f;
+      --fg:#eaf1ea; --muted:#a9bdae; --muted-2:#7f9484;
+      --accent:#5aad80; --accent-strong:#8fd1ac; --accent-soft:#1c3a28;
+      --gold:#dcae5c; --gold-soft:#2c2414;
+      --rust:#dd8469; --rust-soft:#2c1c16;
+      --line:rgba(234,241,234,.14); --line-strong:rgba(234,241,234,.26);
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0e1a14; --surface:#142a1f; --surface-2:#18311f; --surface-dark:#0a140f;
+    --fg:#eaf1ea; --muted:#a9bdae; --muted-2:#7f9484;
+    --accent:#5aad80; --accent-strong:#8fd1ac; --accent-soft:#1c3a28;
+    --gold:#dcae5c; --gold-soft:#2c2414;
+    --rust:#dd8469; --rust-soft:#2c1c16;
+    --line:rgba(234,241,234,.14); --line-strong:rgba(234,241,234,.26);
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--bg); color:var(--fg); font-family:'Source Serif 4', Georgia, serif; line-height:1.55;
+       padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px));
+       -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Archivo', system-ui, sans-serif; margin:0; text-wrap:balance; letter-spacing:-.01em}
+  p{margin:0}
+  a{color:inherit}
+  .mono{font-family:'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric:tabular-nums}
+  .wrap{max-width:1080px; margin:0 auto}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:.72rem; letter-spacing:.11em; text-transform:uppercase; color:var(--muted); display:flex; gap:.5em; flex-wrap:wrap; align-items:center}
+  .eyebrow b{color:var(--accent); font-weight:600}
+  .eyebrow .sep{opacity:.5}
+  .eyebrow .cur{color:var(--rust); font-weight:600}
+  section{padding-block:clamp(48px,7vw,88px)}
+  .band-alt{background:var(--surface)}
+  .section-head{display:flex; flex-direction:column; gap:14px; margin-bottom:34px}
+  .section-head h2{font-size:clamp(1.7rem,3.2vw,2.5rem); font-weight:800}
+  .section-head .dek{color:var(--muted); font-size:1.02rem; max-width:62ch}
+
+  /* ---------- nav ---------- */
+  header.site{position:sticky; top:env(safe-area-inset-top,0px); z-index:40; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(10px);
+              border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:1080px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:12px; min-width:0}
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Archivo',sans-serif; font-weight:700; font-size:.95rem; white-space:nowrap}
+  .brand .mark{width:26px; height:26px; flex:none}
+  nav.links{display:flex; gap:4px; flex-wrap:wrap; font-family:'IBM Plex Mono',monospace; font-size:.74rem; letter-spacing:.04em; text-transform:uppercase}
+  nav.links a{padding:7px 10px; border-radius:7px; color:var(--muted); text-decoration:none; transition:background .15s,color .15s}
+  nav.links a:hover{background:var(--accent-soft); color:var(--accent-strong)}
+  nav.links a.active{background:var(--accent); color:#fff}
+  .page{display:none}
+  .page.active{display:block}
+  .navbtn{display:none; border:1px solid var(--line-strong); background:var(--surface); color:var(--fg); border-radius:8px; padding:8px 10px; font:inherit; cursor:pointer}
+  @media (max-width:860px){
+    nav.links{display:none; position:absolute; top:100%; left:0; right:0; background:var(--bg); border-bottom:1px solid var(--line); flex-direction:column; padding:10px max(16px,env(safe-area-inset-left,0px)) 16px; gap:2px}
+    nav.links.open{display:flex}
+    nav.links a{padding:10px 12px}
+    .navbtn{display:inline-flex}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{position:relative; padding-block:clamp(56px,10vw,104px) clamp(40px,6vw,64px); overflow:hidden; background:var(--surface-dark)}
+  .hero, .hero h1, .hero .dek, .hero .eyebrow, .hero .meta{color:#eef3ec}
+  .hero .eyebrow{color:#b9ccc0}
+  .hero .eyebrow b{color:var(--gold)}
+  .hero-canopy{position:absolute; inset:0; z-index:0; opacity:.9}
+  .hero-inner{position:relative; z-index:1}
+  .hero h1{font-size:clamp(2.3rem,6vw,4.1rem); line-height:1.03; margin-top:18px; max-width:16ch}
+  .hero .dek{font-family:'Source Serif 4',serif; font-size:clamp(1.05rem,2vw,1.3rem); color:#cfe0d4; max-width:52ch; margin-top:18px}
+  .hero .meta{margin-top:26px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; color:#9fb6a7; display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+  .hero .meta .dot{width:4px;height:4px;border-radius:50%;background:#5f7768}
+  .stat-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,.1); margin-top:40px; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.12)}
+  .stat-strip div{background:rgba(255,255,255,.04); padding:16px 14px}
+  .stat-strip b{display:block; font-family:'Archivo',sans-serif; font-size:clamp(1.15rem,2.4vw,1.5rem); font-weight:800; color:#fff}
+  .stat-strip span{font-size:.72rem; color:#a9bdaf; letter-spacing:.02em}
+  @media (max-width:640px){ .stat-strip{grid-template-columns:repeat(2,1fr)} }
+
+  /* ---------- key facts ---------- */
+  .fact-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; min-width:0}
+  @media (max-width:860px){ .fact-grid{grid-template-columns:repeat(2,1fr)} }
+  .fact{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px; box-shadow:var(--shadow); min-width:0}
+  .fact b{display:block; font-family:'Archivo',sans-serif; font-weight:800; font-size:clamp(1.3rem,2.6vw,1.8rem); color:var(--accent-strong)}
+  .fact span{font-size:.84rem; color:var(--muted); display:block; margin-top:4px}
+  .fact.gold b{color:var(--gold)}
+
+  .mit-row{display:grid; grid-template-columns:260px 1fr; gap:22px; align-items:center; margin-top:28px}
+  @media (max-width:720px){ .mit-row{grid-template-columns:1fr} }
+  .mit-label{font-size:.92rem; color:var(--muted)}
+  .mit-label b{display:block; color:var(--fg); font-family:'Archivo',sans-serif; font-size:1.02rem}
+  .bar{display:flex; height:34px; border-radius:8px; overflow:hidden; border:1px solid var(--line); min-width:0}
+  .bar div{display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:.78rem; font-weight:600; color:#fff}
+  .bar .mit{background:var(--accent)}
+  .bar .rem{background:var(--gold); color:#26200e}
+
+  .notes{margin-top:30px; background:var(--surface-2); border:1px solid var(--line); border-radius:14px; padding:20px 22px}
+  .notes b.ttl{font-family:'Archivo',sans-serif; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+  .notes ul{margin:10px 0 0; padding-left:1.1em; display:grid; gap:6px; font-size:.92rem; color:var(--muted)}
+  .notes li::marker{color:var(--accent)}
+  .cite{margin-top:12px; font-size:.78rem; color:var(--muted-2); font-family:'IBM Plex Mono',monospace}
+
+  /* ---------- vision / pillars ---------- */
+  .vision-quote{font-family:'Source Serif 4',serif; font-style:italic; font-size:clamp(1.15rem,2.2vw,1.5rem); color:var(--fg); max-width:72ch; border-left:3px solid var(--accent); padding-left:20px; margin-bottom:40px}
+  .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  @media (max-width:860px){ .pillars{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:560px){ .pillars{grid-template-columns:1fr} }
+  .pillar{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px; box-shadow:var(--shadow); min-width:0; border-top:3px solid var(--p-color,var(--accent))}
+  .pillar .num{width:30px;height:30px;border-radius:50%;background:var(--p-color,var(--accent)); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Archivo',sans-serif; font-weight:700; font-size:.85rem}
+  .pillar h3{font-size:1.02rem; margin-top:12px; color:var(--p-color,var(--accent))}
+  .pillar p{font-size:.88rem; color:var(--muted); margin-top:8px}
+
+  /* ---------- proposition ---------- */
+  .prop-top{display:flex; flex-wrap:wrap; gap:28px; margin-bottom:28px}
+  .prop-top .p{flex:1; min-width:200px}
+  .prop-top .p .v{font-family:'Archivo',sans-serif; font-weight:800; font-size:clamp(1.4rem,3vw,2rem); color:var(--accent-strong)}
+  .prop-top .p .l{font-size:.84rem; color:var(--muted); margin-top:4px}
+  .prop-top .p.now .v{color:var(--gold)}
+  .target-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+  @media (max-width:860px){ .target-grid{grid-template-columns:repeat(2,1fr)} }
+  .target{background:var(--surface); border:2px dashed var(--line-strong); border-radius:14px; padding:20px; min-width:0}
+  .target b{display:block; font-family:'Archivo',sans-serif; font-weight:800; font-size:1.35rem; color:var(--accent-strong)}
+  .target span{font-size:.82rem; color:var(--muted); display:block; margin-top:6px}
+  .target.open{border-color:var(--rust); background:var(--rust-soft)}
+  .target.open b{color:var(--rust); font-size:1.7rem}
+
+  /* ---------- zones ---------- */
+  .zone-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+  @media (max-width:860px){ .zone-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:560px){ .zone-grid{grid-template-columns:1fr} }
+  .zone{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px; display:flex; gap:12px; min-width:0}
+  .zone .code{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:.82rem; color:#fff; background:var(--accent); width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex:none}
+  .zone .code.green{background:#2f6b4f}
+  .zone .code.rec{background:#2e6b82}
+  .zone .code.util{background:#716a5a}
+  .zone h4{font-size:.94rem; font-weight:700}
+  .zone p{font-size:.82rem; color:var(--muted); margin-top:3px}
+  .zone-tag{display:inline-block; margin-top:6px; font-family:'IBM Plex Mono',monospace; font-size:.66rem; text-transform:uppercase; letter-spacing:.06em; color:var(--muted-2)}
+
+  /* ---------- initiatives ---------- */
+  .chips{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px}
+  .chip{font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.03em; text-transform:uppercase; border:1px solid var(--line-strong); background:var(--surface); color:var(--muted); padding:8px 13px; border-radius:999px; cursor:pointer; transition:.15s}
+  .chip:hover{border-color:var(--accent)}
+  .chip.active{background:var(--accent); border-color:var(--accent); color:#fff}
+  .init-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+  @media (max-width:760px){ .init-grid{grid-template-columns:1fr} }
+  .init{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:18px 20px; box-shadow:var(--shadow); min-width:0; transition:opacity .2s, transform .2s}
+  .init.hide{display:none}
+  .init .top{display:flex; justify-content:space-between; gap:10px; align-items:flex-start}
+  .init .sl{font-family:'IBM Plex Mono',monospace; color:var(--muted-2); font-size:.76rem}
+  .init h4{font-size:1.06rem; margin-top:4px}
+  .init .tag{display:inline-block; margin-top:8px; font-family:'IBM Plex Mono',monospace; font-size:.66rem; text-transform:uppercase; letter-spacing:.05em; padding:3px 9px; border-radius:999px; background:var(--accent-soft); color:var(--accent-strong)}
+  .init .desc{font-size:.9rem; color:var(--muted); margin-top:12px; max-height:4.6em; overflow:hidden; position:relative; white-space:pre-line}
+  .init .desc.open{max-height:none}
+  .init .desc:not(.open)::after{content:""; position:absolute; bottom:0; left:0; right:0; height:1.6em; background:linear-gradient(transparent,var(--surface))}
+  .init button.more{margin-top:10px; background:none; border:none; color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.74rem; letter-spacing:.03em; text-transform:uppercase; cursor:pointer; padding:0}
+
+  /* ---------- vegetation ---------- */
+  .veg-top{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:30px}
+  @media (max-width:860px){ .veg-top{grid-template-columns:repeat(2,1fr)} }
+  .veg-feature{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:34px}
+  @media (max-width:860px){ .veg-feature{grid-template-columns:1fr} }
+  .vf{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px; min-width:0}
+  .vf .code{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--accent); letter-spacing:.05em}
+  .vf h4{font-size:1.08rem; margin-top:6px}
+  .vf p{font-size:.88rem; color:var(--muted); margin-top:8px}
+  table.dirtbl{width:100%; border-collapse:collapse; font-size:.86rem; min-width:460px}
+  table#regTable{min-width:720px}
+  table.dirtbl .donor{color:var(--muted); font-style:italic}
+  table.dirtbl .donor.filled{color:var(--fg); font-style:normal}
+  table.dirtbl th{text-align:left; font-family:'IBM Plex Mono',monospace; font-size:.68rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); border-bottom:1px solid var(--line-strong); padding:8px 10px}
+  table.dirtbl td{padding:9px 10px; border-bottom:1px solid var(--line); color:var(--fg)}
+  table.dirtbl tr.example td{color:var(--muted-2); font-style:italic}
+  .status-pill{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.72rem; font-style:normal; letter-spacing:.02em; padding:3px 11px; border-radius:999px; white-space:nowrap}
+  .status-pill.dedicated{background:var(--accent-soft); color:var(--accent-strong)}
+  .status-pill.pending{background:var(--gold-soft); color:var(--gold)}
+  .status-pill.pledged{background:#dbe5f1; color:#2e5a9e}
+  .status-pill.open{background:transparent; color:var(--muted); border:1px dashed var(--line-strong)}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .status-pill.pledged{background:#1c2c3c; color:#8db4e0} }
+  :root[data-theme="dark"] .status-pill.pledged{background:#1c2c3c; color:#8db4e0}
+  .progress-block{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin-bottom:26px; box-shadow:var(--shadow)}
+  .progress-head{display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:12px; flex-wrap:wrap}
+  .progress-label{font-size:.95rem; color:var(--muted)}
+  .progress-label strong{font-family:'Archivo',sans-serif; font-size:1.25rem; color:var(--accent-strong)}
+  .progress-pct{font-size:.92rem; font-weight:600; color:var(--accent-strong)}
+  .progress-bar{display:flex; height:16px; border-radius:999px; overflow:hidden; background:var(--surface-2); border:1px solid var(--line)}
+  .progress-bar .seg.dedicated{background:var(--accent)}
+  .progress-bar .seg.pledged{background:#3b74b5}
+  .progress-bar .seg.remaining{background:transparent}
+  .progress-legend{display:flex; gap:18px; margin-top:12px; flex-wrap:wrap; font-size:.78rem; color:var(--muted)}
+  .progress-legend .dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px}
+  .progress-legend .dot.dedicated{background:var(--accent)}
+  .progress-legend .dot.pledged{background:#3b74b5}
+  .progress-legend .dot.remaining{background:var(--line-strong)}
+  .reg-controls{display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-bottom:22px}
+  .reg-search{font-family:'Source Serif 4',serif; font-size:.95rem; padding:11px 16px; border-radius:10px; border:1px solid var(--line-strong); background:var(--surface); color:var(--fg); min-width:240px; flex:1}
+  .reg-search::placeholder{color:var(--muted-2)}
+  .reg-search:focus{outline:2px solid var(--accent); outline-offset:1px}
+  #regChips{margin-bottom:0}
+  .reg-empty{padding:28px 10px; text-align:center; color:var(--muted); font-size:.92rem}
+  table.dirtbl tbody tr.reg-hide{display:none}
+  .status-cell{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+  .donate-btn{font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.03em; text-transform:uppercase; background:none; border:1px solid var(--accent); color:var(--accent); padding:3px 10px; border-radius:999px; cursor:pointer; white-space:nowrap}
+  .donate-btn:hover{background:var(--accent); color:#fff}
+
+  .modal-overlay{position:fixed; inset:0; background:rgba(10,18,14,.55); display:flex; align-items:center; justify-content:center; padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px)); z-index:100}
+  .modal-overlay[hidden]{display:none}
+  .modal{position:relative; background:var(--surface); color:var(--fg); border-radius:16px; max-width:480px; width:100%; max-height:88vh; overflow-y:auto; padding:30px 28px 26px; box-shadow:var(--shadow)}
+  .modal h3{font-size:1.3rem; margin-bottom:4px}
+  .modal .modal-dek{font-size:.86rem; color:var(--muted); margin-bottom:16px}
+  .modal-close{position:absolute; top:16px; right:16px; width:30px; height:30px; border-radius:50%; background:var(--surface-2); border:none; font-size:1.1rem; line-height:1; color:var(--muted); cursor:pointer}
+  .tree-context{background:var(--accent-soft); color:var(--accent-strong); border-radius:10px; padding:12px 14px; font-size:.84rem; margin-bottom:22px; font-family:'IBM Plex Mono',monospace}
+  .form-group{margin-bottom:20px}
+  .group-label{font-family:'Archivo',sans-serif; font-weight:700; font-size:.92rem}
+  .required-tag{color:var(--rust); font-size:.76rem; font-weight:600; margin-left:5px}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:10px}
+  .form-row > div{display:flex; flex-direction:column; gap:5px; min-width:0}
+  .form-row label{font-size:.78rem; color:var(--muted)}
+  .form-row input{width:100%; padding:10px 12px; border:1px solid var(--line-strong); border-radius:8px; background:var(--bg); color:var(--fg); font-family:'Source Serif 4',serif; font-size:.92rem}
+  .form-row input:focus{outline:2px solid var(--accent); outline-offset:1px}
+  .form-error{color:var(--rust); font-size:.8rem; margin-top:8px; display:none}
+  .form-error.show{display:block}
+  .modal-actions{display:flex; gap:10px; justify-content:flex-end; margin-top:26px}
+  .btn-primary, .btn-secondary{font-family:'Archivo',sans-serif; font-weight:600; font-size:.88rem; padding:11px 20px; border-radius:9px; cursor:pointer}
+  .btn-primary{background:var(--accent); color:#fff; border:none}
+  .btn-secondary{background:transparent; border:1px solid var(--line-strong); color:var(--fg)}
+
+  .toast{position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(10px); background:var(--accent-strong); color:#eef3ec; padding:14px 22px; border-radius:10px; font-family:'Archivo',sans-serif; font-size:.88rem; box-shadow:var(--shadow); z-index:200; opacity:0; pointer-events:none; transition:opacity .25s ease, transform .25s ease; max-width:88vw}
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+  .tbl-wrap{overflow-x:auto; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:4px}
+  .dir-note{display:flex; align-items:center; gap:10px; padding:14px 18px; font-size:.82rem; color:var(--muted-2); border-top:1px dashed var(--line-strong)}
+  .dir-note .pulse{width:7px;height:7px;border-radius:50%;background:var(--gold); flex:none}
+
+  /* ---------- impact / governance ---------- */
+  .ret-row{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:30px}
+  .ret-pill{font-family:'IBM Plex Mono',monospace; font-size:.74rem; letter-spacing:.03em; background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:8px 14px}
+  .tbl-wrap table.impact{width:100%; border-collapse:collapse; font-size:.85rem; min-width:620px}
+  table.impact th{text-align:left; background:var(--accent-strong); color:#fff; padding:11px 12px; font-family:'Archivo',sans-serif; font-weight:600; font-size:.78rem}
+  table.impact td{padding:11px 12px; border-bottom:1px solid var(--line); color:var(--muted); vertical-align:top}
+  table.impact tr:nth-child(even) td{background:var(--surface-2)}
+  .flow{margin-top:30px; background:var(--surface-dark); border-radius:14px; padding:22px 24px; overflow-x:auto}
+  .flow .lbl{font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:#7f9484}
+  .flow-chain{display:flex; align-items:center; gap:10px; margin-top:12px; flex-wrap:nowrap; min-width:max-content}
+  .flow-chain span.node{font-family:'Archivo',sans-serif; font-weight:700; color:#eef3ec; font-size:.92rem; white-space:nowrap}
+  .flow-chain span.arrow{color:var(--gold)}
+
+  /* ---------- roadmap ---------- */
+  .steps{display:flex; flex-direction:column; gap:26px}
+  .step{display:grid; grid-template-columns:50px 180px 1fr; gap:18px; align-items:start}
+  @media (max-width:760px){ .step{grid-template-columns:40px 1fr; } .step .raci{grid-column:1/-1; margin-left:58px} }
+  .step .idx{font-family:'Archivo',sans-serif; font-weight:800; font-size:1.3rem; color:var(--accent-soft); -webkit-text-stroke:1.3px var(--accent)}
+  .step h4{font-size:1rem}
+  .step .raci{font-size:.86rem; color:var(--muted); display:grid; gap:4px}
+  .step .raci b{color:var(--fg); font-weight:600}
+
+  footer.site{background:var(--surface-dark); color:#cfe0d4; padding-block:56px 40px}
+  footer.site .wrap{display:flex; flex-direction:column; gap:22px}
+  footer.site blockquote{font-family:'Source Serif 4',serif; font-style:italic; font-size:clamp(1.05rem,2vw,1.3rem); max-width:60ch; color:#eef3ec; margin:0}
+  footer.site .bottom{display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; font-family:'IBM Plex Mono',monospace; font-size:.74rem; color:#8fa897; border-top:1px solid rgba(255,255,255,.12); padding-top:20px}
+
+</style>
+
+<meta name="claude:viewport-fit-sides" content="cover">
+
+<header class="site">
+  <div class="nav-inner">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="12" fill="var(--accent)"/><path d="M13 20V9M13 9C13 9 8 9.5 8 14.5C8 14.5 13 15 13 9ZM13 9C13 9 18 9.5 18 14.5C18 14.5 13 15 13 9Z" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Vidya Mission 33</span>
+    </div>
+    <button class="navbtn" id="navbtn" aria-label="Toggle navigation">☰ Menu</button>
+    <nav class="links" id="navlinks">
+      <a href="#facts">Facts</a>
+      <a href="#vision">Vision</a>
+      <a href="#zones">Zones</a>
+      <a href="#initiatives">Initiatives</a>
+      <a href="#vegetation">Vegetation</a>
+      <a href="#register">Tree Register</a>
+      <a href="#impact">Impact</a>
+      <a href="#roadmap">Roadmap</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <svg class="hero-canopy" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <radialGradient id="g1" cx="30%" cy="10%" r="80%"><stop offset="0%" stop-color="#2c5b43"/><stop offset="100%" stop-color="#16281f"/></radialGradient>
+    </defs>
+    <rect width="1200" height="600" fill="url(#g1)"/>
+    <g opacity=".5" fill="#1f3c2c">
+      <ellipse cx="140" cy="560" rx="260" ry="130"/>
+      <ellipse cx="520" cy="610" rx="320" ry="150"/>
+      <ellipse cx="980" cy="580" rx="300" ry="160"/>
+      <ellipse cx="1220" cy="540" rx="260" ry="140"/>
+    </g>
+    <g opacity=".35" fill="#28492f">
+      <ellipse cx="260" cy="600" rx="200" ry="100"/>
+      <ellipse cx="760" cy="620" rx="260" ry="120"/>
+    </g>
+  </svg>
+  <div class="wrap hero-inner">
+    <div class="eyebrow"><b>VIDYA MISSION 33</b><span class="sep">|</span><span>VAST · THRISSUR</span><span class="sep">|</span><span>GREEN CAMPUS</span></div>
+    <h1>Green Campus,<br>Vision Revisited</h1>
+    <p class="dek">From good intentions to a measurable, owned and enduring, thoughtfully planned Green Campus for Vidya Academy of Science &amp; Technology.</p>
+    <div class="meta">
+      <span>Executive proposal following campus review, Thrissur</span><span class="dot"></span>
+      <span>To the Executive Committee of VICT</span><span class="dot"></span>
+      <span>Dated 13 September 2026</span>
+    </div>
+    <div class="stat-strip">
+      <div><b class="mono">673.31</b><span>tCO₂e gross footprint, 2024–25</span></div>
+      <div><b class="mono">849</b><span>trees currently audited</span></div>
+      <div><b class="mono">140 kWp</b><span>solar across 2 plants</span></div>
+      <div><b class="mono">2,247</b><span>students on campus</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="facts" class="page active" data-tab="facts">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><b>VIDYA MISSION 33</b><span class="sep">|</span><span>VAST TCR</span><span class="sep">|</span><span>GREEN CAMPUS</span><span class="sep">|</span><span class="cur">Key Facts</span></div>
+      <h2>Where the campus stands today</h2>
+      <p class="dek">The 2024–25 environmental audit gives the campus its first measured baseline — the starting line for everything that follows.</p>
+    </div>
+
+    <div class="fact-grid reveal">
+      <div class="fact"><b class="mono">673.31 tCO₂e</b><span>2024–25 gross carbon footprint</span></div>
+      <div class="fact gold"><b class="mono">238.97 kg</b><span>CO₂e per student, 2024–25</span></div>
+      <div class="fact"><b class="mono">140 kWp</b><span>Solar infrastructure, 2 plants (2024–25)</span></div>
+      <div class="fact"><b class="mono">849</b><span>Trees recorded &amp; considered for sequestration</span></div>
+    </div>
+
+    <div class="mit-row reveal">
+      <div class="mit-label"><b>Mitigated, 2024–25</b>Through sequestration &amp; renewable energy, before the new solar plant.</div>
+      <div class="bar"><div class="mit" style="flex:20.25">20.25%</div><div class="rem" style="flex:79.75">79.75%</div></div>
+    </div>
+    <div class="mit-row reveal">
+      <div class="mit-label"><b>Mitigated, after new solar plant*</b>With the additional 120 kWp solar plant factored in.</div>
+      <div class="bar"><div class="mit" style="flex:38.07">38.07%</div><div class="rem" style="flex:61.93">61.93%</div></div>
+    </div>
+
+    <div class="notes reveal">
+      <b class="ttl">Notes &amp; caveats</b>
+      <ul>
+        <li>Estimated carbon footprint per student, post-mitigation* → <strong>212.81 kgCO₂e/yr</strong></li>
+        <li>Mitigation proposed through Energy Efficiency projects → <strong>49.02 tCO₂e/yr</strong></li>
+        <li>Annual electricity consumption → 230,673 kWh · Students at the campus → 2,247</li>
+        <li>Nameplate solar capacity is 140 kWp, but the audit report records only ~115 kWp — flagged for re-verification</li>
+        <li>Trees with diameter &gt; 15 cm and height &gt; 150 cm from ground level are taken for the audit</li>
+        <li>The new carbon-mitigated figure is estimated and to be confirmed after re-auditing</li>
+      </ul>
+      <p class="cite">Source: Ottotractions Environment Audit, 2024–25</p>
+    </div>
+  </div>
+</section>
+
+<section class="band-alt page" id="vision" data-tab="vision">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><b>VIDYA MISSION 33</b><span class="sep">|</span><span>VAST TCR</span><span class="sep">|</span><span>GREEN CAMPUS</span><span class="sep">|</span><span class="cur">Vision &amp; Mission</span></div>
+      <h2>One programme, six commitments</h2>
+    </div>
+    <p class="vision-quote reveal">To develop VAST as a resilient, resource-efficient and people-centred campus where responsible stewardship of the environment is embedded in institutional life, learning and continuous sustainable growth.</p>
+
+    <div class="pillars reveal">
+      <div class="pillar" style="--p-color:#2f6b4f"><div class="num">1</div><h3>Restore &amp; Enhance</h3><p>Create a well-planned, green, safe and welcoming campus through zonal development, landscaping and biodiversity initiatives.</p></div>
+      <div class="pillar" style="--p-color:#2e6b82"><div class="num">2</div><h3>Reduce &amp; Optimize</h3><p>Improve energy, water and resource efficiency while progressively reducing the campus carbon footprint.</p></div>
+      <div class="pillar" style="--p-color:#2e5a9e"><div class="num">3</div><h3>Measure &amp; Improve</h3><p>Establish measurable sustainability practices through monitoring, audits, KPIs and continuous improvement.</p></div>
+      <div class="pillar" style="--p-color:#b8761f"><div class="num">4</div><h3>Engage &amp; Educate</h3><p>Make the campus a living platform for students, faculty, staff, alumni and the community to participate, learn and contribute.</p></div>
+      <div class="pillar" style="--p-color:#5a6a5f"><div class="num">5</div><h3>Govern &amp; Institutionalize</h3><p>Establish clear ownership, accountability and governance mechanisms to embed sustainability into planning and operations.</p></div>
+      <div class="pillar" style="--p-color:#6e4a9e"><div class="num">6</div><h3>Align &amp; Demonstrate</h3><p>Build credible evidence of responsible practice, aligned with institutional quality, accreditation and relevant SDGs.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="proposition" class="band-alt page active" data-tab="facts">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><b>VIDYA MISSION 33</b><span class="sep">|</span><span>VAST TCR</span><span class="sep">|</span><span>GREEN CAMPUS</span><span class="sep">|</span><span class="cur">The Proposition</span></div>
+      <h2>Building on what's already working</h2>
+      <p class="dek">Build on the 38.07% carbon mitigation already achieved through renewable energy and sequestration.</p>
+    </div>
+
+    <div class="prop-top reveal">
+      <div class="p now"><div class="v mono">38.07%</div><div class="l">Achieved today</div></div>
+      <div class="p"><div class="v mono">50%+</div><div class="l">Next target — campus emission mitigation</div></div>
+      <div class="p"><div class="v mono">&lt;150 kg</div><div class="l">Long-term target — CO₂e per student</div></div>
+    </div>
+
+    <div class="target-grid reveal">
+      <div class="target"><b class="mono">260 kWp</b><span>Solar — renewable energy, maximum rooftop capacity allowed</span></div>
+      <div class="target"><b class="mono">+500</b><span>Trees — carbon sequestration &amp; biodiversity</span></div>
+      <div class="target"><b class="mono">49.02 t</b><span>CO₂e/yr — energy efficiency &amp; demand reduction</span></div>
+      <div class="target open"><b class="mono">??</b><span>Low-carbon mobility &amp; resource optimisation — still to be defined</span></div>
+    </div>
+    <p class="cite reveal" style="margin-top:16px">* 49.02 tCO₂e/yr is the minimum additional mitigation expected from identified energy-efficiency and demand-reduction measures. Further mitigation must come from sequestration, mobility, resource optimisation and initiatives not yet scoped.</p>
+  </div>
+</section>
+
+<section class="page" id="zones" data-tab="zones">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><b>VIDYA MISSION 33</b><span class="sep">|</span><span>VAST TCR</span><span class="sep">|</span><span>GREEN CAMPUS</span><span class="sep">|</span><span class="cur">Campus Zones</span></div>
+      <h2>Twelve zones, twelve owners</h2>
+      <p class="dek">Restore &amp; Enhance begins by naming the campus itself — each zone gets an owner accountable for its condition, activity and upkeep.</p>
+    </div>
+    <div class="zone-grid reveal">
+      <div class="zone"><div class="code">A0</div><div><h4>The Main Entrance</h4><p>Reflects the institution's legacy.</p><span class="zone-tag">Arrival</span></div></div>
+      <div class="zone"><div class="code">A1</div><div><h4>Lawns</h4><p>South, main &amp; north block.</p><span class="zone-tag">Landscape</span></div></div>
+      <div class="zone"><div class="code rec">A2</div><div><h4>Sports Courts</h4><p>Volleyball and basketball courts.</p><span class="zone-tag">Recreation</span></div></div>
+      <div class="zone"><div class="code util">A3</div><div><h4>Auditorium–Canteen</h4><p>Vacant space between, with plants.</p><span class="zone-tag">Utility</span></div></div>
+      <div class="zone"><div class="code green">A4</div><div><h4>Kavu (Sacred Grove)</h4><p>May be the rarest such space on any campus.</p><span class="zone-tag">Green &amp; sacred</span></div></div>
+      <div class="zone"><div class="code util">A5</div><div><h4>Boys' Hostel Frontage</h4><p>Vacant space in front of the hostel.</p><span class="zone-tag">Utility</span></div></div>
+      <div class="zone"><div class="code rec">A6</div><div><h4>Main Playground</h4><p>At a distance, and detached.</p><span class="zone-tag">Recreation</span></div></div>
+      <div class="zone"><div class="code util">A7</div><div><h4>STP Area</h4><p>Vacant space around the sewage treatment plant.</p><span class="zone-tag">Utility</span></div></div>
+      <div class="zone"><div class="code green">A8</div><div><h4>Herbal Garden</h4><p>Existing heritage garden — needs serious upliftment.</p><span class="zone-tag">Green &amp; sacred</span></div></div>
+      <div class="zone"><div class="code">A9</div><div><h4>South of Decennial Block</h4><p>Vacant space between the Main Block and the DB.</p><span class="zone-tag">Landscape</span></div></div>
+      <div class="zone"><div class="code green">A10</div><div><h4>Nakshatra Vanam</h4><p>A unique, admiring and nostalgic grove.</p><span class="zone-tag">Green &amp; sacred</span></div></div>
+      <div class="zone"><div class="code">A11</div><div><h4>South of North Block</h4><p>Landscaping area.</p><span class="zone-tag">Landscape</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="initiatives" data-tab="initiatives">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><b>VIDYA MISSION 33</b><span class="sep">|</span><span>VAST TCR</span><span class="sep">|</span><span>GREEN CAMPUS</span><span class="sep">|</span><span class="cur">The Initiatives</span></div>
+      <h2>Thirteen initiatives, mapped to the mission</h2>
+      <p class="dek">Filter by pillar, or read every initiative in full. Each one is designed to pay back against more than one line of the mission.</p>
+    </div>
+    <div class="chips reveal" id="chips">
+      <button class="chip active" data-f="All">All (13)</button>
+      <button class="chip" data-f="Restore & Enhance">Restore &amp; Enhance (7)</button>
+      <button class="chip" data-f="Reduce & Optimize">Reduce &amp; Optimize (2)</button>
+      <button class="chip" data-f="Engage & Educate">Engage &amp; Educate (2)</button>
+      <button class="chip" data-f="Measure & Improve">Measure &amp; Improve (1)</button>
+      <button class="chip" data-f="Align & Demonstrate">Align &amp; Demonstrate (1)</button>
+    </div>
+    <div class="init-grid" id="initGrid">
+      <!-- initiative cards injected by JS from DATA.initiatives -->
+    </div>
+  </div>
+</section>
+
+<section class="page" id="vegetation" data-tab="vegetation">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><b>VIDYA MISSION 33</b><span class="sep">|</span><span>VAST TCR</span><span class="sep">|</span><span>GREEN CAMPUS</span><span class="sep">|</span><span class="cur">Campus Vegetation</span></div>
+      <h2>Every tree, eventually, with a name</h2>
+      <p class="dek">Measure &amp; Improve commits to "accessioning and labelling of plants with an online database." This is that database's first page — seeded with what the audit already knows, built to carry everything that's identified next.</p>
+    </div>
+
+    <div class="veg-top reveal">
+      <div class="fact"><b class="mono">849</b><span>Trees currently audited &amp; sequestering carbon</span></div>
+      <div class="fact gold"><b class="mono">+500</b><span>Trees targeted — Plus 500 Tree Club</span></div>
+      <div class="fact"><b class="mono">1,349</b><span>Projected total once planted</span></div>
+      <div class="fact"><b class="mono">⌀15cm / 150cm</b><span>Minimum diameter &amp; height counted in the audit</span></div>
+    </div>
+
+    <div class="veg-feature reveal">
+      <div class="vf"><span class="code">ZONE A4</span><h4>Kavu — Sacred Grove</h4><p>A traditional sacred grove, preserved undisturbed. Likely the rarest single feature of its kind on any engineering campus in the region.</p></div>
+      <div class="vf"><span class="code">ZONE A8</span><h4>Herbal Garden</h4><p>An existing, curated heritage garden. "Real Herbal Heritage" proposes a dedicated Medicinal Plant Garden alongside it, with Ayurveda institutions such as Oushadhi.</p></div>
+      <div class="vf"><span class="code">ZONE A10</span><h4>Nakshatra Vanam</h4><p>A Nakshatra grove linking campus greenery to tradition — unique, admired, and quietly nostalgic for generations of students.</p></div>
+    </div>
+
+    <div class="init-grid reveal" style="margin-bottom:34px">
+      <div class="init">
+        <div class="top"><span class="sl mono">01</span></div>
+        <h4>Plus 500 Tree Club</h4>
+        <span class="tag">Restore &amp; Enhance</span>
+        <p class="desc">500 additional trees across identified campus zones, planted and monitored for survival annually — through Trustee, Alumni, Student, Staff and community participation. Positioned not as a carbon-mitigation measure alone, but as a lasting green legacy that stakeholders help plant with their own hands.</p>
+      </div>
+      <div class="init">
+        <div class="top"><span class="sl mono">02</span></div>
+        <h4>OxyBamboo Booths</h4>
+        <span class="tag">Restore &amp; Enhance</span>
+        <p class="desc">Bamboo clusters generate roughly 35% more oxygen than an equivalent area of standard trees — new shoots grow several feet a day and reach full height in 60–90 days, so a grove builds oxygen-producing biomass far faster than conventional trees. Its rhizome root system also keeps storing carbon and resisting soil erosion between harvests, needing little water and no replanting. Proposed as small bamboo clusters and booth-like eco spaces across the campus — functional, fast-growing, and distinctive.</p>
+      </div>
+    </div>
+
+    <div class="tbl-wrap reveal">
+      <table class="dirtbl">
+        <thead><tr><th>Zone</th><th>Zone name</th><th>Count</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr class="example"><td>A0</td><td>The Main Entrance</td><td>12</td><td><span class="status-pill dedicated">Dedicated</span></td></tr>
+          <tr class="example"><td>A1</td><td>Lawns</td><td>40</td><td><span class="status-pill pending">Pending audit</span></td></tr>
+          <tr class="example"><td>A2</td><td>Sports Courts</td><td>8</td><td><span class="status-pill open">Open</span></td></tr>
+          <tr class="example"><td>A3</td><td>Auditorium–Canteen</td><td>15</td><td><span class="status-pill pending">Pending audit</span></td></tr>
+          <tr class="example"><td>A4</td><td>Kavu (Sacred Grove)</td><td>60</td><td><span class="status-pill dedicated">Dedicated</span></td></tr>
+          <tr class="example"><td>A5</td><td>Boys' Hostel Frontage</td><td>10</td><td><span class="status-pill dedicated">Dedicated</span></td></tr>
+          <tr class="example"><td>A6</td><td>Main Playground</td><td>6</td><td><span class="status-pill pending">Pending audit</span></td></tr>
+          <tr class="example"><td>A7</td><td>STP Area</td><td>9</td><td><span class="status-pill pending">Pending audit</span></td></tr>
+          <tr class="example"><td>A8</td><td>Herbal Garden</td><td>85</td><td><span class="status-pill pledged">Pledged</span></td></tr>
+          <tr class="example"><td>A9</td><td>South of Decennial Block</td><td>18</td><td><span class="status-pill pending">Pending audit</span></td></tr>
+          <tr class="example"><td>A10</td><td>Nakshatra Vanam</td><td>27</td><td><span class="status-pill dedicated">Dedicated</span></td></tr>
+          <tr class="example"><td>A11</td><td>South of North Block</td><td>22</td><td><span class="status-pill open">Open</span></td></tr>
+        </tbody>
+      </table>
+      <div class="dir-note"><span class="pulse"></span> Every row here is a dummy placeholder, not a real count — the plant-level directory hasn't been populated yet. Real entries follow once accessioning and labelling (Measure &amp; Improve) begins.</div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="register" data-tab="register">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><b>VIDYA MISSION 33</b><span class="sep">|</span><span>VAST TCR</span><span class="sep">|</span><span>GREEN CAMPUS</span><span class="sep">|</span><span class="cur">Tree Register</span></div>
+      <h2>The complete tree register</h2>
+      <p class="dek">Every tree, with its own tag. This is a mock-up of the finished register — <strong>every row below is arbitrary dummy data</strong>, standing in for the real accessioning survey that "Measure &amp; Improve" commits to.</p>
+    </div>
+
+    <div class="progress-block reveal">
+      <div class="progress-head">
+        <span class="progress-label"><strong id="progressCount">0</strong> of <span id="progressTotal">0</span> trees pledged or dedicated</span>
+        <span class="progress-pct mono" id="progressPct">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="seg dedicated" id="segDedicated"></div>
+        <div class="seg pledged" id="segPledged"></div>
+        <div class="seg remaining" id="segRemaining"></div>
+      </div>
+      <div class="progress-legend">
+        <span><i class="dot dedicated"></i>Dedicated</span>
+        <span><i class="dot pledged"></i>Pledged</span>
+        <span><i class="dot remaining"></i>Open / pending audit</span>
+      </div>
+    </div>
+
+    <div class="notes reveal" style="margin-top:0; margin-bottom:26px">
+      <b class="ttl">About this register</b>
+      <ul>
+        <li>Tag No. — the unique accession tag fixed to each tree once it is surveyed</li>
+        <li><strong>Open</strong> — a planting slot identified, not yet sponsored; <strong>Pledged</strong> — a Trustee, alumnus, student or well-wisher has committed to it; <strong>Dedicated</strong> — planted and formally dedicated; <strong>Pending audit</strong> — already standing, awaiting the next environmental audit</li>
+        <li>Figures below are placeholders only, shown to demonstrate the format — not a real inventory</li>
+        <li>The real register will carry one row per tree across all 1,349 trees once the Plus 500 Tree Club planting and the accessioning survey are complete</li>
+      </ul>
+    </div>
+
+    <div class="reg-controls reveal">
+      <input type="search" id="regSearch" class="reg-search" placeholder="Search by tag, local or botanical name…" aria-label="Search the tree register">
+      <div class="chips" id="regChips">
+        <button class="chip active" data-z="All">All zones</button>
+        <button class="chip" data-z="A0">A0</button>
+        <button class="chip" data-z="A1">A1</button>
+        <button class="chip" data-z="A2">A2</button>
+        <button class="chip" data-z="A3">A3</button>
+        <button class="chip" data-z="A4">A4</button>
+        <button class="chip" data-z="A5">A5</button>
+        <button class="chip" data-z="A6">A6</button>
+        <button class="chip" data-z="A7">A7</button>
+        <button class="chip" data-z="A8">A8</button>
+        <button class="chip" data-z="A9">A9</button>
+        <button class="chip" data-z="A10">A10</button>
+        <button class="chip" data-z="A11">A11</button>
+      </div>
+    </div>
+
+    <div class="tbl-wrap reveal">
+      <table class="dirtbl" id="regTable">
+        <thead><tr><th>Tag no.</th><th>Zone</th><th>Local name</th><th>Botanical name</th><th>Dedicated to / Donated by</th><th>Status</th></tr></thead>
+        <tbody id="regBody"></tbody>
+      </table>
+      <p class="reg-empty" id="regEmpty" hidden>No trees match that search.</p>
+      <div class="dir-note"><span class="pulse"></span> <span id="regCount"></span> — all dummy placeholder entries, none of this is a real survey record.</div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="impact" data-tab="impact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><b>VIDYA MISSION 33</b><span class="sep">|</span><span>VAST TCR</span><span class="sep">|</span><span>GREEN CAMPUS</span><span class="sep">|</span><span class="cur">Impact &amp; Governance</span></div>
+      <h2>One green campus programme, multiple returns</h2>
+      <p class="dek">Every workstream is built to pay back in more than one currency at once.</p>
+    </div>
+    <div class="ret-row reveal">
+      <span class="ret-pill">Environment</span><span class="ret-pill">Operational efficiency</span><span class="ret-pill">Student learning</span><span class="ret-pill">Accreditation evidence</span><span class="ret-pill">Institutional reputation</span>
+    </div>
+    <div class="tbl-wrap reveal">
+      <table class="impact">
+        <thead><tr><th>Workstream</th><th>NAAC / Quality</th><th>NBA</th><th>SDG linkage</th><th>Evidence generated</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Energy + solar</strong></td><td>Environmental practices; documented improvement</td><td>Facilities / support systems; continuous improvement</td><td class="mono">7, 13</td><td>Meter data, energy savings, solar generation</td></tr>
+          <tr><td><strong>Water + waste</strong></td><td>Environmental management / best practices</td><td>Governance + facilities evidence</td><td class="mono">6, 12</td><td>Meters, inventories, water balance, disposal records</td></tr>
+          <tr><td><strong>Green zones + trees</strong></td><td>Institutional values / campus practices</td><td>Facilities + continuous improvement</td><td class="mono">3, 11, 13, 15</td><td>Zone scorecards, survival, photos, biodiversity</td></tr>
+          <tr><td><strong>Learning + outreach</strong></td><td>Student engagement / community practice</td><td>Outcome-oriented evidence</td><td class="mono">4, 11, 17</td><td>Projects, NSS/VSEC activity, partnerships</td></tr>
+          <tr><td><strong>Governance + dashboard</strong></td><td>Quality systems / documented practice</td><td>Governance + monitoring</td><td class="mono">16, 17</td><td>Minutes, KPI reviews, corrective actions</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flow reveal">
+      <span class="lbl">Governance flow</span>
+      <div class="flow-chain">
+        <span class="node">Green Campus Committee</span><span class="arrow">→</span>
+        <span class="node">Zone Owners</span><span class="arrow">→</span>
+        <span class="node">Quarterly KPI Reporting</span><span class="arrow">→</span>
+        <span class="node">Annual Audit</span><span class="arrow">→</span>
+        <span class="node">Continuous Improvement</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="roadmap" data-tab="roadmap">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><b>VIDYA MISSION 33</b><span class="sep">|</span><span>VAST TCR</span><span class="sep">|</span><span>GREEN CAMPUS</span><span class="sep">|</span><span class="cur">Proposal Approval Request</span></div>
+      <h2>What we're asking the Executive Committee for</h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="idx mono">01</div>
+        <h4>Approve the direction</h4>
+        <p style="color:var(--muted); font-size:.92rem">Approve the VAST Green Campus Master Plan as a VM:33 institutional initiative.</p>
+      </div>
+      <div class="step">
+        <div class="idx mono">02</div>
+        <h4>Establish governance</h4>
+        <div class="raci">
+          <div><b>Zone Owners</b> → monthly inspection, activity, evidence &amp; corrective action</div>
+          <div><b>Green Campus Committee</b> → programme governance, priorities, review &amp; escalation</div>
+          <div><b>Institution Management</b> → execution, budget &amp; operational implementation</div>
+          <div><b>Executive Committee</b> → strategic oversight &amp; periodic review</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="idx mono">03</div>
+        <h4>Detailed proposals</h4>
+        <p style="color:var(--muted); font-size:.92rem">Prepare DPRs, cost estimates and business cases for prioritized initiatives.</p>
+      </div>
+      <div class="step">
+        <div class="idx mono">04</div>
+        <h4>Establish measurement</h4>
+        <p style="color:var(--muted); font-size:.92rem">Mandate monthly KPIs and annual Green Campus evidence reporting.</p>
+      </div>
+    </div>
+    <p class="cite reveal" style="margin-top:28px">Note: individual capital expenditure proposals will be submitted separately for approval, based on DPRs and business cases.</p>
+  </div>
+</section>
+
+<div class="modal-overlay" id="donateModal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="donateModalTitle">
+    <button class="modal-close" id="donateModalClose" type="button" aria-label="Close">&times;</button>
+    <h3 id="donateModalTitle">Sponsor a Tree</h3>
+    <p class="modal-dek">Pledge to plant and dedicate this tree as part of the Plus 500 Tree Club. This is a demo form — nothing is actually submitted or stored.</p>
+    <div class="tree-context" id="donateTreeContext"></div>
+    <form id="donateForm" novalidate>
+      <div class="form-group">
+        <span class="group-label">Name</span><span class="required-tag">(Required)</span>
+        <div class="form-row">
+          <div><label for="donateFirst">First</label><input type="text" id="donateFirst" autocomplete="given-name"></div>
+          <div><label for="donateLast">Last</label><input type="text" id="donateLast" autocomplete="family-name"></div>
+        </div>
+        <p class="form-error" id="donateNameError">Please enter your first and last name.</p>
+      </div>
+      <div class="form-group">
+        <span class="group-label">Email</span><span class="required-tag">(Required)</span>
+        <div class="form-row">
+          <div><label for="donateEmail">Enter Email</label><input type="email" id="donateEmail" autocomplete="email"></div>
+          <div><label for="donateEmailConfirm">Confirm Email</label><input type="email" id="donateEmailConfirm" autocomplete="email"></div>
+        </div>
+        <p class="form-error" id="donateEmailError">Please enter a valid email, and make sure both match.</p>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" id="donateCancel">Cancel</button>
+        <button type="submit" class="btn-primary">Submit Pledge</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="toast" id="donateToast" role="status"></div>
+
+<footer class="site">
+  <div class="wrap">
+    <blockquote>"The ambition is simple. Restore what we have, measure what we use, improve what we can, and leave a better campus for the next generation."</blockquote>
+    <div class="bottom">
+      <span>Vidya Academy of Science &amp; Technology (VAST) · Thalakkottukara, Thrissur – 680501</span>
+      <span>Proposal dated 13 Sep 2026 · Campus review 20 Aug 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var DATA = {
+    initiatives: [
+      {sl:1, pillar:"Restore & Enhance", title:"Plus 500 Tree Club",
+        desc:"The campus currently has 849 trees identified for carbon sequestration, contributing to the institution's broader Green Campus objectives. While tree-based carbon mitigation is relatively gradual and influenced by several factors, trees provide significant environmental and ecological benefits beyond carbon sequestration.\n\nAs part of the Green Campus vision, the institution proposes to plant 500 additional trees across identified campus zones, further enhancing green cover, biodiversity, shade and the overall campus environment. The initiative will also provide opportunities for students, alumni, trustees, well-wishers and other stakeholders to participate and create a lasting green legacy within the campus.\n\nPlus 500 Tree Club will therefore be positioned not merely as a carbon-mitigation measure, but as a long-term commitment to creating a greener, healthier and more sustainable campus."},
+      {sl:2, pillar:"Restore & Enhance", title:"OxyBamboo Booths",
+        desc:"Bamboo is a fast-growing plant that can contribute to carbon capture, improved green cover, biodiversity and a cooler campus environment. As part of the Green Campus initiative, the institution proposes to create small bamboo clusters and eco-friendly booth-like spaces at suitable locations across the campus.\n\nThese green installations will combine the environmental benefits of bamboo with functional and attractive spaces for students and visitors, creating distinctive green pockets across the campus.\n\nBamboo plants generate roughly 35% more oxygen than an equivalent area of standard trees. Rapid growth (new shoots can grow several feet in a day, reaching full height in 60–90 days) gives it a very high metabolic and photosynthetic rate, so it absorbs large amounts of CO₂ and releases high volumes of O₂ as a byproduct. A mature bamboo grove can absorb hundreds of pounds of CO₂ per plant annually; its interconnected rhizome root system keeps storing carbon and preventing soil erosion even after culms are harvested, and it needs minimal water compared to commercial tree plantations.\n\nSpecies selection matters: exact oxygen and carbon figures depend on species, climate, sunlight and soil, and 'running' bamboo species need root barriers to stay contained."},
+      {sl:3, pillar:"Restore & Enhance", title:"Gateway to Legacy",
+        desc:"The campus main entrance, designed and built nearly 23 years ago, has remained an important landmark through the institution's journey of growth and transformation. As VAST has evolved into one of the leading engineering institutions in the region, it is timely to renew this gateway to reflect its present stature.\n\nThe initiative proposes a modern and dignified enhancement of the main entrance while preserving its original character and legacy — creating a strong sense of arrival, reconnecting generations of alumni and students with their institutional heritage.\n\nAs the institution approaches its Silver Jubilee, the Gateway to Legacy will serve as a lasting landmark celebrating the past, reflecting the present, and welcoming the future."},
+      {sl:4, pillar:"Restore & Enhance", title:"First Impression, Lasting Memory",
+        desc:"The experience of entering the campus should begin with an impression that stays long after the visit is over. As one passes through the Gateway to Legacy, the lawns and landscaped spaces on either side of the Main Block should create an immediate sense of beauty, pride and belonging.\n\nWhether it is a student arriving for the first time, an alumnus returning after many years, a prospective student and family, a staff member, Trustee or well-wisher, the view to the left and right should convey a simple feeling: 'Yes, this is a place I would want to belong to.'\n\nThe initiative proposes to elevate the existing lawns and landscaping into a distinctive and welcoming campus experience, designed to complement the renewed main entrance."},
+      {sl:5, pillar:"Restore & Enhance", title:"Real Herbal Heritage",
+        desc:"The Vidya Campus already has a designated Herbal Garden, which is being preserved as part of the institution's heritage. Building on this foundation, a dedicated Medicinal Plant Garden is proposed with the support of renowned Ayurveda institutions such as Oushadhi.\n\nDesigned as a living repository of medicinal plants and traditional knowledge, the garden can serve educational, environmental and awareness purposes while becoming a distinctive and enduring feature of the campus for future generations."},
+      {sl:6, pillar:"Engage & Educate", title:"My Zone, Our Zone",
+        desc:"As part of the Green Campus initiative, the campus will be divided into logical zones, with each zone adopted and cared for by a department, branch, student group or other stakeholder group.\n\nThe initiative aims to create a sense of ownership, pride and shared responsibility, encouraging each group to keep its zone attractive, green and well maintained. A friendly spirit of participation and healthy competition will further encourage everyone to make 'My Zone' the best part of 'Our Campus.'"},
+      {sl:7, pillar:"Align & Demonstrate", title:"Green Corridor",
+        desc:"The Vidya Campus is thoughtfully planned and compares well with leading engineering institutions. One opportunity is to create a continuous, shaded perimeter corridor that enables people to walk, explore and experience the campus comfortably.\n\nThe Green Corridor will connect key areas through a pleasant green pathway. It can support campus tours by electric/golf cart, guided walks for guests and prospective students and parents, annual walkathons or runs, and enhanced security supervision along the perimeter.\n\nBeyond its environmental value, the corridor can become a distinctive feature of the campus — creating opportunities for engagement, recreation, and showcasing the institution."},
+      {sl:8, pillar:"Reduce & Optimize", title:"EV Booster",
+        desc:"As part of the Green Campus initiative, a dedicated community EV charging facility is proposed for students, staff, visitors and other campus stakeholders — supporting two-, three- and four-wheel electric vehicles and making EV charging more accessible within the campus.\n\nBeyond providing a practical facility, the initiative will encourage greater adoption of electric mobility and engage the campus community in the institution's broader sustainability journey.\n\nLevel-2 AC charging point, using existing power infrastructure, for Staff, Students and Visitors — paid through UPI."},
+      {sl:9, pillar:"Restore & Enhance", title:"Let's Play",
+        desc:"The campus has sports facilities that provide an opportunity for much greater participation and community engagement. This initiative proposes to review, rejuvenate and enhance the existing facilities, along with developing two tennis courts and two shuttle courts to meet the evolving needs of students, faculty and staff.\n\nBeyond improving infrastructure, the initiative will focus on creating awareness, encouraging participation and introducing activities that bring the campus community to the facilities more regularly — restoring the main ground with engaging utility and use is a key initiative under this."},
+      {sl:10, pillar:"Engage & Educate", title:"Meet & Connect",
+        desc:"The campus already has several welcoming spaces where students can relax, meet and engage in informal conversations. However, the lack of thoughtfully designed seating limits the effective use of these spaces.\n\nThis initiative proposes purpose-designed social and seating spaces that encourage meaningful interaction, relaxation and informal conversations — with comfort, location, duration of use, supervision and maintenance all carefully considered so the spaces remain welcoming, purposeful and conducive to healthy campus engagement."},
+      {sl:11, pillar:"Reduce & Optimize", title:"Smart Resource Management",
+        desc:"An integrated programme to improve the efficiency, monitoring and sustainable management of campus resources. It covers energy audits and high-return efficiency measures, LED/fan/appliance upgrades, integrated energy monitoring and controls; water metering, rainwater recharge and wastewater recycling; and systematic waste, STP, biogas and resource tracking.\n\nThe objective is to reduce consumption and operating costs, improve resource recovery, and establish measurable, data-driven resource management across the campus."},
+      {sl:12, pillar:"Restore & Enhance", title:"Preserve Every Drop",
+        desc:"Water security is emerging as an important long-term sustainability challenge. While the campus has existing rainwater recharge and conservation measures, there is an opportunity to further strengthen its water resilience by capturing, storing and reusing rainwater that would otherwise be lost as runoff.\n\nThe initiative proposes a campus-wide rainwater collection and centralised storage system, supported by appropriate treatment, to make harvested water available for suitable regular uses — reducing wastage and building a more self-sustaining water ecosystem."},
+      {sl:13, pillar:"Measure & Improve", title:"Green Campus Watch",
+        desc:"Green Campus is a continuous journey, not a one-time initiative. All initiatives will be regularly measured, audited and fact-checked, with key performance indicators and achievements periodically reviewed to identify gaps and opportunities for improvement.\n\nKey facts, figures and progress will be made visible through appropriate displays and periodic reporting, creating transparency and keeping the campus community engaged and accountable — so the Green Campus vision stays visible, measurable and continuously strengthened."}
+    ],
+    trees: [
+      ["VM33-A0-01","A0","Royal Palm","Roystonea regia","dedicated","Vidya Trust"],
+      ["VM33-A0-02","A0","Royal Palm","Roystonea regia","dedicated","Alumni Batch of 2005"],
+      ["VM33-A0-03","A0","Gulmohar","Delonix regia","pending",""],
+      ["VM33-A0-04","A0","Frangipani","Plumeria alba","pledged","Rakesh Hari (Alumnus)"],
+      ["VM33-A1-01","A1","Copper Pod","Peltophorum pterocarpum","pending",""],
+      ["VM33-A1-02","A1","Rain Tree","Samanea saman","pending",""],
+      ["VM33-A1-03","A1","Indian Almond","Terminalia catappa","open",""],
+      ["VM33-A1-04","A1","Ashoka","Saraca asoca","pledged","CSE Batch of 2019"],
+      ["VM33-A2-01","A2","Copper Pod","Peltophorum pterocarpum","pending",""],
+      ["VM33-A2-02","A2","Neem","Azadirachta indica","open",""],
+      ["VM33-A2-03","A2","Silver Oak","Grevillea robusta","open",""],
+      ["VM33-A2-04","A2","Gulmohar","Delonix regia","pledged","Mechanical Engineering Dept."],
+      ["VM33-A3-01","A3","Ixora","Ixora coccinea","pending",""],
+      ["VM33-A3-02","A3","Hibiscus","Hibiscus rosa-sinensis","pending",""],
+      ["VM33-A3-03","A3","Curry Leaf","Murraya koenigii","dedicated","Staff Association"],
+      ["VM33-A3-04","A3","Champak","Magnolia champaca","pledged","Civil Engineering Dept."],
+      ["VM33-A4-01","A4","Banyan","Ficus benghalensis","dedicated","In memory of Sri K. Raghavan"],
+      ["VM33-A4-02","A4","Peepal","Ficus religiosa","dedicated","Vidya Alumni Association"],
+      ["VM33-A4-03","A4","Jackfruit","Artocarpus heterophyllus","dedicated","Dr. Saritha Menon"],
+      ["VM33-A4-04","A4","Rudraksha","Elaeocarpus ganitrus","pending",""],
+      ["VM33-A5-01","A5","False Ashoka","Polyalthia longifolia","dedicated","Hostel Batch 2012–16"],
+      ["VM33-A5-02","A5","False Ashoka","Polyalthia longifolia","dedicated","Hostel Batch 2012–16"],
+      ["VM33-A5-03","A5","Mango","Mangifera indica","pending",""],
+      ["VM33-A5-04","A5","Coconut","Cocos nucifera","open",""],
+      ["VM33-A6-01","A6","Mango","Mangifera indica","pending",""],
+      ["VM33-A6-02","A6","Tamarind","Tamarindus indica","pending",""],
+      ["VM33-A6-03","A6","Rain Tree","Samanea saman","open",""],
+      ["VM33-A6-04","A6","Jamun","Syzygium cumini","pledged","Student Council"],
+      ["VM33-A7-01","A7","Portia Tree","Thespesia populnea","pending",""],
+      ["VM33-A7-02","A7","Indian Coral Tree","Erythrina variegata","pending",""],
+      ["VM33-A7-03","A7","Pongam","Pongamia pinnata","open",""],
+      ["VM33-A7-04","A7","Bamboo","Bambusa vulgaris","pledged","Dr. Thomas Varghese"],
+      ["VM33-A8-01","A8","Tulsi","Ocimum tenuiflorum","pledged","Oushadhi Pledge Drive"],
+      ["VM33-A8-02","A8","Neem","Azadirachta indica","pending",""],
+      ["VM33-A8-03","A8","Henna","Lawsonia inermis","open",""],
+      ["VM33-A8-04","A8","Curry Leaf","Murraya koenigii","pledged","Ayurveda Dept. Well-wishers"],
+      ["VM33-A9-01","A9","Silk Cotton","Bombax ceiba","pending",""],
+      ["VM33-A9-02","A9","Teak","Tectona grandis","open",""],
+      ["VM33-A9-03","A9","Cashew","Anacardium occidentale","pledged","ECE Batch of 2015"],
+      ["VM33-A9-04","A9","Copper Pod","Peltophorum pterocarpum","pending",""],
+      ["VM33-A10-01","A10","Peepal (Ashwathi)","Ficus religiosa","dedicated","Nakshatra Vanam Trust"],
+      ["VM33-A10-02","A10","Amla (Bharani)","Phyllanthus emblica","dedicated","Nakshatra Vanam Trust"],
+      ["VM33-A10-03","A10","Banyan (Krithika)","Ficus benghalensis","dedicated","Nakshatra Vanam Trust"],
+      ["VM33-A10-04","A10","Jackfruit (Rohini)","Artocarpus heterophyllus","dedicated","Nakshatra Vanam Trust"],
+      ["VM33-A11-01","A11","Golden Shower","Cassia fistula","open",""],
+      ["VM33-A11-02","A11","Teak","Tectona grandis","open",""],
+      ["VM33-A11-03","A11","Flame of the Forest","Butea monosperma","pledged","Parent-Teacher Association"],
+      ["VM33-A11-04","A11","Silver Oak","Grevillea robusta","open",""]
+    ]
+  };
+
+  var STATUS_LABEL = {pending:"Pending audit", pledged:"Pledged", open:"Open", dedicated:"Dedicated"};
+
+  var grid = document.getElementById("initGrid");
+  DATA.initiatives.forEach(function(it){
+    var card = document.createElement("div");
+    card.className = "init";
+    card.dataset.pillar = it.pillar;
+    card.innerHTML =
+      '<div class="top"><span class="sl mono">' + String(it.sl).padStart(2,"0") + '</span></div>' +
+      '<h4>' + it.title + '</h4>' +
+      '<span class="tag">' + it.pillar + '</span>' +
+      '<p class="desc">' + it.desc + '</p>' +
+      '<button class="more" type="button">Read more</button>';
+    grid.appendChild(card);
+  });
+
+  grid.addEventListener("click", function(e){
+    if (e.target.classList.contains("more")){
+      var desc = e.target.previousElementSibling;
+      var open = desc.classList.toggle("open");
+      e.target.textContent = open ? "Show less" : "Read more";
+    }
+  });
+
+  var chips = document.querySelectorAll("#chips .chip");
+  chips.forEach(function(chip){
+    chip.addEventListener("click", function(){
+      chips.forEach(function(c){ c.classList.remove("active"); });
+      chip.classList.add("active");
+      var f = chip.dataset.f;
+      document.querySelectorAll(".init").forEach(function(card){
+        card.classList.toggle("hide", f !== "All" && card.dataset.pillar !== f);
+      });
+    });
+  });
+
+  // tree register: render rows, then wire search + zone filter
+  var regBody = document.getElementById("regBody");
+  var regEmpty = document.getElementById("regEmpty");
+  var regCount = document.getElementById("regCount");
+  function statusCellHTML(status){
+    var pill = '<span class="status-pill ' + status + '">' + STATUS_LABEL[status] + '</span>';
+    if (status !== "open") return '<div class="status-cell">' + pill + '</div>';
+    return '<div class="status-cell">' + pill + '<button type="button" class="donate-btn">Donate</button></div>';
+  }
+  function donorCellHTML(name){
+    return name ? '<span class="donor filled">' + name + '</span>' : '<span class="donor">—</span>';
+  }
+  DATA.trees.forEach(function(row){
+    var tr = document.createElement("tr");
+    tr.className = "example";
+    tr.dataset.zone = row[1];
+    tr.dataset.tag = row[0];
+    tr.dataset.local = row[2];
+    tr.dataset.botanical = row[3];
+    tr.dataset.search = (row[0] + " " + row[2] + " " + row[3] + " " + row[5]).toLowerCase();
+    tr.innerHTML =
+      '<td class="mono">' + row[0] + '</td>' +
+      '<td>' + row[1] + '</td>' +
+      '<td>' + row[2] + '</td>' +
+      '<td>' + row[3] + '</td>' +
+      '<td class="donor-cell">' + donorCellHTML(row[5]) + '</td>' +
+      '<td>' + statusCellHTML(row[4]) + '</td>';
+    regBody.appendChild(tr);
+  });
+
+  var progressCount = document.getElementById("progressCount");
+  var progressTotal = document.getElementById("progressTotal");
+  var progressPct = document.getElementById("progressPct");
+  var segDedicated = document.getElementById("segDedicated");
+  var segPledged = document.getElementById("segPledged");
+  var segRemaining = document.getElementById("segRemaining");
+  function updateProgress(){
+    var rows = regBody.querySelectorAll("tr");
+    var dedicated = 0, pledged = 0, total = rows.length;
+    rows.forEach(function(tr){
+      var pill = tr.querySelector(".status-pill");
+      if (pill.classList.contains("dedicated")) dedicated++;
+      else if (pill.classList.contains("pledged")) pledged++;
+    });
+    var claimed = dedicated + pledged;
+    var pct = total ? Math.round((claimed / total) * 100) : 0;
+    progressCount.textContent = claimed;
+    progressTotal.textContent = total;
+    progressPct.textContent = pct + "%";
+    segDedicated.style.flex = dedicated || 0;
+    segPledged.style.flex = pledged || 0;
+    segRemaining.style.flex = Math.max(total - claimed, 0.0001);
+  }
+  updateProgress();
+
+  var regSearch = document.getElementById("regSearch");
+  var regChips = document.querySelectorAll("#regChips .chip");
+  function applyRegFilter(){
+    var q = regSearch.value.trim().toLowerCase();
+    var activeChip = document.querySelector("#regChips .chip.active");
+    var zone = activeChip ? activeChip.dataset.z : "All";
+    var shown = 0;
+    regBody.querySelectorAll("tr").forEach(function(tr){
+      var matchesZone = zone === "All" || tr.dataset.zone === zone;
+      var matchesSearch = !q || tr.dataset.search.indexOf(q) !== -1;
+      var hide = !(matchesZone && matchesSearch);
+      tr.classList.toggle("reg-hide", hide);
+      if (!hide) shown++;
+    });
+    regEmpty.hidden = shown !== 0;
+    regCount.textContent = shown + " of " + DATA.trees.length + " entries shown";
+  }
+  regSearch.addEventListener("input", applyRegFilter);
+  regChips.forEach(function(chip){
+    chip.addEventListener("click", function(){
+      regChips.forEach(function(c){ c.classList.remove("active"); });
+      chip.classList.add("active");
+      applyRegFilter();
+    });
+  });
+  applyRegFilter();
+
+  // donate-a-tree modal (demo only: nothing is persisted or sent anywhere)
+  var donateModal = document.getElementById("donateModal");
+  var donateContext = document.getElementById("donateTreeContext");
+  var donateForm = document.getElementById("donateForm");
+  var donateFirst = document.getElementById("donateFirst");
+  var donateLast = document.getElementById("donateLast");
+  var donateEmail = document.getElementById("donateEmail");
+  var donateEmailConfirm = document.getElementById("donateEmailConfirm");
+  var donateNameError = document.getElementById("donateNameError");
+  var donateEmailError = document.getElementById("donateEmailError");
+  var donateToast = document.getElementById("donateToast");
+  var activeDonateRow = null;
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var toastTimer = null;
+
+  function openDonateModal(row){
+    activeDonateRow = row;
+    donateContext.textContent = row.dataset.tag + " — " + row.dataset.local + " (" + row.dataset.botanical + "), Zone " + row.dataset.zone;
+    donateForm.reset();
+    donateNameError.classList.remove("show");
+    donateEmailError.classList.remove("show");
+    donateModal.hidden = false;
+    donateFirst.focus();
+  }
+  function closeDonateModal(){
+    donateModal.hidden = true;
+    activeDonateRow = null;
+  }
+  function showToast(msg){
+    donateToast.textContent = msg;
+    donateToast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ donateToast.classList.remove("show"); }, 4000);
+  }
+
+  regBody.addEventListener("click", function(e){
+    if (e.target.classList.contains("donate-btn")){
+      openDonateModal(e.target.closest("tr"));
+    }
+  });
+  document.getElementById("donateModalClose").addEventListener("click", closeDonateModal);
+  document.getElementById("donateCancel").addEventListener("click", closeDonateModal);
+  donateModal.addEventListener("click", function(e){ if (e.target === donateModal) closeDonateModal(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !donateModal.hidden) closeDonateModal(); });
+
+  donateForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    var nameOk = donateFirst.value.trim() !== "" && donateLast.value.trim() !== "";
+    var e1 = donateEmail.value.trim(), e2 = donateEmailConfirm.value.trim();
+    var emailOk = EMAIL_RE.test(e1) && e1.toLowerCase() === e2.toLowerCase();
+    donateNameError.classList.toggle("show", !nameOk);
+    donateEmailError.classList.toggle("show", !emailOk);
+    if (!nameOk || !emailOk) return;
+
+    if (activeDonateRow){
+      var cell = activeDonateRow.querySelector(".status-cell");
+      cell.innerHTML = '<span class="status-pill pledged">Pledged</span>';
+      var first = donateFirst.value.trim();
+      var last = donateLast.value.trim();
+      var donorCell = activeDonateRow.querySelector(".donor-cell");
+      if (donorCell) donorCell.innerHTML = '<span class="donor filled">' + first + " " + last + '</span>';
+      var tag = activeDonateRow.dataset.tag;
+      updateProgress();
+      closeDonateModal();
+      showToast("Thank you, " + first + " — your pledge for " + tag + " has been noted on this page. (Demo only: not actually saved.)");
+    }
+  });
+
+  // mobile nav
+  var navbtn = document.getElementById("navbtn");
+  var navlinks = document.getElementById("navlinks");
+  navbtn.addEventListener("click", function(){ navlinks.classList.toggle("open"); });
+
+  // tabs: each nav link shows its own page, hides the rest
+  var TABS = ["facts","vision","zones","initiatives","vegetation","register","impact","roadmap"];
+  var navLinkMap = {};
+  navlinks.querySelectorAll("a").forEach(function(a){ navLinkMap[a.getAttribute("href").slice(1)] = a; });
+  var pagesByTab = {};
+  TABS.forEach(function(t){ pagesByTab[t] = Array.prototype.slice.call(document.querySelectorAll('.page[data-tab="' + t + '"]')); });
+
+  function showTab(tab, push, scroll){
+    if (TABS.indexOf(tab) === -1) tab = "facts";
+    TABS.forEach(function(t){
+      var isActive = t === tab;
+      pagesByTab[t].forEach(function(p){ p.classList.toggle("active", isActive); });
+      if (navLinkMap[t]) navLinkMap[t].classList.toggle("active", isActive);
+    });
+    navlinks.classList.remove("open");
+    if (push !== false && location.hash.slice(1) !== tab) history.pushState(null, "", "#" + tab);
+    var first = pagesByTab[tab][0];
+    if (scroll && first) first.scrollIntoView({block:"start"});
+  }
+
+  navlinks.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(e){
+      e.preventDefault();
+      showTab(a.getAttribute("href").slice(1), true, true);
+    });
+  });
+  window.addEventListener("popstate", function(){ showTab(location.hash.slice(1), false, true); });
+
+  showTab(location.hash.slice(1) || "facts", false, false);
+})();
+</script>
+
+</body></html>
