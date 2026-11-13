@@ -768,12 +768,7 @@
     <button class="modal-close" id="zoneModalClose" type="button" aria-label="Close">&times;</button>
     <h3 id="zoneModalTitle">Zone</h3>
     <p class="modal-dek" id="zoneModalDek"></p>
-    <div class="chips" id="zoneChips" style="margin-bottom:12px">
-      <button type="button" class="chip active" data-m="map">Map</button>
-      <button type="button" class="chip" data-m="street">Street View</button>
-    </div>
     <iframe id="zoneMapFrame" title="Zone map" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-    <iframe id="zoneStreetFrame" title="Zone street view" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
     <p class="zm-note" id="zoneNote" hidden></p>
   </div>
 </div>
@@ -1152,8 +1147,6 @@
         var btn = document.createElement("button"); btn.type = "button"; btn.textContent = "Open zone view";
         btn.addEventListener("click", function(){ if (card) card.click(); });
         pop.appendChild(btn);
-        var sv = document.createElement("a"); sv.href = "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=" + c[0] + "," + c[1];
-        sv.target = "_blank"; sv.rel = "noopener noreferrer"; sv.textContent = " Street View \u2197"; sv.style.fontSize = ".74rem"; pop.appendChild(sv);
         m.bindPopup(pop);
         pts.push(c);
       });
@@ -1172,8 +1165,8 @@
   })();
 
   // per-zone map / street view popups.
-  // To give a zone its own view, paste the "src" URL from Google Maps > Share > Embed a map
-  // into that zone's map / street fields below. Blank fields fall back to the campus-wide view.
+  // To give a zone its own map, paste the "src" URL from Google Maps > Share > Embed a map
+  // into that zone's map field below. Blank fields fall back to the campus-wide view.
   var CAMPUS_VIEW = {map:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2321.603501455726!2d76.14402316458491!3d10.624861053357645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ea4d0e584607%3A0x2664e7fe1daf242e!2sVidya%20Academy%20of%20Science%20and%20Technology%20Thalakottukara!5e1!3m2!1sen!2sin!4v1794595613434!5m2!1sen!2sin",
     street:"https://www.google.com/maps/embed?pb=!4v1794595857182!6m8!1m7!1sPGStk_fwkT_Kq7D1YnbV8Q!2m2!1d10.62644437765971!2d76.14425349990029!3f44.901985!4f0!5f0.7820865974627469"};
   // Approximate zone centres [lat, lng], estimated from the site plan using three surveyed landmarks
@@ -1208,21 +1201,16 @@
     A11:[[10.627336,76.145507],[10.627064,76.14555],[10.62681,76.144868],[10.627094,76.144759]]
   };
   var ZONE_VIEWS = {
-    A0:{map:"",street:""}, A1:{map:"",street:""}, A2:{map:"",street:""}, A3:{map:"",street:""},
-    A4:{map:"",street:""}, A5:{map:"",street:""}, A6:{map:"",street:""}, A7:{map:"",street:""},
-    A8:{map:"",street:""}, A9:{map:"",street:""}, A10:{map:"",street:""}, A11:{map:"",street:""}
+    A0:{map:""}, A1:{map:""}, A2:{map:""}, A3:{map:""},
+    A4:{map:""}, A5:{map:""}, A6:{map:""}, A7:{map:""},
+    A8:{map:""}, A9:{map:""}, A10:{map:""}, A11:{map:""}
   };
   (function(){
     var modal = document.getElementById("zoneModal");
     var title = document.getElementById("zoneModalTitle"), dek = document.getElementById("zoneModalDek");
-    var mapF = document.getElementById("zoneMapFrame"), stF = document.getElementById("zoneStreetFrame");
+    var mapF = document.getElementById("zoneMapFrame");
     var note = document.getElementById("zoneNote");
-    var chips = document.querySelectorAll("#zoneChips .chip");
-    function setMode(mode){
-      chips.forEach(function(c){ c.classList.toggle("active", c.dataset.m === mode); });
-      mapF.hidden = mode === "street"; stF.hidden = mode !== "street";
-    }
-    function close(){ modal.hidden = true; mapF.removeAttribute("src"); stF.removeAttribute("src"); }
+    function close(){ modal.hidden = true; mapF.removeAttribute("src"); }
     document.querySelectorAll(".zone-view").forEach(function(btn){
       btn.addEventListener("click", function(){
         var z = btn.dataset.zone, card = btn.closest(".zone");
@@ -1231,15 +1219,12 @@
         dek.textContent = card.querySelector("p").textContent;
         var c = ZONE_COORDS[z], ll = c ? c[0] + "," + c[1] : "";
         mapF.src = v.map || (c ? "https://www.google.com/maps?q=" + ll + "&z=19&t=k&output=embed" : CAMPUS_VIEW.map);
-        stF.src = v.street || (c ? "https://www.google.com/maps?layer=c&cbll=" + ll + "&output=svembed" : CAMPUS_VIEW.street);
         note.hidden = !c;
         note.innerHTML = c ? "Approximate position (" + c[0] + ", " + c[1] + "), estimated from the site plan. " +
-          '<a href="https://www.google.com/maps/search/?api=1&query=' + ll + '" target="_blank" rel="noopener noreferrer">Open in Google Maps &#8599;</a> &middot; <a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=' + ll + '" target="_blank" rel="noopener noreferrer">Street View &#8599;</a>' : "";
-        setMode("map");
+          '<a href="https://www.google.com/maps/search/?api=1&query=' + ll + '" target="_blank" rel="noopener noreferrer">Open in Google Maps &#8599;</a>' : "";
         modal.hidden = false;
       });
     });
-    chips.forEach(function(c){ c.addEventListener("click", function(){ setMode(c.dataset.m); }); });
     document.getElementById("zoneModalClose").addEventListener("click", close);
     modal.addEventListener("click", function(e){ if (e.target === modal) close(); });
     document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !modal.hidden) close(); });
