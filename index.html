@@ -223,6 +223,8 @@
   .progress-legend .dot.remaining{background:var(--line-strong)}
   .reg-controls{display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-bottom:22px}
   .reg-search{font-family:'Source Serif 4',serif; font-size:.95rem; padding:11px 16px; border-radius:10px; border:1px solid var(--line-strong); background:var(--surface); color:var(--fg); min-width:240px; flex:1}
+  .csv-btn{font-family:'IBM Plex Mono',monospace; font-size:.74rem; letter-spacing:.03em; text-transform:uppercase; background:var(--accent); color:#fff; border:1px solid var(--accent); padding:11px 16px; border-radius:10px; cursor:pointer; white-space:nowrap}
+  .csv-btn:hover{background:var(--accent-strong)}
   .reg-search::placeholder{color:var(--muted-2)}
   .reg-search:focus{outline:2px solid var(--accent); outline-offset:1px}
   #regChips{margin-bottom:0}
@@ -578,6 +580,7 @@
 
     <div class="reg-controls reveal">
       <input type="search" id="regSearch" class="reg-search" placeholder="Search by tag, local or botanical name…" aria-label="Search the tree register">
+      <button type="button" class="csv-btn" id="regCsv">&#8595; Download CSV</button>
       <div class="chips" id="regChips">
         <button class="chip active" data-z="All">All zones</button>
         <button class="chip" data-z="A0">A0</button>
@@ -1036,6 +1039,29 @@
       closeDonateModal();
       showToast("Thank you, " + first + " — your pledge for " + tag + " has been noted on this page. (Demo only: not actually saved.)");
     }
+  });
+
+  // CSV download of the register (respects the current search + zone filter)
+  document.getElementById("regCsv").addEventListener("click", function(){
+    function esc(v){
+      v = String(v == null ? "" : v).trim();
+      if (/^[=+\-@]/.test(v)) v = "'" + v; // avoid spreadsheet formula injection
+      return '"' + v.replace(/"/g, '""') + '"';
+    }
+    var lines = [["Tag no.","Zone","Local name","Botanical name","Dedicated to / Donated by","Status"].map(esc).join(",")];
+    regBody.querySelectorAll("tr:not(.reg-hide)").forEach(function(tr){
+      var c = tr.children;
+      var donor = c[4].querySelector(".donor.filled");
+      lines.push([c[0].textContent, c[1].textContent, c[2].textContent, c[3].textContent,
+                  donor ? donor.textContent : "", c[5].querySelector(".status-pill").textContent].map(esc).join(","));
+    });
+    var blob = new Blob(["\ufeff" + lines.join("\r\n")], {type:"text/csv;charset=utf-8"});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = "vm33-tree-register.csv";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+    showToast("Downloaded " + (lines.length - 1) + " rows as CSV.");
   });
 
   // mobile nav
