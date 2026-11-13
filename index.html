@@ -1129,6 +1129,22 @@
   // into that zone's map / street fields below. Blank fields fall back to the campus-wide view.
   var CAMPUS_VIEW = {map:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2321.603501455726!2d76.14402316458491!3d10.624861053357645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ea4d0e584607%3A0x2664e7fe1daf242e!2sVidya%20Academy%20of%20Science%20and%20Technology%20Thalakottukara!5e1!3m2!1sen!2sin!4v1794595613434!5m2!1sen!2sin",
     street:"https://www.google.com/maps/embed?pb=!4v1794595857182!6m8!1m7!1sPGStk_fwkT_Kq7D1YnbV8Q!2m2!1d10.62644437765971!2d76.14425349990029!3f44.901985!4f0!5f0.7820865974627469"};
+  // Approximate zone centres [lat, lng], estimated from the site plan using three surveyed landmarks
+  // (main entrance, football ground centre, Nakshatra Vanam). Accurate to roughly 10-20 m; adjust here if needed.
+  var ZONE_COORDS = {
+    A0:[10.626488,76.144419],
+    A1:[10.626609,76.144709],
+    A2:[10.627689,76.144809],
+    A3:[10.627887,76.145618],
+    A4:[10.628689,76.146057],
+    A5:[10.628848,76.146794],
+    A6:[10.628765,76.147887],
+    A7:[10.628326,76.147171],
+    A8:[10.628043,76.146463],
+    A9:[10.626576,76.146082],
+    A10:[10.626642,76.145438],
+    A11:[10.627147,76.145231]
+  };
   var ZONE_VIEWS = {
     A0:{map:"",street:""}, A1:{map:"",street:""}, A2:{map:"",street:""}, A3:{map:"",street:""},
     A4:{map:"",street:""}, A5:{map:"",street:""}, A6:{map:"",street:""}, A7:{map:"",street:""},
@@ -1151,11 +1167,12 @@
         var v = ZONE_VIEWS[z] || {};
         title.textContent = z + " \u2014 " + card.querySelector("h4").textContent;
         dek.textContent = card.querySelector("p").textContent;
-        mapF.src = v.map || CAMPUS_VIEW.map;
-        stF.src = v.street || CAMPUS_VIEW.street;
-        var generic = !v.map || !v.street;
-        note.hidden = !generic;
-        note.textContent = generic ? "A zone-specific " + (!v.map && !v.street ? "map and street view have" : (!v.map ? "map has" : "street view has")) + " not been added yet \u2014 showing the campus-wide view where missing." : "";
+        var c = ZONE_COORDS[z], ll = c ? c[0] + "," + c[1] : "";
+        mapF.src = v.map || (c ? "https://www.google.com/maps?q=" + ll + "&z=19&t=k&output=embed" : CAMPUS_VIEW.map);
+        stF.src = v.street || (c ? "https://www.google.com/maps?layer=c&cbll=" + ll + "&output=svembed" : CAMPUS_VIEW.street);
+        note.hidden = !c;
+        note.innerHTML = c ? "Approximate position (" + c[0] + ", " + c[1] + "), estimated from the site plan. " +
+          '<a href="https://www.google.com/maps/search/?api=1&query=' + ll + '" target="_blank" rel="noopener noreferrer">Open in Google Maps &#8599;</a>' : "";
         setMode("map");
         modal.hidden = false;
       });
