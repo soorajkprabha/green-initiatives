@@ -156,6 +156,12 @@
   .map-embed{margin:0 0 30px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px; box-shadow:var(--shadow)}
   .map-embed iframe[hidden]{display:none}
   .map-embed iframe{display:block; width:100%; height:clamp(280px,50vw,450px); border:0; border-radius:8px}
+  .zone-view{display:block; margin-top:8px; background:none; border:1px solid var(--accent); color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.66rem; letter-spacing:.04em; text-transform:uppercase; padding:4px 10px; border-radius:999px; cursor:pointer}
+  .zone-view:hover{background:var(--accent); color:#fff}
+  .zone-modal{max-width:760px}
+  .zone-modal iframe{display:block; width:100%; height:clamp(260px,55vw,420px); border:0; border-radius:8px}
+  .zone-modal iframe[hidden]{display:none}
+  .zone-modal .zm-note{font-size:.8rem; color:var(--muted); margin-top:10px}
   .site-plan{margin:0 0 30px; max-width:420px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px; box-shadow:var(--shadow)}
   .site-plan img{width:100%; height:auto; display:block; border-radius:8px}
   .site-plan figcaption{font-size:.8rem; color:var(--muted); margin-top:10px; text-align:center}
@@ -467,18 +473,18 @@
       </div>
     </div>
     <div class="zone-grid reveal">
-      <div class="zone"><div class="code">A0</div><div><h4>The Main Entrance</h4><p>Reflects the institution's legacy.</p><span class="zone-tag">Arrival</span></div></div>
-      <div class="zone"><div class="code">A1</div><div><h4>Lawns</h4><p>South, main &amp; north block.</p><span class="zone-tag">Landscape</span></div></div>
-      <div class="zone"><div class="code rec">A2</div><div><h4>Sports Courts</h4><p>Volleyball and basketball courts.</p><span class="zone-tag">Recreation</span></div></div>
-      <div class="zone"><div class="code util">A3</div><div><h4>Auditorium–Canteen</h4><p>Vacant space between, with plants.</p><span class="zone-tag">Utility</span></div></div>
-      <div class="zone"><div class="code green">A4</div><div><h4>Kavu (Sacred Grove)</h4><p>May be the rarest such space on any campus.</p><span class="zone-tag">Green &amp; sacred</span></div></div>
-      <div class="zone"><div class="code util">A5</div><div><h4>Boys' Hostel Frontage</h4><p>Vacant space in front of the hostel.</p><span class="zone-tag">Utility</span></div></div>
-      <div class="zone"><div class="code rec">A6</div><div><h4>Main Playground</h4><p>At a distance, and detached.</p><span class="zone-tag">Recreation</span></div></div>
-      <div class="zone"><div class="code util">A7</div><div><h4>STP Area</h4><p>Vacant space around the sewage treatment plant.</p><span class="zone-tag">Utility</span></div></div>
-      <div class="zone"><div class="code green">A8</div><div><h4>Herbal Garden</h4><p>Existing heritage garden — needs serious upliftment.</p><span class="zone-tag">Green &amp; sacred</span></div></div>
-      <div class="zone"><div class="code">A9</div><div><h4>South of Decennial Block</h4><p>Vacant space between the Main Block and the DB.</p><span class="zone-tag">Landscape</span></div></div>
-      <div class="zone"><div class="code green">A10</div><div><h4>Nakshatra Vanam</h4><p>A unique, admiring and nostalgic grove.</p><span class="zone-tag">Green &amp; sacred</span></div></div>
-      <div class="zone"><div class="code">A11</div><div><h4>South of North Block</h4><p>Landscaping area.</p><span class="zone-tag">Landscape</span></div></div>
+      <div class="zone"><div class="code">A0</div><div><h4>The Main Entrance</h4><p>Reflects the institution's legacy.</p><span class="zone-tag">Arrival</span><button type="button" class="zone-view" data-zone="A0">View on map</button></div></div>
+      <div class="zone"><div class="code">A1</div><div><h4>Lawns</h4><p>South, main &amp; north block.</p><span class="zone-tag">Landscape</span><button type="button" class="zone-view" data-zone="A1">View on map</button></div></div>
+      <div class="zone"><div class="code rec">A2</div><div><h4>Sports Courts</h4><p>Volleyball and basketball courts.</p><span class="zone-tag">Recreation</span><button type="button" class="zone-view" data-zone="A2">View on map</button></div></div>
+      <div class="zone"><div class="code util">A3</div><div><h4>Auditorium–Canteen</h4><p>Vacant space between, with plants.</p><span class="zone-tag">Utility</span><button type="button" class="zone-view" data-zone="A3">View on map</button></div></div>
+      <div class="zone"><div class="code green">A4</div><div><h4>Kavu (Sacred Grove)</h4><p>May be the rarest such space on any campus.</p><span class="zone-tag">Green &amp; sacred</span><button type="button" class="zone-view" data-zone="A4">View on map</button></div></div>
+      <div class="zone"><div class="code util">A5</div><div><h4>Boys' Hostel Frontage</h4><p>Vacant space in front of the hostel.</p><span class="zone-tag">Utility</span><button type="button" class="zone-view" data-zone="A5">View on map</button></div></div>
+      <div class="zone"><div class="code rec">A6</div><div><h4>Main Playground</h4><p>At a distance, and detached.</p><span class="zone-tag">Recreation</span><button type="button" class="zone-view" data-zone="A6">View on map</button></div></div>
+      <div class="zone"><div class="code util">A7</div><div><h4>STP Area</h4><p>Vacant space around the sewage treatment plant.</p><span class="zone-tag">Utility</span><button type="button" class="zone-view" data-zone="A7">View on map</button></div></div>
+      <div class="zone"><div class="code green">A8</div><div><h4>Herbal Garden</h4><p>Existing heritage garden — needs serious upliftment.</p><span class="zone-tag">Green &amp; sacred</span><button type="button" class="zone-view" data-zone="A8">View on map</button></div></div>
+      <div class="zone"><div class="code">A9</div><div><h4>South of Decennial Block</h4><p>Vacant space between the Main Block and the DB.</p><span class="zone-tag">Landscape</span><button type="button" class="zone-view" data-zone="A9">View on map</button></div></div>
+      <div class="zone"><div class="code green">A10</div><div><h4>Nakshatra Vanam</h4><p>A unique, admiring and nostalgic grove.</p><span class="zone-tag">Green &amp; sacred</span><button type="button" class="zone-view" data-zone="A10">View on map</button></div></div>
+      <div class="zone"><div class="code">A11</div><div><h4>South of North Block</h4><p>Landscaping area.</p><span class="zone-tag">Landscape</span><button type="button" class="zone-view" data-zone="A11">View on map</button></div></div>
     </div>
   </div>
 </section>
@@ -743,6 +749,20 @@
   </div>
 </section>
 
+<div class="modal-overlay" id="zoneModal" hidden>
+  <div class="modal zone-modal" role="dialog" aria-modal="true" aria-labelledby="zoneModalTitle">
+    <button class="modal-close" id="zoneModalClose" type="button" aria-label="Close">&times;</button>
+    <h3 id="zoneModalTitle">Zone</h3>
+    <p class="modal-dek" id="zoneModalDek"></p>
+    <div class="chips" id="zoneChips" style="margin-bottom:12px">
+      <button type="button" class="chip active" data-m="map">Map</button>
+      <button type="button" class="chip" data-m="street">Street View</button>
+    </div>
+    <iframe id="zoneMapFrame" title="Zone map" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <iframe id="zoneStreetFrame" title="Zone street view" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
+    <p class="zm-note" id="zoneNote" hidden></p>
+  </div>
+</div>
 <div class="modal-overlay" id="donateModal" hidden>
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="donateModalTitle">
     <button class="modal-close" id="donateModalClose" type="button" aria-label="Close">&times;</button>
@@ -1096,6 +1116,48 @@
         stF.hidden = !street; mapF.hidden = street;
       });
     });
+  })();
+
+  // per-zone map / street view popups.
+  // To give a zone its own view, paste the "src" URL from Google Maps > Share > Embed a map
+  // into that zone's map / street fields below. Blank fields fall back to the campus-wide view.
+  var CAMPUS_VIEW = {map:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2321.603501455726!2d76.14402316458491!3d10.624861053357645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ea4d0e584607%3A0x2664e7fe1daf242e!2sVidya%20Academy%20of%20Science%20and%20Technology%20Thalakottukara!5e1!3m2!1sen!2sin!4v1794595613434!5m2!1sen!2sin",
+    street:"https://www.google.com/maps/embed?pb=!4v1794595857182!6m8!1m7!1sPGStk_fwkT_Kq7D1YnbV8Q!2m2!1d10.62644437765971!2d76.14425349990029!3f44.901985!4f0!5f0.7820865974627469"};
+  var ZONE_VIEWS = {
+    A0:{map:"",street:""}, A1:{map:"",street:""}, A2:{map:"",street:""}, A3:{map:"",street:""},
+    A4:{map:"",street:""}, A5:{map:"",street:""}, A6:{map:"",street:""}, A7:{map:"",street:""},
+    A8:{map:"",street:""}, A9:{map:"",street:""}, A10:{map:"",street:""}, A11:{map:"",street:""}
+  };
+  (function(){
+    var modal = document.getElementById("zoneModal");
+    var title = document.getElementById("zoneModalTitle"), dek = document.getElementById("zoneModalDek");
+    var mapF = document.getElementById("zoneMapFrame"), stF = document.getElementById("zoneStreetFrame");
+    var note = document.getElementById("zoneNote");
+    var chips = document.querySelectorAll("#zoneChips .chip");
+    function setMode(mode){
+      chips.forEach(function(c){ c.classList.toggle("active", c.dataset.m === mode); });
+      mapF.hidden = mode === "street"; stF.hidden = mode !== "street";
+    }
+    function close(){ modal.hidden = true; mapF.removeAttribute("src"); stF.removeAttribute("src"); }
+    document.querySelectorAll(".zone-view").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var z = btn.dataset.zone, card = btn.closest(".zone");
+        var v = ZONE_VIEWS[z] || {};
+        title.textContent = z + " \u2014 " + card.querySelector("h4").textContent;
+        dek.textContent = card.querySelector("p").textContent;
+        mapF.src = v.map || CAMPUS_VIEW.map;
+        stF.src = v.street || CAMPUS_VIEW.street;
+        var generic = !v.map || !v.street;
+        note.hidden = !generic;
+        note.textContent = generic ? "A zone-specific " + (!v.map && !v.street ? "map and street view have" : (!v.map ? "map has" : "street view has")) + " not been added yet \u2014 showing the campus-wide view where missing." : "";
+        setMode("map");
+        modal.hidden = false;
+      });
+    });
+    chips.forEach(function(c){ c.addEventListener("click", function(){ setMode(c.dataset.m); }); });
+    document.getElementById("zoneModalClose").addEventListener("click", close);
+    modal.addEventListener("click", function(e){ if (e.target === modal) close(); });
+    document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !modal.hidden) close(); });
   })();
 
   // mobile nav
