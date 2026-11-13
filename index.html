@@ -1152,6 +1152,8 @@
         var btn = document.createElement("button"); btn.type = "button"; btn.textContent = "Open zone view";
         btn.addEventListener("click", function(){ if (card) card.click(); });
         pop.appendChild(btn);
+        var sv = document.createElement("a"); sv.href = "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=" + c[0] + "," + c[1];
+        sv.target = "_blank"; sv.rel = "noopener noreferrer"; sv.textContent = " Street View \u2197"; sv.style.fontSize = ".74rem"; pop.appendChild(sv);
         m.bindPopup(pop);
         pts.push(c);
       });
@@ -1232,7 +1234,7 @@
         stF.src = v.street || (c ? "https://www.google.com/maps?layer=c&cbll=" + ll + "&output=svembed" : CAMPUS_VIEW.street);
         note.hidden = !c;
         note.innerHTML = c ? "Approximate position (" + c[0] + ", " + c[1] + "), estimated from the site plan. " +
-          '<a href="https://www.google.com/maps/search/?api=1&query=' + ll + '" target="_blank" rel="noopener noreferrer">Open in Google Maps &#8599;</a>' : "";
+          '<a href="https://www.google.com/maps/search/?api=1&query=' + ll + '" target="_blank" rel="noopener noreferrer">Open in Google Maps &#8599;</a> &middot; <a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=' + ll + '" target="_blank" rel="noopener noreferrer">Street View &#8599;</a>' : "";
         setMode("map");
         modal.hidden = false;
       });
