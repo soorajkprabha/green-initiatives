@@ -1,0 +1,947 @@
+Tag no.,Zone,Local name,Botanical name,Dedicated to / Donated by,Status
+VM33-A0-001,A0,Acacia,Acacia dealbata,,Open
+VM33-A0-002,A0,Amla,Phyllanthus emblica,,Pending audit
+VM33-A0-003,A0,Amla,Phyllanthus emblica,Mechanical Engineering Dept.,Pledged
+VM33-A0-004,A0,Amla,Phyllanthus emblica,CSE Batch of 2019,Pledged
+VM33-A0-005,A0,Areca palm,Chrysalidocarpus lutescens,,Open
+VM33-A0-006,A0,Bandicoot berry,Leea indica,Alumni Batch of 2005,Pledged
+VM33-A0-007,A0,Chembakam tree,Michelia chempaca,Mechanical Engineering Dept.,Dedicated
+VM33-A0-008,A0,Elder Tree,Sambucus nigra,Rakesh Hari (Alumnus),Pledged
+VM33-A0-009,A0,Elder Tree,Sambucus nigra,Parent-Teacher Association,Pledged
+VM33-A0-010,A0,Elder Tree,Sambucus nigra,,Pending audit
+VM33-A0-011,A0,Fig Tree,Ficus carica,Vidya Alumni Association,Dedicated
+VM33-A0-012,A0,Guava,Psidium guajava,Oushadhi Pledge Drive,Pledged
+VM33-A0-013,A0,Gulmohar,Delonix regia,,Open
+VM33-A0-014,A0,Gulmohar,Delonix regia,Dr. Saritha Menon,Dedicated
+VM33-A0-015,A0,Gulmohar,Delonix regia,,Open
+VM33-A0-016,A0,Gulmohar,Delonix regia,ECE Batch of 2015,Pledged
+VM33-A0-017,A0,Gulmohar,Delonix regia,In memory of Sri K. Raghavan,Dedicated
+VM33-A0-018,A0,Gulmohar,Delonix regia,Staff Association,Pledged
+VM33-A0-019,A0,Gulmohar,Delonix regia,Alumni Batch of 2005,Pledged
+VM33-A0-020,A0,Indian Almond,Terminalia carappa,,Pending audit
+VM33-A0-021,A0,Indian willow tree,Salix tetrasperma,Hostel Batch 2012–16,Pledged
+VM33-A0-022,A0,Jack Fruit Tree,Artocarpus heterophyllus,,Open
+VM33-A0-023,A0,Jack Fruit Tree,Artocarpus heterophyllus,Staff Association,Pledged
+VM33-A0-024,A0,Jack Fruit Tree,Artocarpus heterophyllus,,Open
+VM33-A0-025,A0,Jack Fruit Tree,Artocarpus heterophyllus,Alumni Batch of 2005,Dedicated
+VM33-A0-026,A0,Kanikkonna,Cassia fistula,Civil Engineering Dept.,Pledged
+VM33-A0-027,A0,Kanikkonna,Casia fistula,,Pending audit
+VM33-A0-028,A0,Kanikkonna,Casia fistula,,Open
+VM33-A0-029,A0,Kanikkonna,Casia fistula,,Pending audit
+VM33-A0-030,A0,Kanikkonna,Casia fistula,,Pending audit
+VM33-A0-031,A0,Lead tree,Leucaena leucocephala,CSE Batch of 2019,Dedicated
+VM33-A0-032,A0,Longan tree,Dimocarpus longan,Student Council,Dedicated
+VM33-A0-033,A0,Mahagony,Swietenia macrophylla,,Pending audit
+VM33-A0-034,A0,Mandaram,Bauhinia variegata,Rakesh Hari (Alumnus),Pledged
+VM33-A0-035,A0,Mango Tree,Mangifera indica,Alumni Batch of 2005,Pledged
+VM33-A0-036,A0,Mango Tree,Mangifera indica,Vidya Alumni Association,Pledged
+VM33-A0-037,A0,Mango Tree,Mangifera indica,Rakesh Hari (Alumnus),Pledged
+VM33-A0-038,A0,Mango Tree,Mangifera indica,Oushadhi Pledge Drive,Pledged
+VM33-A0-039,A0,Mango Tree,Mangifera indica,,Pending audit
+VM33-A0-040,A0,Mango Tree,Mangifera indica,Ayurveda Dept. Well-wishers,Pledged
+VM33-A0-041,A0,Mango Tree,Mangifera indica,,Open
+VM33-A0-042,A0,Mast Tree,Monoon longifolium,ECE Batch of 2015,Dedicated
+VM33-A0-043,A0,Mast Tree,Monoon longifolium,Ayurveda Dept. Well-wishers,Pledged
+VM33-A0-044,A0,Mast Tree,Monoon longifolium,,Pending audit
+VM33-A0-045,A0,Mast Tree,Monoon longifolium,Oushadhi Pledge Drive,Dedicated
+VM33-A0-046,A0,Mast Tree,Monoon longifolium,Dr. Thomas Varghese,Pledged
+VM33-A0-047,A0,Mast Tree,Monoon longifolium,ECE Batch of 2015,Pledged
+VM33-A0-048,A0,Norfolk Island pine,Araucaria heterophylla,,Pending audit
+VM33-A0-049,A0,Panama Tree,Sterculia apetala,Oushadhi Pledge Drive,Dedicated
+VM33-A0-050,A0,Papaya,Carica papaya,,Open
+VM33-A0-051,A0,Podini Tree,Macaranga peltata,,Open
+VM33-A0-052,A0,Podini Tree,Macaranga peltata,Oushadhi Pledge Drive,Dedicated
+VM33-A0-053,A0,Podini Tree,Macaranga peltata,Mechanical Engineering Dept.,Dedicated
+VM33-A0-054,A0,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A0-055,A0,Podini Tree,Macaranga peltata,Nakshatra Vanam Trust,Pledged
+VM33-A0-056,A0,Podini Tree,Macaranga peltata,,Open
+VM33-A0-057,A0,Podini Tree,Macaranga peltata,CSE Batch of 2019,Pledged
+VM33-A0-058,A0,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A0-059,A0,Podini Tree,Macaranga peltata,,Open
+VM33-A0-060,A0,Podini Tree,Macaranga peltata,,Open
+VM33-A0-061,A0,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A0-062,A0,Rose Apple Tree,Syzygium jambos,,Open
+VM33-A0-063,A0,Rose Apple Tree,Syzygium jambos,,Pending audit
+VM33-A0-064,A0,Rose Apple Tree,Syzygium jambos,,Pending audit
+VM33-A0-065,A0,Royal palm,Roystonea regia,,Pending audit
+VM33-A0-066,A0,Royal palm,Roystonea regia,Student Council,Pledged
+VM33-A0-067,A0,Royal palm,Roystonea regia,,Open
+VM33-A0-068,A0,Teak,Tectona grandis,Dr. Thomas Varghese,Dedicated
+VM33-A0-069,A0,Vella Chembakam,Magnolia champaca,,Pending audit
+VM33-A0-070,A0,Vella Chembakam,Magnolia champaca,Student Council,Dedicated
+VM33-A0-071,A0,White teak,Gmelina arborea,,Open
+VM33-A1-001,A1,Acacia,Acacia dealbata,,Pending audit
+VM33-A1-002,A1,Acacia,Acacia dealbata,,Open
+VM33-A1-003,A1,American Persimon,Diospyros virginiana,Staff Association,Pledged
+VM33-A1-004,A1,Amla,Phyllanthus emblica,,Open
+VM33-A1-005,A1,Ashoka tree,Saraca asoca,Dr. Thomas Varghese,Dedicated
+VM33-A1-006,A1,Ashoka tree,Saraca asoca,Dr. Thomas Varghese,Pledged
+VM33-A1-007,A1,Ashoka tree,Saraca asoca,Dr. Thomas Varghese,Pledged
+VM33-A1-008,A1,Beech tree,Fagus sylvatica,Vidya Trust,Dedicated
+VM33-A1-009,A1,Black Plum,Syzygium cumini,,Pending audit
+VM33-A1-010,A1,Chembakam tree,Michelia chempaca,Nakshatra Vanam Trust,Pledged
+VM33-A1-011,A1,Chickoo tree,Manilkara zapota,Vidya Alumni Association,Dedicated
+VM33-A1-012,A1,Chickoo tree,Manilkara zapota,,Open
+VM33-A1-013,A1,Coconut tree,Cocos nucifera,,Open
+VM33-A1-014,A1,Elder Tree,Sambucus nigra,,Pending audit
+VM33-A1-015,A1,Elder Tree,Sambucus nigra,ECE Batch of 2015,Dedicated
+VM33-A1-016,A1,Elder Tree,Sambucus nigra,,Open
+VM33-A1-017,A1,Elephant Apple Tree,Dillenia indica,,Pending audit
+VM33-A1-018,A1,Fishtail palm tree,Caryota urens,,Open
+VM33-A1-019,A1,Guava,Psidium guajava,Civil Engineering Dept.,Dedicated
+VM33-A1-020,A1,Gulmohar,Delonix regia,CSE Batch of 2019,Dedicated
+VM33-A1-021,A1,Gulmohar,Delonix regia,Civil Engineering Dept.,Pledged
+VM33-A1-022,A1,Gulmohar,Delonix regia,,Open
+VM33-A1-023,A1,Gulmohar,Delonix regia,,Open
+VM33-A1-024,A1,Gulmohar,Delonix regia,Rakesh Hari (Alumnus),Pledged
+VM33-A1-025,A1,Gulmohar,Delonix regia,,Pending audit
+VM33-A1-026,A1,Gulmohar,Delonix regia,,Open
+VM33-A1-027,A1,Gulmohar,Delonix regia,Ayurveda Dept. Well-wishers,Pledged
+VM33-A1-028,A1,Gulmohar,Delonix regia,In memory of Sri K. Raghavan,Dedicated
+VM33-A1-029,A1,Gulmohar,Delonix regia,,Open
+VM33-A1-030,A1,Gulmohar,Delonix regia,,Open
+VM33-A1-031,A1,Gulmohar,Delonix regia,In memory of Sri K. Raghavan,Pledged
+VM33-A1-032,A1,Indian Rose Wood,Dalbergia sissoo,Nakshatra Vanam Trust,Pledged
+VM33-A1-033,A1,Jack Fruit Tree,Artocarpus heterophyllus,,Pending audit
+VM33-A1-034,A1,Jack Fruit Tree,Artocarpus heterophyllus,,Pending audit
+VM33-A1-035,A1,Jack Fruit Tree,Artocarpus heterophyllus,,Open
+VM33-A1-036,A1,Jack Fruit Tree,Artocarpus heterophyllus,,Pending audit
+VM33-A1-037,A1,Kanikkonna,Casia fistula,Civil Engineering Dept.,Dedicated
+VM33-A1-038,A1,Kanjiram,Strychnos nux-vomica,,Open
+VM33-A1-039,A1,Karungali Tree,Diospyros ebenum,Oushadhi Pledge Drive,Dedicated
+VM33-A1-040,A1,Koovalam,Aegle marmelos,Mechanical Engineering Dept.,Pledged
+VM33-A1-041,A1,Lead tree,Leucaena leucocephala,Vidya Trust,Pledged
+VM33-A1-042,A1,Longan tree,Dimocarpus longan,,Pending audit
+VM33-A1-043,A1,Mahagony,Swietenia macrophylla,Mechanical Engineering Dept.,Pledged
+VM33-A1-044,A1,Mahagony,Swietenia macrophylla,,Open
+VM33-A1-045,A1,Mahagony,Swietenia macrophylla,Staff Association,Dedicated
+VM33-A1-046,A1,Mahagony,Swietenia macrophylla,Vidya Trust,Dedicated
+VM33-A1-047,A1,Mahagony,Swietenia macrophylla,,Pending audit
+VM33-A1-048,A1,Mahagony,Swietenia macrophylla,,Pending audit
+VM33-A1-049,A1,Mango Tree,Mangifera indica,,Pending audit
+VM33-A1-050,A1,Mango Tree,Mangifera indica,,Open
+VM33-A1-051,A1,Mango Tree,Mangifera indica,ECE Batch of 2015,Dedicated
+VM33-A1-052,A1,Mango Tree,Mangifera indica,,Open
+VM33-A1-053,A1,Mast Tree,Monoon longifolium,,Pending audit
+VM33-A1-054,A1,Mast Tree,Monoon longifolium,,Pending audit
+VM33-A1-055,A1,Mast Tree,Monoon longifolium,,Pending audit
+VM33-A1-056,A1,Mast Tree,Monoon longifolium,,Open
+VM33-A1-057,A1,Mast Tree,Polyalthia longifolia,In memory of Sri K. Raghavan,Pledged
+VM33-A1-058,A1,Mullan kainji,Erythrina variegata,,Open
+VM33-A1-059,A1,Mullan kainji,Erythrina variegata,Dr. Saritha Menon,Pledged
+VM33-A1-060,A1,Orchid Tree,Bauhinia variegata,,Pending audit
+VM33-A1-061,A1,Pacific Coast Mahagony,Swietenia macrophylla,Civil Engineering Dept.,Dedicated
+VM33-A1-062,A1,Peacock Flower,Caesalpinia pulcherrima,,Open
+VM33-A1-063,A1,Podini Tree,Macaranga peltata,,Open
+VM33-A1-064,A1,Podini Tree,Macaranga peltata,,Open
+VM33-A1-065,A1,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A1-066,A1,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A1-067,A1,Podini Tree,Macaranga peltata,Civil Engineering Dept.,Pledged
+VM33-A1-068,A1,Podini Tree,Macaranga peltata,Student Council,Pledged
+VM33-A1-069,A1,Podini Tree,Macaranga peltata,Hostel Batch 2012–16,Pledged
+VM33-A1-070,A1,Redbay tree,Persea borbonia,,Open
+VM33-A1-071,A1,Royal palm,Roystonea regia,Nakshatra Vanam Trust,Dedicated
+VM33-A1-072,A1,Royal palm,Roystonea regia,,Pending audit
+VM33-A1-073,A1,Royal palm,Roystonea regia,Vidya Trust,Dedicated
+VM33-A1-074,A1,Royal palm,Roystonea regia,,Open
+VM33-A1-075,A1,Royal palm,Roystonea regia,Dr. Saritha Menon,Pledged
+VM33-A1-076,A1,Royal palm,Roystonea regia,,Pending audit
+VM33-A1-077,A1,Royal palm,Roystonea regia,,Pending audit
+VM33-A1-078,A1,Royal palm,Roystonea regia,Civil Engineering Dept.,Pledged
+VM33-A1-079,A1,Tamarind,Tamarindus indica,,Pending audit
+VM33-A1-080,A1,Vella Chembakam,Magnolia champaca,,Open
+VM33-A1-081,A1,Vella Chembakam,Magnolia champaca,,Pending audit
+VM33-A1-082,A1,Water Hickory,Carya aquatica,,Open
+VM33-A1-083,A1,Weeping fig,Ficus benjamina,,Open
+VM33-A1-084,A1,White teak,Gmelina arborea,,Pending audit
+VM33-A2-001,A2,Acacia,Acacia dealbata,,Pending audit
+VM33-A2-002,A2,Areca palm,Chrysalidocarpus lutescens,Parent-Teacher Association,Pledged
+VM33-A2-003,A2,Arjun Tree,Terminalia arjuna,Dr. Thomas Varghese,Pledged
+VM33-A2-004,A2,Coconut tree,Cocos nucifera,,Open
+VM33-A2-005,A2,Coconut tree,Cocos nucifera,,Pending audit
+VM33-A2-006,A2,Coffee Plum Tree,Flacourtia jangomos,Staff Association,Dedicated
+VM33-A2-007,A2,Elder Tree,Sambucus nigra,Ayurveda Dept. Well-wishers,Pledged
+VM33-A2-008,A2,Elder Tree,Sambucus nigra,,Pending audit
+VM33-A2-009,A2,Elder Tree,Sambucus nigra,,Pending audit
+VM33-A2-010,A2,Elengi Tree,Mimusops elengi,Ayurveda Dept. Well-wishers,Pledged
+VM33-A2-011,A2,Elengi Tree,Mimusops elengi,,Pending audit
+VM33-A2-012,A2,Guava,Psidium guajava,,Open
+VM33-A2-013,A2,Gulmohar,Delonix regia,Rakesh Hari (Alumnus),Pledged
+VM33-A2-014,A2,Gulmohar,Delonix regia,,Open
+VM33-A2-015,A2,Gulmohar,Delonix regia,,Pending audit
+VM33-A2-016,A2,Gulmohar,Delonix regia,,Open
+VM33-A2-017,A2,Gulmohar,Delonix regia,,Open
+VM33-A2-018,A2,Gulmohar,Delonix regia,,Open
+VM33-A2-019,A2,Gulmohar,Delonix regia,,Open
+VM33-A2-020,A2,Jack Fruit Tree,Artocarpus heterophyllus,,Open
+VM33-A2-021,A2,Jack Fruit Tree,Artocarpus heterophyllus,Parent-Teacher Association,Pledged
+VM33-A2-022,A2,Jack Fruit Tree,Artocarpus heterophyllus,,Open
+VM33-A2-023,A2,Jack Fruit Tree,Artocarpus heterophyllus,Alumni Batch of 2005,Pledged
+VM33-A2-024,A2,Kadamb,Neolamarckia cadamba,Dr. Thomas Varghese,Dedicated
+VM33-A2-025,A2,Kanikkonna,Casia fistula,Hostel Batch 2012–16,Dedicated
+VM33-A2-026,A2,Kanikkonna,Casia fistula,,Pending audit
+VM33-A2-027,A2,Longan tree,Dimocarpus longan,Alumni Batch of 2005,Dedicated
+VM33-A2-028,A2,Mahagony,Swietenia macrophylla,,Pending audit
+VM33-A2-029,A2,Mahagony,Swietenia macrophylla,Hostel Batch 2012–16,Dedicated
+VM33-A2-030,A2,Mahagony,Swietenia macrophylla,,Open
+VM33-A2-031,A2,Mahagony,Swietenia macrophylla,,Open
+VM33-A2-032,A2,Mango Tree,Mangifera indica,,Pending audit
+VM33-A2-033,A2,Mango Tree,Mangifera indica,,Pending audit
+VM33-A2-034,A2,Mango Tree,Mangifera indica,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A2-035,A2,Mango Tree,Mangifera indica,Vidya Trust,Dedicated
+VM33-A2-036,A2,Mango Tree,Mangifera indica,Staff Association,Pledged
+VM33-A2-037,A2,Mango Tree,Mangifera indica,CSE Batch of 2019,Dedicated
+VM33-A2-038,A2,Mango Tree,Mangifera indica,,Open
+VM33-A2-039,A2,Mango Tree,Mangifera indica,Oushadhi Pledge Drive,Dedicated
+VM33-A2-040,A2,Mango Tree,Mangifera indica,Alumni Batch of 2005,Dedicated
+VM33-A2-041,A2,Mansonia tree,Mansonia altissima,,Pending audit
+VM33-A2-042,A2,Mast Tree,Monoon longifolium,,Open
+VM33-A2-043,A2,Native Olive,Olea paniculata,Parent-Teacher Association,Dedicated
+VM33-A2-044,A2,Neem,Azadirachta indica,,Open
+VM33-A2-045,A2,Orchid Tree,Bauhinia variegata,,Open
+VM33-A2-046,A2,Palmyra Palm,Borassus flabellifer,Student Council,Dedicated
+VM33-A2-047,A2,Podini Tree,Macaranga peltata,,Open
+VM33-A2-048,A2,Podini Tree,Macaranga peltata,ECE Batch of 2015,Dedicated
+VM33-A2-049,A2,Podini Tree,Macaranga peltata,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A2-050,A2,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A2-051,A2,Podini Tree,Macaranga peltata,CSE Batch of 2019,Dedicated
+VM33-A2-052,A2,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A2-053,A2,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A2-054,A2,Podini Tree,Macaranga peltata,In memory of Sri K. Raghavan,Dedicated
+VM33-A2-055,A2,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A2-056,A2,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A2-057,A2,Podini Tree,Macaranga peltata,Staff Association,Dedicated
+VM33-A2-058,A2,Rose Apple Tree,Syzygium jambos,,Open
+VM33-A2-059,A2,Royal palm,Roystonea regia,,Open
+VM33-A2-060,A2,Royal palm,Roystonea regia,Vidya Trust,Dedicated
+VM33-A2-061,A2,Royal palm,Roystonea regia,,Open
+VM33-A2-062,A2,Sheema konna,Gliricidia sepium,,Pending audit
+VM33-A2-063,A2,Sheema konna,Gliricidia sepium,,Open
+VM33-A2-064,A2,Teak,Tectona grandis,ECE Batch of 2015,Dedicated
+VM33-A2-065,A2,White ash,Fraxinus americana,,Pending audit
+VM33-A2-066,A2,White teak,Gmelina arborea,,Open
+VM33-A2-067,A2,Yellow Elder,Tecoma stans,Staff Association,Pledged
+VM33-A3-001,A3,Acacia,Acacia dealbata,Mechanical Engineering Dept.,Dedicated
+VM33-A3-002,A3,Acacia,Acacia dealbata,,Open
+VM33-A3-003,A3,Amla,Phyllanthus emblica,,Open
+VM33-A3-004,A3,Amla,Phyllanthus emblica,,Open
+VM33-A3-005,A3,Amla,Phyllanthus emblica,,Pending audit
+VM33-A3-006,A3,Arali,Ficus religiosa,ECE Batch of 2015,Dedicated
+VM33-A3-007,A3,Ashoka tree,Saraca asoca,,Open
+VM33-A3-008,A3,Chembakam tree,Michelia chempaca,CSE Batch of 2019,Dedicated
+VM33-A3-009,A3,Chickoo tree,Manilkara zapota,Civil Engineering Dept.,Dedicated
+VM33-A3-010,A3,Chickoo tree,Manilkara zapota,Vidya Trust,Pledged
+VM33-A3-011,A3,Coconut tree,Cocos nucifera,,Open
+VM33-A3-012,A3,Coconut tree,Cocos nucifera,Vidya Alumni Association,Pledged
+VM33-A3-013,A3,Eastern redbud,Cercis canadensis,,Pending audit
+VM33-A3-014,A3,Elder Tree,Sambucus nigra,Dr. Thomas Varghese,Pledged
+VM33-A3-015,A3,Elder Tree,Sambucus nigra,,Pending audit
+VM33-A3-016,A3,Elder Tree,Sambucus nigra,,Open
+VM33-A3-017,A3,Elder Tree,Sambucus nigra,,Open
+VM33-A3-018,A3,Elder Tree,Sambucus nigra,Vidya Trust,Dedicated
+VM33-A3-019,A3,Gulmohar,Delonix regia,Vidya Trust,Dedicated
+VM33-A3-020,A3,Gulmohar,Delonix regia,Hostel Batch 2012–16,Dedicated
+VM33-A3-021,A3,Gulmohar,Delonix regia,In memory of Sri K. Raghavan,Pledged
+VM33-A3-022,A3,Gulmohar,Delonix regia,Civil Engineering Dept.,Pledged
+VM33-A3-023,A3,Gulmohar,Delonix regia,Rakesh Hari (Alumnus),Dedicated
+VM33-A3-024,A3,Gulmohar,Delonix regia,,Open
+VM33-A3-025,A3,Gulmohar,Delonix regia,,Open
+VM33-A3-026,A3,Gulmohar,Delonix regia,Dr. Thomas Varghese,Dedicated
+VM33-A3-027,A3,Gulmohar,Delonix regia,Alumni Batch of 2005,Dedicated
+VM33-A3-028,A3,Gulmohar,Delonix regia,,Pending audit
+VM33-A3-029,A3,Gulmohar,Delonix regia,Staff Association,Pledged
+VM33-A3-030,A3,Gulmohar,Delonix regia,Nakshatra Vanam Trust,Dedicated
+VM33-A3-031,A3,Gulmohar,Delonix regia,Rakesh Hari (Alumnus),Pledged
+VM33-A3-032,A3,Gulmohar,Delonix regia,,Pending audit
+VM33-A3-033,A3,Jack Fruit Tree,Artocarpus heterophyllus,,Pending audit
+VM33-A3-034,A3,Jack Fruit Tree,Artocarpus heterophyllus,Dr. Thomas Varghese,Dedicated
+VM33-A3-035,A3,Jack Fruit Tree,Artocarpus heterophyllus,Rakesh Hari (Alumnus),Pledged
+VM33-A3-036,A3,Jack Fruit Tree,Artocarpus heterophyllus,,Open
+VM33-A3-037,A3,Jack Fruit Tree,Artocarpus heterophyllus,,Open
+VM33-A3-038,A3,Jack Fruit Tree,Artocarpus heterophyllus,,Pending audit
+VM33-A3-039,A3,Kanikkonna,Cassia fistula,CSE Batch of 2019,Dedicated
+VM33-A3-040,A3,Kanikkonna,Cassia fistula,Hostel Batch 2012–16,Dedicated
+VM33-A3-041,A3,Karungali Tree,Diospyros ebenum,,Pending audit
+VM33-A3-042,A3,Lakshmitharu,Simarouba glauca,,Pending audit
+VM33-A3-043,A3,Lemon Tree,Citrus limon,,Open
+VM33-A3-044,A3,Longan tree,Dimocarpus longan,,Open
+VM33-A3-045,A3,Mahagony,Swietenia macrophylla,Vidya Trust,Dedicated
+VM33-A3-046,A3,Mahagony,Swietenia macrophylla,,Open
+VM33-A3-047,A3,Mahagony,Swietenia macrophylla,Mechanical Engineering Dept.,Pledged
+VM33-A3-048,A3,Malamarotty,Hydnocarpus pentandrus,,Pending audit
+VM33-A3-049,A3,Mango Tree,Mangifera indica,Rakesh Hari (Alumnus),Pledged
+VM33-A3-050,A3,Mango Tree,Mangifera indica,,Pending audit
+VM33-A3-051,A3,Mango Tree,Mangifera indica,Rakesh Hari (Alumnus),Pledged
+VM33-A3-052,A3,Mango Tree,Mangifera indica,Mechanical Engineering Dept.,Dedicated
+VM33-A3-053,A3,Mast Tree,Monoon longifolium,Vidya Trust,Pledged
+VM33-A3-054,A3,Mast Tree,Monoon longifolium,Vidya Trust,Dedicated
+VM33-A3-055,A3,Mast Tree,Monoon longifolium,,Open
+VM33-A3-056,A3,Mast Tree,Monoon longifolium,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A3-057,A3,Mast Tree,Monoon longifolium,Mechanical Engineering Dept.,Dedicated
+VM33-A3-058,A3,Mast Tree,Monoon longifolium,Civil Engineering Dept.,Pledged
+VM33-A3-059,A3,Monkey Puzzle Tree,Araucaria araucana,Alumni Batch of 2005,Pledged
+VM33-A3-060,A3,Native Olive,Olea paniculata,Dr. Saritha Menon,Dedicated
+VM33-A3-061,A3,Norfolk Island pine,Araucaria heterophylla,Nakshatra Vanam Trust,Pledged
+VM33-A3-062,A3,Orchid Tree,Bauhinia variegata,,Open
+VM33-A3-063,A3,Palmyra palm,Borassus flabellifer,,Open
+VM33-A3-064,A3,Palmyra Palm,Borassus flabellifer,,Open
+VM33-A3-065,A3,Palmyra Palm,Borassus flabellifer,,Open
+VM33-A3-066,A3,Papaya,Carica papaya,Vidya Trust,Dedicated
+VM33-A3-067,A3,Pigmy Bamboo,Pleiovlastus pygmaeus,,Pending audit
+VM33-A3-068,A3,Pigmy Bamboo,Pleiovlastus pygmaeus,Rakesh Hari (Alumnus),Dedicated
+VM33-A3-069,A3,Podini Tree,Macaranga peltata,Hostel Batch 2012–16,Dedicated
+VM33-A3-070,A3,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A3-071,A3,Podini Tree,Macaranga peltata,Dr. Thomas Varghese,Pledged
+VM33-A3-072,A3,Podini Tree,Macaranga peltata,CSE Batch of 2019,Pledged
+VM33-A3-073,A3,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A3-074,A3,Podini Tree,Macaranga peltata,Nakshatra Vanam Trust,Dedicated
+VM33-A3-075,A3,Podini Tree,Macaranga peltata,,Open
+VM33-A3-076,A3,Podini Tree,Macaranga peltata,Vidya Trust,Dedicated
+VM33-A3-077,A3,Podini Tree,Macaranga peltata,Vidya Trust,Pledged
+VM33-A3-078,A3,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A3-079,A3,Podini Tree,Macaranga peltata,Civil Engineering Dept.,Pledged
+VM33-A3-080,A3,Pongame oil tree,Pongamia pinnata,Hostel Batch 2012–16,Pledged
+VM33-A3-081,A3,Rose Apple Tree,Syzygium jambos,Vidya Trust,Dedicated
+VM33-A3-082,A3,Rose Apple Tree,Syzygium jambos,Student Council,Dedicated
+VM33-A3-083,A3,Rose Apple Tree,Syzygium jambos,Staff Association,Dedicated
+VM33-A3-084,A3,Royal palm,Roystonea regia,,Pending audit
+VM33-A3-085,A3,Royal palm,Roystonea regia,,Pending audit
+VM33-A3-086,A3,Royal palm,Roystonea regia,,Open
+VM33-A3-087,A3,Tamarind,Tamarindus indica,In memory of Sri K. Raghavan,Dedicated
+VM33-A3-088,A3,Tamarind,Tamarindus indica,Alumni Batch of 2005,Pledged
+VM33-A3-089,A3,Teak,Tectona grandis,,Pending audit
+VM33-A3-090,A3,Vella Chembakam,Magnolia champaca,Nakshatra Vanam Trust,Pledged
+VM33-A3-091,A3,Vella Chembakam,Magnolia champaca,Parent-Teacher Association,Pledged
+VM33-A3-092,A3,Vella Chembakam,Magnolia champaca,Alumni Batch of 2005,Dedicated
+VM33-A3-093,A3,Vella Chembakam,Magnolia champaca,Dr. Saritha Menon,Dedicated
+VM33-A3-094,A3,Vella Chembakam,Magnolia champaca,,Open
+VM33-A3-095,A3,Water Hickory,Carya aquatica,Parent-Teacher Association,Dedicated
+VM33-A3-096,A3,Weeping fig,Ficus benjamina,,Pending audit
+VM33-A3-097,A3,White teak,Gmelina arborea,ECE Batch of 2015,Pledged
+VM33-A3-098,A3,White teak,Gmelina arborea,,Pending audit
+VM33-A3-099,A3,White teak,Gmelina arborea,Alumni Batch of 2005,Pledged
+VM33-A3-100,A3,White teak,Gmelina arborea,,Pending audit
+VM33-A4-001,A4,Acacia,Acacia dealbata,Dr. Thomas Varghese,Dedicated
+VM33-A4-002,A4,Areca palm,Chrysalidocarpus lutescens,,Pending audit
+VM33-A4-003,A4,Arjun Tree,Terminalia arjuna,Staff Association,Pledged
+VM33-A4-004,A4,Bandicoot berry,Leea indica,Rakesh Hari (Alumnus),Pledged
+VM33-A4-005,A4,Bread fruit tree,Artocarpus altilis,,Pending audit
+VM33-A4-006,A4,Chickoo tree,Manilkara zapota,CSE Batch of 2019,Pledged
+VM33-A4-007,A4,Coconut tree,Cocos nucifera,Rakesh Hari (Alumnus),Dedicated
+VM33-A4-008,A4,Coconut tree,Cocos nucifera,In memory of Sri K. Raghavan,Dedicated
+VM33-A4-009,A4,Custard Apple,Annona reticulata,Student Council,Dedicated
+VM33-A4-010,A4,Elder Tree,Sambucus nigra,,Open
+VM33-A4-011,A4,Elder Tree,Sambucus nigra,Vidya Trust,Pledged
+VM33-A4-012,A4,Elder Tree,Sambucus nigra,,Open
+VM33-A4-013,A4,European Beech Tree,Fagus sylvatica,Vidya Trust,Dedicated
+VM33-A4-014,A4,Golden Bottle Brush,Melaleuca bracteata,Dr. Thomas Varghese,Pledged
+VM33-A4-015,A4,Guava,Psidium guajava,Vidya Alumni Association,Pledged
+VM33-A4-016,A4,Guava,Psidium guajava,,Pending audit
+VM33-A4-017,A4,Gulmohar,Delonix regia,Vidya Trust,Dedicated
+VM33-A4-018,A4,Gulmohar,Delonix regia,Mechanical Engineering Dept.,Dedicated
+VM33-A4-019,A4,Gulmohar,Delonix regia,,Open
+VM33-A4-020,A4,Gulmohar,Delonix regia,,Pending audit
+VM33-A4-021,A4,Gulmohar,Delonix regia,In memory of Sri K. Raghavan,Dedicated
+VM33-A4-022,A4,Jack Fruit Tree,Artocarpus heterophyllus,CSE Batch of 2019,Pledged
+VM33-A4-023,A4,Jack Fruit Tree,Artocarpus heterophyllus,Hostel Batch 2012–16,Pledged
+VM33-A4-024,A4,Jack Fruit Tree,Artocarpus heterophyllus,,Open
+VM33-A4-025,A4,Kanikkonna,Cassia fistula,Ayurveda Dept. Well-wishers,Pledged
+VM33-A4-026,A4,Lead tree,Leucaena leucocephala,Student Council,Dedicated
+VM33-A4-027,A4,Longan tree,Dimocarpus longan,,Pending audit
+VM33-A4-028,A4,Longan tree,Dimocarpus longan,Parent-Teacher Association,Dedicated
+VM33-A4-029,A4,Mahagony,Swietenia macrophylla,,Pending audit
+VM33-A4-030,A4,Mahagony,Swietenia macrophylla,,Pending audit
+VM33-A4-031,A4,Mahagony,Swietenia macrophylla,,Open
+VM33-A4-032,A4,Mahagony,Swietenia macrophylla,Alumni Batch of 2005,Dedicated
+VM33-A4-033,A4,Mahagony,Swietenia macrophylla,Staff Association,Pledged
+VM33-A4-034,A4,Mahagony,Swietenia macrophylla,,Pending audit
+VM33-A4-035,A4,Mahagony,Swietenia macrophylla,Rakesh Hari (Alumnus),Pledged
+VM33-A4-036,A4,Manchadi,Adenanthera pavonina,,Pending audit
+VM33-A4-037,A4,Mandaram,Bauhinia variegata,,Pending audit
+VM33-A4-038,A4,Mango Tree,Mangifera indica,Mechanical Engineering Dept.,Dedicated
+VM33-A4-039,A4,Mango Tree,Mangifera indica,,Pending audit
+VM33-A4-040,A4,Mango Tree,Mangifera indica,,Pending audit
+VM33-A4-041,A4,Mango Tree,Mangifera indica,,Pending audit
+VM33-A4-042,A4,Mast Tree,Monoon longifolium,,Pending audit
+VM33-A4-043,A4,Mast Tree,Monoon longifolium,,Pending audit
+VM33-A4-044,A4,Mast Tree,Monoon longifolium,Nakshatra Vanam Trust,Dedicated
+VM33-A4-045,A4,Mast Tree,Monoon longifolium,Rakesh Hari (Alumnus),Pledged
+VM33-A4-046,A4,Mast Tree,Monoon longifolium,,Pending audit
+VM33-A4-047,A4,Mast Tree,Monoon longifolium,Oushadhi Pledge Drive,Pledged
+VM33-A4-048,A4,Mullan kainji,Erythrina variegata,,Pending audit
+VM33-A4-049,A4,Mullan kainji,Erythrina variegata,,Open
+VM33-A4-050,A4,Native Olive,Olea paniculata,Mechanical Engineering Dept.,Dedicated
+VM33-A4-051,A4,Neem,Azadirachta indica,,Open
+VM33-A4-052,A4,Norfolk Island pine,Araucaria heterophylla,,Pending audit
+VM33-A4-053,A4,Norfolk Island pine,Araucaria heterophylla,,Open
+VM33-A4-054,A4,Orchid Tree,Bauhinia variegata,,Pending audit
+VM33-A4-055,A4,Palmyra Palm,Borassus flabellifer,In memory of Sri K. Raghavan,Pledged
+VM33-A4-056,A4,Podini Tree,Macaranga peltata,Nakshatra Vanam Trust,Pledged
+VM33-A4-057,A4,Podini Tree,Macaranga peltata,,Open
+VM33-A4-058,A4,Podini Tree,Macaranga peltata,Dr. Thomas Varghese,Dedicated
+VM33-A4-059,A4,Podini Tree,Macaranga peltata,Parent-Teacher Association,Pledged
+VM33-A4-060,A4,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A4-061,A4,Podini Tree,Macaranga peltata,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A4-062,A4,Podini Tree,Macaranga peltata,Rakesh Hari (Alumnus),Dedicated
+VM33-A4-063,A4,Podini Tree,Macaranga peltata,Student Council,Dedicated
+VM33-A4-064,A4,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A4-065,A4,Podini Tree,Macaranga peltata,Vidya Trust,Pledged
+VM33-A4-066,A4,Royal palm,Roystonea regia,In memory of Sri K. Raghavan,Pledged
+VM33-A4-067,A4,Royal palm,Roystonea regia,Vidya Trust,Pledged
+VM33-A4-068,A4,Royal palm,Roystonea regia,,Pending audit
+VM33-A4-069,A4,Royal palm,Roystonea regia,In memory of Sri K. Raghavan,Dedicated
+VM33-A4-070,A4,Spanish Cherry,Mimusops elengi,CSE Batch of 2019,Dedicated
+VM33-A4-071,A4,Tamanu tree,Calophyllum inophyllum,Parent-Teacher Association,Pledged
+VM33-A4-072,A4,Tamarind,Tamarindus indica,ECE Batch of 2015,Dedicated
+VM33-A4-073,A4,Tree of Heaven,Ailanthus altissima,In memory of Sri K. Raghavan,Pledged
+VM33-A4-074,A4,Ungu Tree,Millettia pinnata,,Open
+VM33-A4-075,A4,Vaka Tree,Albizia lebbeck,Dr. Saritha Menon,Dedicated
+VM33-A4-076,A4,Vella Chembakam,Magnolia champaca,,Open
+VM33-A4-078,A4,Vetti,Aporosa lindleyana,Vidya Alumni Association,Pledged
+VM33-A4-079,A4,Water Hickory,Carya aquatica,Oushadhi Pledge Drive,Pledged
+VM33-A4-080,A4,Water Hickory,Carya aquatica,,Open
+VM33-A4-081,A4,White teak,Gmelina arborea,,Pending audit
+VM33-A4-082,A4,White teak,Gmelina arborea,Civil Engineering Dept.,Dedicated
+VM33-A4-083,A4,White teak,Gmelina arborea,,Open
+VM33-A4-084,A4,White teak,Gmelina arborea,,Open
+VM33-A4-085,A4,Zebra wood,Omphalobium lambertii,,Open
+VM33-A5-001,A5,Arjun Tree,Terminalia arjuna,,Open
+VM33-A5-002,A5,Ashoka tree,Saraca asoca,,Pending audit
+VM33-A5-003,A5,Ashoka tree,Saraca asoca,,Open
+VM33-A5-004,A5,Australian blackwood,Acacia melanoxylon,Staff Association,Pledged
+VM33-A5-005,A5,Chamada,Butea monosperma,,Pending audit
+VM33-A5-006,A5,Coconut tree,Cocos nucifera,,Pending audit
+VM33-A5-007,A5,Coconut tree,Cocos nucifera,Civil Engineering Dept.,Dedicated
+VM33-A5-008,A5,Coconut tree,Cocos nucifera,In memory of Sri K. Raghavan,Dedicated
+VM33-A5-009,A5,Elder Tree,Sambucus nigra,Staff Association,Pledged
+VM33-A5-010,A5,Elder Tree,Sambucus nigra,Alumni Batch of 2005,Pledged
+VM33-A5-011,A5,Elder Tree,Sambucus nigra,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A5-012,A5,Elder Tree,Sambucus nigra,In memory of Sri K. Raghavan,Dedicated
+VM33-A5-013,A5,Guava,Psidium guajava,Civil Engineering Dept.,Dedicated
+VM33-A5-014,A5,Gulmohar,Delonix regia,Hostel Batch 2012–16,Pledged
+VM33-A5-015,A5,Gulmohar,Delonix regia,Student Council,Dedicated
+VM33-A5-016,A5,Gulmohar,Delonix regia,Ayurveda Dept. Well-wishers,Pledged
+VM33-A5-017,A5,Gulmohar,Delonix regia,Rakesh Hari (Alumnus),Pledged
+VM33-A5-018,A5,Gulmohar,Delonix regia,CSE Batch of 2019,Dedicated
+VM33-A5-019,A5,Gulmohar,Delonix regia,In memory of Sri K. Raghavan,Pledged
+VM33-A5-020,A5,Indian Almond,Terminalia catappa,,Open
+VM33-A5-021,A5,Jack Fruit Tree,Artocarpus heterophyllus,,Open
+VM33-A5-022,A5,Kanikkonna,Casia fistula,ECE Batch of 2015,Dedicated
+VM33-A5-023,A5,Lead tree,Leucaena leucocephala,,Open
+VM33-A5-024,A5,Longan tree,Dimocarpus longan,,Pending audit
+VM33-A5-025,A5,Longan tree,Dimocarpus longan,,Pending audit
+VM33-A5-026,A5,Mahagony,Swietenia macrophylla,,Pending audit
+VM33-A5-027,A5,Mahagony,Swietenia macrophylla,Oushadhi Pledge Drive,Pledged
+VM33-A5-028,A5,Mahagony,Swietenia macrophylla,Dr. Saritha Menon,Dedicated
+VM33-A5-029,A5,Mango Tree,Mangifera indica,,Open
+VM33-A5-030,A5,Mango Tree,Mangifera indica,CSE Batch of 2019,Pledged
+VM33-A5-031,A5,Mango Tree,Mangifera indica,Dr. Thomas Varghese,Dedicated
+VM33-A5-032,A5,Mango Tree,Mangifera indica,,Open
+VM33-A5-033,A5,Mango Tree,Mangifera indica,,Pending audit
+VM33-A5-034,A5,Mango Tree,Mangifera indica,Vidya Alumni Association,Dedicated
+VM33-A5-035,A5,Mast Tree,Monoon longifolium,,Pending audit
+VM33-A5-036,A5,Mast Tree,Monoon longifolium,Parent-Teacher Association,Pledged
+VM33-A5-037,A5,Mast Tree,Monoon longifolium,Oushadhi Pledge Drive,Pledged
+VM33-A5-038,A5,Mast Tree,Monoon longifolium,Mechanical Engineering Dept.,Dedicated
+VM33-A5-039,A5,Mast Tree,Monoon longifolium,,Pending audit
+VM33-A5-040,A5,Mast Tree,Polyalthia longifolia,CSE Batch of 2019,Pledged
+VM33-A5-041,A5,Moringa Tree,Moringa oleifera,Dr. Thomas Varghese,Dedicated
+VM33-A5-042,A5,Mullan kainji,Erythrina variegata,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A5-043,A5,Mullan kainji,Erythrina variegata,,Pending audit
+VM33-A5-044,A5,Native Olive,Olea paniculata,Civil Engineering Dept.,Pledged
+VM33-A5-045,A5,Orange Jasmine,Murraya paniculata,,Pending audit
+VM33-A5-046,A5,Pacific Coast Mahagony,Swietenia humilis,,Pending audit
+VM33-A5-047,A5,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A5-048,A5,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A5-049,A5,Podini Tree,Macaranga peltata,Dr. Thomas Varghese,Pledged
+VM33-A5-050,A5,Podini Tree,Macaranga peltata,Alumni Batch of 2005,Pledged
+VM33-A5-051,A5,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A5-052,A5,Podini Tree,Macaranga peltata,,Open
+VM33-A5-053,A5,Podini Tree,Macaranga peltata,,Open
+VM33-A5-054,A5,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A5-055,A5,Podini Tree,Macaranga peltata,Dr. Saritha Menon,Pledged
+VM33-A5-056,A5,Poinsettia,Euphorbia pulcherrima,Dr. Saritha Menon,Dedicated
+VM33-A5-057,A5,Royal palm,Roystonea regia,Mechanical Engineering Dept.,Dedicated
+VM33-A5-058,A5,Royal palm,Roystonea regia,,Open
+VM33-A5-059,A5,Royal palm,Roystonea regia,,Open
+VM33-A5-060,A5,Royal palm,Roystonea regia,Student Council,Pledged
+VM33-A5-061,A5,Scarlet Bush,Hamelia patens,Mechanical Engineering Dept.,Pledged
+VM33-A5-062,A5,Tamarind,Tamarindus indica,,Pending audit
+VM33-A5-063,A5,Teak,Tectona grandis,Ayurveda Dept. Well-wishers,Pledged
+VM33-A5-064,A5,Teak,Tectona grandis,,Open
+VM33-A5-065,A5,Teak,Tectona grandis,,Open
+VM33-A5-066,A5,Tree of Heaven,Ailanthus altissima,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A5-071,A5,Weeping fig,Ficus benjamina,,Open
+VM33-A5-072,A5,White teak,Gmelina arborea,Civil Engineering Dept.,Pledged
+VM33-A6-001,A6,Amla,Phyllanthus emblica,,Open
+VM33-A6-002,A6,Arali,Ficus religiosa,Nakshatra Vanam Trust,Pledged
+VM33-A6-003,A6,Arjun Tree,Terminalia arjuna,,Pending audit
+VM33-A6-004,A6,Ashoka tree,Saraca asoca,,Open
+VM33-A6-005,A6,Beech tree,Fagus sylvatica,,Open
+VM33-A6-006,A6,Cluster Fig,Ficus racemosa,Alumni Batch of 2005,Dedicated
+VM33-A6-007,A6,Cucumber tree,Magnolia acuminata,Dr. Saritha Menon,Dedicated
+VM33-A6-008,A6,Elder Tree,Sambucus nigra,,Open
+VM33-A6-009,A6,Elder Tree,Sambucus nigra,Oushadhi Pledge Drive,Dedicated
+VM33-A6-010,A6,Elder Tree,Sambucus nigra,,Pending audit
+VM33-A6-011,A6,Elder Tree,Sambucus nigra,,Open
+VM33-A6-012,A6,Elephant Apple tree,Dillenia indica,,Pending audit
+VM33-A6-013,A6,Elephant Ear Fig,Ficus auriculata,CSE Batch of 2019,Pledged
+VM33-A6-014,A6,Elephant Ear Fig,Ficus auriculata,Dr. Thomas Varghese,Pledged
+VM33-A6-015,A6,Guava,Psidium guajava,ECE Batch of 2015,Dedicated
+VM33-A6-016,A6,Gulmohar,Delonix regia,,Open
+VM33-A6-017,A6,Gulmohar,Delonix regia,,Open
+VM33-A6-018,A6,Gulmohar,Delonix regia,,Pending audit
+VM33-A6-019,A6,Ilippa,Madhuca longifolia,ECE Batch of 2015,Pledged
+VM33-A6-020,A6,Indian Almond,Terminalia catappa,,Open
+VM33-A6-021,A6,Indian Almond,Terminalia catappa,,Pending audit
+VM33-A6-022,A6,Jack Fruit Tree,Artocarpus heterophyllus,,Open
+VM33-A6-023,A6,Jack Fruit Tree,Artocarpus heterophyllus,,Pending audit
+VM33-A6-024,A6,Jack Fruit Tree,Artocarpus heterophyllus,Rakesh Hari (Alumnus),Dedicated
+VM33-A6-025,A6,Jack Fruit Tree,Artocarpus heterophyllus,,Open
+VM33-A6-026,A6,Jack Fruit Tree,Artocarpus heterophyllus,,Pending audit
+VM33-A6-027,A6,Jack Fruit Tree,Artocarpus heterophyllus,,Open
+VM33-A6-028,A6,Jamaican Cherry,Muntingia calabura,,Pending audit
+VM33-A6-029,A6,Kassod tree,Senna siamea,Nakshatra Vanam Trust,Dedicated
+VM33-A6-030,A6,Lead tree,Leucaena leucocephala,Hostel Batch 2012–16,Pledged
+VM33-A6-031,A6,Longan tree,Dimocarpus longan,,Open
+VM33-A6-032,A6,Mango Tree,Mangifera indica,,Pending audit
+VM33-A6-033,A6,Mango Tree,Mangifera indica,,Open
+VM33-A6-034,A6,Mango Tree,Mangifera indica,Vidya Trust,Dedicated
+VM33-A6-035,A6,Mango Tree,Mangifera indica,,Pending audit
+VM33-A6-036,A6,Mango Tree,Mangifera indica,Rakesh Hari (Alumnus),Pledged
+VM33-A6-037,A6,Mango Tree,Mangifera indica,Oushadhi Pledge Drive,Pledged
+VM33-A6-038,A6,Mast Tree,Monoon longifolium,Vidya Trust,Pledged
+VM33-A6-039,A6,Mast Tree,Monoon longifolium,Hostel Batch 2012–16,Pledged
+VM33-A6-040,A6,Mast Tree,Monoon longifolium,,Pending audit
+VM33-A6-041,A6,Mast Tree,Monoon longifolium,,Pending audit
+VM33-A6-042,A6,Mast Tree,Polyalthia longifolia,Vidya Trust,Dedicated
+VM33-A6-043,A6,Mast Tree,Monoon longifolium,Mechanical Engineering Dept.,Dedicated
+VM33-A6-044,A6,Mast Tree,Monoon longifolium,,Pending audit
+VM33-A6-045,A6,Moringa Tree,Moringa oleifera,Staff Association,Pledged
+VM33-A6-046,A6,Native Olive,Olea paniculata,,Open
+VM33-A6-047,A6,Native Olive,Olea paniculata,,Pending audit
+VM33-A6-048,A6,Native Olive,Olea paniculata,Dr. Saritha Menon,Pledged
+VM33-A6-049,A6,Native Olive,Olea paniculata,,Open
+VM33-A6-050,A6,Neem,Azadirachta indica,Oushadhi Pledge Drive,Pledged
+VM33-A6-051,A6,Norfolk Island pine,Araucaria heterophylla,,Open
+VM33-A6-052,A6,Peacock Flower,Caesalpinia pulcherrima,Parent-Teacher Association,Pledged
+VM33-A6-053,A6,Pigmy Bamboo,Pleiovlastus pygmaeus,Mechanical Engineering Dept.,Pledged
+VM33-A6-054,A6,Pigmy Bamboo,Pleiovlastus pygmaeus,,Pending audit
+VM33-A6-055,A6,Podini Tree,Macaranga peltata,,Open
+VM33-A6-056,A6,Podini Tree,Macaranga peltata,,Open
+VM33-A6-057,A6,Podini Tree,Macaranga peltata,,Open
+VM33-A6-058,A6,Podini Tree,Macaranga peltata,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A6-059,A6,Podini Tree,Macaranga peltata,Student Council,Pledged
+VM33-A6-060,A6,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A6-061,A6,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A6-062,A6,Podini Tree,Macaranga peltata,,Open
+VM33-A6-063,A6,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A6-064,A6,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A6-065,A6,Podini Tree,Macaranga peltata,Parent-Teacher Association,Dedicated
+VM33-A6-066,A6,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A6-067,A6,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A6-068,A6,Podini Tree,Macaranga peltata,Oushadhi Pledge Drive,Dedicated
+VM33-A6-069,A6,Podini Tree,Macaranga peltata,ECE Batch of 2015,Dedicated
+VM33-A6-070,A6,Podini Tree,Macaranga peltata,,Open
+VM33-A6-071,A6,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A6-072,A6,Podini Tree,Macaranga peltata,,Open
+VM33-A6-073,A6,Podini Tree,Macaranga peltata,Vidya Trust,Pledged
+VM33-A6-074,A6,Royal palm,Roystonea regia,,Pending audit
+VM33-A6-075,A6,Royal palm,Roystonea regia,,Pending audit
+VM33-A6-076,A6,Royal palm,Roystonea regia,,Pending audit
+VM33-A6-077,A6,Royal palm,Roystonea regia,Dr. Thomas Varghese,Dedicated
+VM33-A6-078,A6,Satin Leaf Tree,Chrysophyllum oliviforme,ECE Batch of 2015,Pledged
+VM33-A6-079,A6,Sheema konna,Gliricidia sepium,,Pending audit
+VM33-A6-080,A6,Stone Apple Tree,Aegle marmelos,,Open
+VM33-A6-081,A6,Teak,Tectona grandis,,Open
+VM33-A6-082,A6,Vella Chembakam,Magnolia champaca,,Pending audit
+VM33-A6-083,A6,Vella Chembakam,Magnolia champaca,,Pending audit
+VM33-A7-001,A7,Areca palm,Chrysalidocarpus lutescens,,Open
+VM33-A7-002,A7,Banyan Tree,Ficus benghalensis,Nakshatra Vanam Trust,Dedicated
+VM33-A7-003,A7,Coconut tree,Cocos nucifera,Rakesh Hari (Alumnus),Dedicated
+VM33-A7-004,A7,Coffee Plum Tree,Flacourtia jangomas,,Pending audit
+VM33-A7-005,A7,Elder Tree,Sambucus nigra,,Open
+VM33-A7-006,A7,Elder Tree,Sambucus nigra,,Open
+VM33-A7-007,A7,Elder Tree,Sambucus nigra,,Open
+VM33-A7-008,A7,European Beech Tree,Fagus sylvatica,,Pending audit
+VM33-A7-009,A7,Guava,Psidium guajava,Rakesh Hari (Alumnus),Dedicated
+VM33-A7-010,A7,Gulmohar,Delonix regia,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A7-011,A7,Gulmohar,Delonix regia,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A7-012,A7,Gulmohar,Delonix regia,Nakshatra Vanam Trust,Pledged
+VM33-A7-013,A7,Gulmohar,Delonix regia,Rakesh Hari (Alumnus),Dedicated
+VM33-A7-014,A7,Gulmohar,Delonix regia,,Pending audit
+VM33-A7-015,A7,Gulmohar,Delonix regia,,Pending audit
+VM33-A7-016,A7,Gulmohar,Delonix regia,,Open
+VM33-A7-017,A7,Gulmohar,Delonix regia,,Open
+VM33-A7-018,A7,Indian Almond,Terminalia catappa,Student Council,Pledged
+VM33-A7-019,A7,Jack Fruit Tree,Artocarpus heterophyllus,Dr. Thomas Varghese,Pledged
+VM33-A7-020,A7,Jack Fruit Tree,Artocarpus heterophyllus,Rakesh Hari (Alumnus),Pledged
+VM33-A7-021,A7,Jack Fruit Tree,Artocarpus heterophyllus,,Pending audit
+VM33-A7-022,A7,Jack Fruit Tree,Artocarpus heterophyllus,,Pending audit
+VM33-A7-023,A7,Jack Fruit Tree,Artocarpus heterophyllus,,Open
+VM33-A7-024,A7,Jack Fruit Tree,Artocarpus heterophyllus,,Open
+VM33-A7-025,A7,Javaplum tree,Syzygium cumini,Oushadhi Pledge Drive,Dedicated
+VM33-A7-026,A7,Kanikkonna,Casia fistula,Hostel Batch 2012–16,Pledged
+VM33-A7-027,A7,Longan tree,Dimocarpus longan,Nakshatra Vanam Trust,Pledged
+VM33-A7-028,A7,Longan tree,Dimocarpus longan,,Open
+VM33-A7-029,A7,Mahagony,Swietenia macrophylla,Ayurveda Dept. Well-wishers,Pledged
+VM33-A7-030,A7,Mandaram,Bauhinia variegata,,Pending audit
+VM33-A7-031,A7,Mango Tree,Mangifera indica,Mechanical Engineering Dept.,Dedicated
+VM33-A7-032,A7,Mast Tree,Monoon longifolium,,Open
+VM33-A7-033,A7,Mast Tree,Monoon longifolium,,Open
+VM33-A7-034,A7,Orange Jasmine,Murraya paniculata,,Open
+VM33-A7-035,A7,Orchid Tree,Bauhinia variegata,,Pending audit
+VM33-A7-036,A7,Orchid Tree,Bauhinia variegata,,Open
+VM33-A7-037,A7,Orchid Tree,Bauhinia variegata,,Open
+VM33-A7-038,A7,Papaya,Carica papaya,,Open
+VM33-A7-039,A7,Peacock Flower,Caesalpinia pulcherrima,,Pending audit
+VM33-A7-040,A7,Pigmy Bamboo,Pleiovlastus pygmaeus,,Pending audit
+VM33-A7-041,A7,Podini Tree,Macaranga peltata,Staff Association,Pledged
+VM33-A7-042,A7,Podini Tree,Macaranga peltata,Dr. Thomas Varghese,Pledged
+VM33-A7-043,A7,Podini Tree,Macaranga peltata,,Open
+VM33-A7-044,A7,Podini Tree,Macaranga peltata,Parent-Teacher Association,Pledged
+VM33-A7-045,A7,Podini Tree,Macaranga peltata,Oushadhi Pledge Drive,Pledged
+VM33-A7-046,A7,Podini Tree,Macaranga peltata,Student Council,Pledged
+VM33-A7-047,A7,Podini Tree,Macaranga peltata,,Open
+VM33-A7-048,A7,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A7-049,A7,Podini Tree,Macaranga peltata,,Open
+VM33-A7-050,A7,Podini Tree,Macaranga peltata,Alumni Batch of 2005,Dedicated
+VM33-A7-051,A7,Podini Tree,Macaranga peltata,,Open
+VM33-A7-052,A7,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A7-053,A7,Podini Tree,Macaranga peltata,Vidya Trust,Pledged
+VM33-A7-054,A7,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A7-055,A7,Podini Tree,Macaranga peltata,Rakesh Hari (Alumnus),Dedicated
+VM33-A7-056,A7,Podini Tree,Macaranga peltata,Dr. Thomas Varghese,Dedicated
+VM33-A7-057,A7,Podini Tree,Macaranga peltata,Staff Association,Pledged
+VM33-A7-058,A7,Royal palm,Roystonea regia,ECE Batch of 2015,Pledged
+VM33-A7-059,A7,Royal palm,Roystonea regia,,Pending audit
+VM33-A7-060,A7,Royal palm,Roystonea regia,,Open
+VM33-A7-061,A7,Sheema konna,Gliricidia sepium,Rakesh Hari (Alumnus),Pledged
+VM33-A7-062,A7,Star Berry,Averrhoa carambola,CSE Batch of 2019,Dedicated
+VM33-A7-063,A7,Star Berry,Averrhoa carambola,,Open
+VM33-A7-064,A7,Tamarind,Tamarindus indica,Staff Association,Dedicated
+VM33-A7-065,A7,Tamarind,Tamarindus indica,Alumni Batch of 2005,Pledged
+VM33-A7-066,A7,Teak,Tectona grandis,Parent-Teacher Association,Pledged
+VM33-A7-067,A7,Teak,Tectona grandis,,Open
+VM33-A7-068,A7,Vella Chembakam,Magnolia champaca,,Open
+VM33-A7-069,A7,Vella Chembakam,Magnolia champaca,,Pending audit
+VM33-A7-070,A7,Vella Chembakam,Magnolia champaca,,Open
+VM33-A7-071,A7,Vella Chembakam,Magnolia champaca,,Pending audit
+VM33-A7-074,A7,White teak,Gmelina arborea,,Pending audit
+VM33-A8-001,A8,American Mahogany,Swietenia mahagoni,,Open
+VM33-A8-002,A8,Amla,Phyllanthus emblica,Parent-Teacher Association,Dedicated
+VM33-A8-003,A8,Amla,Phyllanthus emblica,In memory of Sri K. Raghavan,Pledged
+VM33-A8-004,A8,Amur Honeysuckle,Lonicera maackii,,Open
+VM33-A8-005,A8,Beech tree,Fagus sylvatica,,Open
+VM33-A8-006,A8,Blackboard Tree,Alstonia scholaris,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A8-007,A8,Coconut tree,Cocos nucifera,Ayurveda Dept. Well-wishers,Pledged
+VM33-A8-008,A8,Custard Apple,Annona reticulata,Rakesh Hari (Alumnus),Dedicated
+VM33-A8-009,A8,Elder Tree,Sambucus nigra,,Pending audit
+VM33-A8-010,A8,Elder Tree,Sambucus nigra,Parent-Teacher Association,Dedicated
+VM33-A8-011,A8,Elder Tree,Sambucus nigra,Oushadhi Pledge Drive,Dedicated
+VM33-A8-012,A8,European Beech Tree,Fagus sylvatica,In memory of Sri K. Raghavan,Pledged
+VM33-A8-013,A8,European Beech Tree,Fagus sylvatica,Dr. Thomas Varghese,Pledged
+VM33-A8-014,A8,Glossy Privet,Ligustrum lucidum,,Pending audit
+VM33-A8-015,A8,Guava,Psidium guajava,Dr. Saritha Menon,Dedicated
+VM33-A8-016,A8,Gulmohar,Delonix regia,,Open
+VM33-A8-017,A8,Gulmohar,Delonix regia,,Pending audit
+VM33-A8-018,A8,Gulmohar,Delonix regia,CSE Batch of 2019,Pledged
+VM33-A8-019,A8,Gulmohar,Delonix regia,Vidya Alumni Association,Dedicated
+VM33-A8-020,A8,Gulmohar,Delonix regia,Staff Association,Pledged
+VM33-A8-021,A8,Gulmohar,Delonix regia,,Open
+VM33-A8-022,A8,Gulmohar,Delonix regia,Vidya Trust,Dedicated
+VM33-A8-023,A8,Gulmohar,Delonix regia,,Open
+VM33-A8-024,A8,Gulmohar,Delonix regia,,Pending audit
+VM33-A8-025,A8,Gulmohar,Delonix regia,Civil Engineering Dept.,Dedicated
+VM33-A8-026,A8,Gulmohar,Delonix regia,,Pending audit
+VM33-A8-027,A8,Gulmohar,Delonix regia,,Pending audit
+VM33-A8-028,A8,Jack Fruit Tree,Artocarpus heterophyllus,CSE Batch of 2019,Pledged
+VM33-A8-029,A8,Jack Fruit Tree,Artocarpus heterophyllus,Rakesh Hari (Alumnus),Dedicated
+VM33-A8-030,A8,Jack Fruit Tree,Artocarpus heterophyllus,,Open
+VM33-A8-032,A8,Kanikkonna,Casia fistula,,Pending audit
+VM33-A8-033,A8,Kanikkonna,Casia fistula,,Pending audit
+VM33-A8-034,A8,Kanikkonna,Casia fistula,,Open
+VM33-A8-035,A8,Kanikkonna,Casia fistula,,Open
+VM33-A8-036,A8,Lead tree,Leucaena leucocephala,Student Council,Pledged
+VM33-A8-037,A8,Mahagony,Swietenia macrophylla,,Pending audit
+VM33-A8-038,A8,Mahagony,Swietenia macrophylla,,Open
+VM33-A8-039,A8,Mahagony,Swietenia macrophylla,,Pending audit
+VM33-A8-040,A8,Mahagony,Swietenia macrophylla,Dr. Saritha Menon,Dedicated
+VM33-A8-041,A8,Mahagony,Swietenia macrophylla,Mechanical Engineering Dept.,Pledged
+VM33-A8-042,A8,Mahagony,Swietenia macrophylla,Civil Engineering Dept.,Dedicated
+VM33-A8-043,A8,Mandaram,Bauhinia variegata,,Pending audit
+VM33-A8-044,A8,Mango Tree,Mangifera indica,Alumni Batch of 2005,Pledged
+VM33-A8-045,A8,Mango Tree,Mangifera indica,,Pending audit
+VM33-A8-046,A8,Mango Tree,Mangifera indica,,Open
+VM33-A8-047,A8,Mango Tree,Mangifera indica,,Open
+VM33-A8-048,A8,Mango Tree,Mangifera indica,Vidya Alumni Association,Pledged
+VM33-A8-049,A8,Mast Tree,Monoon longifolium,,Pending audit
+VM33-A8-050,A8,Mast Tree,Monoon longifolium,ECE Batch of 2015,Dedicated
+VM33-A8-051,A8,Mast Tree,Polyalthia longifolia,Vidya Trust,Pledged
+VM33-A8-052,A8,Mast Tree,Monoon longifolium,ECE Batch of 2015,Pledged
+VM33-A8-053,A8,Mast Tree,Monoon longifolium,,Pending audit
+VM33-A8-054,A8,Mullan kainji,Erythrina variegata,Oushadhi Pledge Drive,Dedicated
+VM33-A8-055,A8,Native Olive,Olea paniculata,Mechanical Engineering Dept.,Pledged
+VM33-A8-056,A8,Norfolk Island pine,Araucaria heterophylla,,Pending audit
+VM33-A8-057,A8,Orchid Tree,Bauhinia variegata,,Pending audit
+VM33-A8-058,A8,Orchid Tree,Bauhinia variegata,In memory of Sri K. Raghavan,Pledged
+VM33-A8-059,A8,Podini Tree,Macaranga peltata,,Open
+VM33-A8-060,A8,Podini Tree,Macaranga peltata,Mechanical Engineering Dept.,Dedicated
+VM33-A8-061,A8,Podini Tree,Macaranga peltata,Rakesh Hari (Alumnus),Pledged
+VM33-A8-062,A8,Podini Tree,Macaranga peltata,,Open
+VM33-A8-063,A8,Podini Tree,Macaranga peltata,Student Council,Pledged
+VM33-A8-064,A8,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A8-065,A8,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A8-066,A8,Podini Tree,Macaranga peltata,Vidya Trust,Pledged
+VM33-A8-067,A8,Podini Tree,Macaranga peltata,,Open
+VM33-A8-068,A8,Podini Tree,Macaranga peltata,Vidya Trust,Pledged
+VM33-A8-069,A8,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A8-070,A8,Podini Tree,Macaranga peltata,,Open
+VM33-A8-071,A8,Podini Tree,Macaranga peltata,,Open
+VM33-A8-072,A8,Royal palm,Roystonea regia,,Pending audit
+VM33-A8-073,A8,Royal palm,Roystonea regia,Mechanical Engineering Dept.,Dedicated
+VM33-A8-074,A8,Sheema konna,Gliricidia sepium,Nakshatra Vanam Trust,Dedicated
+VM33-A8-075,A8,Star apple,Chrysophyllum cainito,Alumni Batch of 2005,Pledged
+VM33-A8-076,A8,Vanni,Prosopis cineraria,,Pending audit
+VM33-A8-077,A8,Vella Chembakam,Magnolia champaca,,Pending audit
+VM33-A8-078,A8,Vella Chembakam,Magnolia champaca,Hostel Batch 2012–16,Dedicated
+VM33-A8-082,A8,White ash,Fraxinus americana,,Pending audit
+VM33-A8-083,A8,White teak,Gmelina arborea,,Open
+VM33-A8-084,A8,Yellow Elder,Tecoma stans,Vidya Trust,Pledged
+VM33-A9-001,A9,Amla,Phyllanthus emblica,,Pending audit
+VM33-A9-002,A9,Amla,Phyllanthus emblica,Dr. Saritha Menon,Dedicated
+VM33-A9-003,A9,Areca palm,Chrysalidocarpus lutescens,,Open
+VM33-A9-004,A9,Bandicoot berry,Leea indica,,Pending audit
+VM33-A9-005,A9,Burflower Tree,Neolamarckia cadamba,,Pending audit
+VM33-A9-006,A9,Chaulmoogra tree,Hydnocarpus wightianus,CSE Batch of 2019,Dedicated
+VM33-A9-007,A9,Coconut tree,Cocos nucifera,,Open
+VM33-A9-008,A9,Elder Tree,Sambucus nigra,,Pending audit
+VM33-A9-009,A9,Elder Tree,Sambucus nigra,,Pending audit
+VM33-A9-010,A9,Elder Tree,Sambucus nigra,,Open
+VM33-A9-011,A9,Elephant Apple Tree,Dillenia indica,Dr. Saritha Menon,Dedicated
+VM33-A9-012,A9,European Beech Tree,Fagus sylvatica,,Pending audit
+VM33-A9-013,A9,Gulmohar,Delonix regia,Civil Engineering Dept.,Pledged
+VM33-A9-014,A9,Gulmohar,Delonix regia,Mechanical Engineering Dept.,Pledged
+VM33-A9-015,A9,Gulmohar,Delonix regia,,Open
+VM33-A9-016,A9,Gulmohar,Delonix regia,,Open
+VM33-A9-017,A9,Gulmohar,Delonix regia,In memory of Sri K. Raghavan,Dedicated
+VM33-A9-018,A9,Gulmohar,Delonix regia,Civil Engineering Dept.,Dedicated
+VM33-A9-019,A9,Gulmohar,Delonix regia,CSE Batch of 2019,Dedicated
+VM33-A9-020,A9,Gulmohar,Delonix regia,,Pending audit
+VM33-A9-021,A9,Kanikkonna,Casia fistula,,Open
+VM33-A9-022,A9,Kanikkonna,Casia fistula,CSE Batch of 2019,Pledged
+VM33-A9-024,A9,Kutch Tree,Acacia catechu,Ayurveda Dept. Well-wishers,Pledged
+VM33-A9-025,A9,Lead tree,Leucaena leucocephala,,Pending audit
+VM33-A9-026,A9,Lead tree,Leucaena leucocephala,,Pending audit
+VM33-A9-027,A9,Lead tree,Leucaena leucocephala,,Pending audit
+VM33-A9-028,A9,Lead tree,Leucaena leucocephala,,Open
+VM33-A9-029,A9,Lead tree,Leucaena leucocephala,,Open
+VM33-A9-030,A9,Longan tree,Dimocarpus longan,Student Council,Dedicated
+VM33-A9-031,A9,Longan tree,Dimocarpus longan,,Open
+VM33-A9-032,A9,Mahagony,Swietenia macrophylla,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A9-033,A9,Mahagony,Swietenia macrophylla,,Open
+VM33-A9-034,A9,Mango Tree,Mangifera indica,,Open
+VM33-A9-035,A9,Mango Tree,Mangifera indica,,Pending audit
+VM33-A9-036,A9,Mast Tree,Monoon longifolium,Vidya Alumni Association,Dedicated
+VM33-A9-037,A9,Mast Tree,Monoon longifolium,In memory of Sri K. Raghavan,Pledged
+VM33-A9-038,A9,Mast Tree,Polyalthia longifolia,In memory of Sri K. Raghavan,Dedicated
+VM33-A9-039,A9,Mast Tree,Monoon longifolium,,Open
+VM33-A9-040,A9,Mullan kainji,Erythrina variegata,,Pending audit
+VM33-A9-041,A9,Neem,Azadirachta indica,,Open
+VM33-A9-042,A9,Neem,Azadirachta indica,Vidya Trust,Dedicated
+VM33-A9-043,A9,Norfolk Island pine,Araucaria heterophylla,Rakesh Hari (Alumnus),Dedicated
+VM33-A9-044,A9,Oduku tree,Cleistanthus collinus,Alumni Batch of 2005,Pledged
+VM33-A9-045,A9,Orchid Tree,Bauhinia variegata,ECE Batch of 2015,Dedicated
+VM33-A9-046,A9,Papaya,Carica papaya,CSE Batch of 2019,Pledged
+VM33-A9-047,A9,Peepal Tree,Ficus religiosa,,Pending audit
+VM33-A9-048,A9,Podini Tree,Macaranga peltata,Dr. Saritha Menon,Pledged
+VM33-A9-049,A9,Podini Tree,Macaranga peltata,,Open
+VM33-A9-050,A9,Podini Tree,Macaranga peltata,,Open
+VM33-A9-051,A9,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A9-052,A9,Podini Tree,Macaranga peltata,,Open
+VM33-A9-053,A9,Podini Tree,Macaranga peltata,Dr. Thomas Varghese,Dedicated
+VM33-A9-054,A9,Podini Tree,Macaranga peltata,ECE Batch of 2015,Pledged
+VM33-A9-055,A9,Podini Tree,Macaranga peltata,Student Council,Pledged
+VM33-A9-056,A9,Rose Apple Tree,Syzygium jambos,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A9-057,A9,Royal palm,Roystonea regia,Dr. Saritha Menon,Pledged
+VM33-A9-058,A9,Royal palm,Roystonea regia,In memory of Sri K. Raghavan,Dedicated
+VM33-A9-059,A9,Royal palm,Roystonea regia,Alumni Batch of 2005,Dedicated
+VM33-A9-060,A9,Royal palm,Roystonea regia,Parent-Teacher Association,Pledged
+VM33-A9-061,A9,Royal palm,Roystonea regia,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A9-062,A9,Royal palm,Roystonea regia,,Open
+VM33-A9-063,A9,Royal palm,Roystonea regia,Rakesh Hari (Alumnus),Dedicated
+VM33-A9-064,A9,Royal palm,Roystonea regia,Ayurveda Dept. Well-wishers,Pledged
+VM33-A9-065,A9,Star apple,Chrysophyllum cainito,,Open
+VM33-A9-066,A9,Tamanu tree,Calophyllum inophyllum,Alumni Batch of 2005,Dedicated
+VM33-A9-067,A9,Teak,Tectona grandis,Dr. Saritha Menon,Dedicated
+VM33-A9-068,A9,Teak,Tectona grandis,,Open
+VM33-A9-069,A9,Vaka Tree,Albizia lebbeck,Dr. Saritha Menon,Dedicated
+VM33-A9-071,A9,White teak,Gmelina arborea,Alumni Batch of 2005,Dedicated
+VM33-A9-072,A9,White teak,Gmelina arborea,,Pending audit
+VM33-A10-001,A10,Acacia,Acacia dealbata,Oushadhi Pledge Drive,Dedicated
+VM33-A10-002,A10,African Tulip Tree,Spathodea campanulata,Vidya Alumni Association,Pledged
+VM33-A10-003,A10,Amla,Phyllanthus emblica,Vidya Trust,Pledged
+VM33-A10-004,A10,Bread fruit tree,Artocarpus altilis,,Open
+VM33-A10-005,A10,Chickoo tree,Manilkara zapota,Rakesh Hari (Alumnus),Dedicated
+VM33-A10-006,A10,Coconut tree,Cocos nucifera,Alumni Batch of 2005,Pledged
+VM33-A10-007,A10,Coconut tree,Cocos nucifera,,Pending audit
+VM33-A10-008,A10,Coconut tree,Cocos nucifera,,Open
+VM33-A10-009,A10,Coconut tree,Cocos nucifera,Student Council,Dedicated
+VM33-A10-010,A10,Coconut tree,Cocos nucifera,,Open
+VM33-A10-011,A10,Custard Apple,Annona reticulata,CSE Batch of 2019,Dedicated
+VM33-A10-012,A10,Elder Tree,Sambucus nigra,Staff Association,Dedicated
+VM33-A10-013,A10,Elder Tree,Sambucus nigra,,Open
+VM33-A10-014,A10,Elder Tree,Sambucus nigra,,Pending audit
+VM33-A10-015,A10,Elengi Tree,Mimusops elengi,Nakshatra Vanam Trust,Dedicated
+VM33-A10-016,A10,Elengi Tree,Mimusops elengi,Mechanical Engineering Dept.,Pledged
+VM33-A10-017,A10,Fig Tree,Ficus carica,,Pending audit
+VM33-A10-018,A10,Fishtail palm tree,Caryota urens,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A10-019,A10,Golden Bottle Brush,Melaleuca bracteata,Dr. Thomas Varghese,Dedicated
+VM33-A10-020,A10,Gulmohar,Delonix regia,,Pending audit
+VM33-A10-021,A10,Gulmohar,Delonix regia,ECE Batch of 2015,Pledged
+VM33-A10-022,A10,Gulmohar,Delonix regia,Mechanical Engineering Dept.,Pledged
+VM33-A10-023,A10,Gulmohar,Delonix regia,Civil Engineering Dept.,Pledged
+VM33-A10-024,A10,Gulmohar,Delonix regia,Dr. Saritha Menon,Dedicated
+VM33-A10-025,A10,Gulmohar,Delonix regia,Dr. Thomas Varghese,Pledged
+VM33-A10-026,A10,Gulmohar,Delonix regia,Dr. Saritha Menon,Pledged
+VM33-A10-027,A10,Hop tree,Ptelea trifoliata,,Pending audit
+VM33-A10-028,A10,Indian Almond,Terminalia catappa,,Open
+VM33-A10-029,A10,Indian Elm,Holoptelea integrifolia,Civil Engineering Dept.,Pledged
+VM33-A10-030,A10,Indian hog plum,Spondias mombin,,Pending audit
+VM33-A10-031,A10,Jack Fruit Tree,Artocarpus heterophyllus,,Pending audit
+VM33-A10-032,A10,Javaplum tree,Syzygium cumini,Rakesh Hari (Alumnus),Dedicated
+VM33-A10-033,A10,Karungali Tree,Diospyros ebenum,Vidya Alumni Association,Pledged
+VM33-A10-034,A10,Lead tree,Leucaena leucocephala,,Open
+VM33-A10-035,A10,Longan tree,Dimocarpus longan,,Pending audit
+VM33-A10-036,A10,Longan tree,Dimocarpus longan,ECE Batch of 2015,Pledged
+VM33-A10-037,A10,Longan tree,Dimocarpus longan,Dr. Thomas Varghese,Pledged
+VM33-A10-038,A10,Mahagony,Swietenia macrophylla,,Open
+VM33-A10-039,A10,Mahagony,Swietenia macrophylla,,Pending audit
+VM33-A10-040,A10,Mahagony,Swietenia macrophylla,,Pending audit
+VM33-A10-041,A10,Manchadi,Adenanthera pavonina,Vidya Alumni Association,Pledged
+VM33-A10-042,A10,Manchadi,Adenanthera pavonina,Vidya Trust,Dedicated
+VM33-A10-043,A10,Mango Tree,Mangifera indica,ECE Batch of 2015,Dedicated
+VM33-A10-044,A10,Mango Tree,Mangifera indica,,Pending audit
+VM33-A10-045,A10,Mango Tree,Mangifera indica,CSE Batch of 2019,Dedicated
+VM33-A10-046,A10,Mango Tree,Mangifera indica,In memory of Sri K. Raghavan,Dedicated
+VM33-A10-047,A10,Mango Tree,Mangifera indica,Civil Engineering Dept.,Dedicated
+VM33-A10-048,A10,Mast Tree,Monoon longifolium,,Open
+VM33-A10-049,A10,Mast Tree,Monoon longifolium,Dr. Saritha Menon,Pledged
+VM33-A10-050,A10,Mast Tree,Monoon longifolium,Civil Engineering Dept.,Pledged
+VM33-A10-051,A10,Matti Tree,Terminalia elliptica,,Pending audit
+VM33-A10-052,A10,Monkey Puzzle Tree,Araucaria araucana,Vidya Alumni Association,Pledged
+VM33-A10-053,A10,Mullan kainji,Erythrina variegata,,Pending audit
+VM33-A10-054,A10,Mullan kainji,Erythrina variegata,Rakesh Hari (Alumnus),Dedicated
+VM33-A10-055,A10,Nagkesar Tree,Mesua ferrea,,Pending audit
+VM33-A10-056,A10,Native Olive,Olea paniculata,Oushadhi Pledge Drive,Pledged
+VM33-A10-057,A10,Native Olive,Olea paniculata,,Pending audit
+VM33-A10-058,A10,Orange Jasmine,Murraya paniculata,CSE Batch of 2019,Pledged
+VM33-A10-059,A10,Orchid Tree,Bauhinia variegata,ECE Batch of 2015,Dedicated
+VM33-A10-060,A10,Orchid Tree,Bauhinia variegata,,Open
+VM33-A10-061,A10,Orchid Tree,Bauhinia variegata,Vidya Alumni Association,Pledged
+VM33-A10-062,A10,Orchid Tree,Bauhinia variegata,,Open
+VM33-A10-063,A10,Palmyra Palm,Borassus flabellifer,Parent-Teacher Association,Dedicated
+VM33-A10-064,A10,Peacock Flower,Caesalpinia pulcherrima,Nakshatra Vanam Trust,Pledged
+VM33-A10-065,A10,Podini Tree,Macaranga peltata,Civil Engineering Dept.,Dedicated
+VM33-A10-066,A10,Podini Tree,Macaranga peltata,,Open
+VM33-A10-067,A10,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A10-068,A10,Podini Tree,Macaranga peltata,,Open
+VM33-A10-069,A10,Podini Tree,Macaranga peltata,Hostel Batch 2012–16,Pledged
+VM33-A10-070,A10,Podini Tree,Macaranga peltata,Dr. Saritha Menon,Dedicated
+VM33-A10-071,A10,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A10-072,A10,Podini Tree,Macaranga peltata,Oushadhi Pledge Drive,Pledged
+VM33-A10-073,A10,Possumwood,Hura crepitans,,Open
+VM33-A10-074,A10,Rose Apple Tree,Syzygium jambos,Rakesh Hari (Alumnus),Dedicated
+VM33-A10-075,A10,Royal palm,Roystonea regia,,Pending audit
+VM33-A10-076,A10,Royal palm,Roystonea regia,,Pending audit
+VM33-A10-077,A10,Royal palm,Roystonea regia,Staff Association,Pledged
+VM33-A10-078,A10,Royal palm,Roystonea regia,ECE Batch of 2015,Dedicated
+VM33-A10-079,A10,Royal palm,Roystonea regia,,Pending audit
+VM33-A10-080,A10,Royal palm,Roystonea regia,Dr. Thomas Varghese,Dedicated
+VM33-A10-081,A10,Scarlet Bush,Hamelia patens,Vidya Trust,Dedicated
+VM33-A10-082,A10,Silk Tree,Albizia julibrizzin,Vidya Trust,Pledged
+VM33-A10-083,A10,Teak,Tectona grandis,Hostel Batch 2012–16,Pledged
+VM33-A10-084,A10,Vella Chembakam,Magnolia champaca,Nakshatra Vanam Trust,Dedicated
+VM33-A11-001,A11,Acacia,Acacia dealbata,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A11-002,A11,Acacia,Acacia dealbata,Civil Engineering Dept.,Dedicated
+VM33-A11-003,A11,Ambazham,Spondias mombin,Dr. Saritha Menon,Pledged
+VM33-A11-004,A11,Amla,Phyllanthus emblica,,Open
+VM33-A11-005,A11,Amla,Phyllanthus emblica,,Open
+VM33-A11-006,A11,Areca palm,Chrysalidocarpus lutescens,Dr. Saritha Menon,Pledged
+VM33-A11-007,A11,Bandicoot berry,Leea indica,,Open
+VM33-A11-008,A11,Chembakam tree,Michelia chempaca,CSE Batch of 2019,Pledged
+VM33-A11-009,A11,Coconut tree,Cocos nucifera,Vidya Trust,Pledged
+VM33-A11-010,A11,Coconut tree,Cocos nucifera,,Open
+VM33-A11-011,A11,Custard Apple,Annona reticulata,,Open
+VM33-A11-012,A11,Elder Tree,Sambucus nigra,Oushadhi Pledge Drive,Dedicated
+VM33-A11-013,A11,Elder Tree,Sambucus nigra,Ayurveda Dept. Well-wishers,Dedicated
+VM33-A11-014,A11,Elder Tree,Sambucus nigra,,Open
+VM33-A11-015,A11,Fig Tree,Ficus carica,,Pending audit
+VM33-A11-016,A11,Guava,Psidium guajava,,Pending audit
+VM33-A11-017,A11,Guava,Psidium guajava,,Open
+VM33-A11-018,A11,Gulmohar,Delonix regia,Ayurveda Dept. Well-wishers,Pledged
+VM33-A11-019,A11,Gulmohar,Delonix regia,Staff Association,Dedicated
+VM33-A11-020,A11,Gulmohar,Delonix regia,Ayurveda Dept. Well-wishers,Pledged
+VM33-A11-021,A11,Gulmohar,Delonix regia,,Pending audit
+VM33-A11-022,A11,Gulmohar,Delonix regia,Dr. Thomas Varghese,Dedicated
+VM33-A11-023,A11,Gulmohar,Delonix regia,In memory of Sri K. Raghavan,Dedicated
+VM33-A11-024,A11,Indian Almond,Terminalia catappa,Oushadhi Pledge Drive,Dedicated
+VM33-A11-025,A11,Jack Fruit Tree,Artocarpus heterophyllus,ECE Batch of 2015,Dedicated
+VM33-A11-026,A11,Japanese Lime Tree,Tilla japonica,Staff Association,Pledged
+VM33-A11-028,A11,Javaplum tree,Syzygium cumini,Nakshatra Vanam Trust,Dedicated
+VM33-A11-029,A11,Kanikkonna,Casia fistula,Mechanical Engineering Dept.,Dedicated
+VM33-A11-030,A11,Kanikkonna,Casia fistula,CSE Batch of 2019,Pledged
+VM33-A11-031,A11,Longan tree,Dimocarpus longan,,Open
+VM33-A11-032,A11,Mahagony,Swietenia macrophylla,Rakesh Hari (Alumnus),Dedicated
+VM33-A11-033,A11,Mahagony,Swietenia macrophylla,Student Council,Dedicated
+VM33-A11-034,A11,Mahagony,Swietenia macrophylla,Civil Engineering Dept.,Pledged
+VM33-A11-035,A11,Mango Tree,Mangifera indica,Parent-Teacher Association,Dedicated
+VM33-A11-036,A11,Mango Tree,Mangifera indica,Vidya Trust,Dedicated
+VM33-A11-037,A11,Mango Tree,Mangifera indica,,Open
+VM33-A11-038,A11,Mango Tree,Mangifera indica,,Open
+VM33-A11-039,A11,Mango Tree,Mangifera indica,,Pending audit
+VM33-A11-040,A11,Mango Tree,Mangifera indica,,Open
+VM33-A11-041,A11,Mansonia tree,Mansonia altissima,,Open
+VM33-A11-042,A11,Mast Tree,Polyalthia longifolia,Parent-Teacher Association,Dedicated
+VM33-A11-043,A11,Mast Tree,Monoon longifolium,Parent-Teacher Association,Dedicated
+VM33-A11-044,A11,Matti Tree,Terminalia elliptica,,Pending audit
+VM33-A11-045,A11,Moluccan albizia,Falcataria falcata,Alumni Batch of 2005,Pledged
+VM33-A11-046,A11,Monkey Jack,Artocarpus lacucha,,Open
+VM33-A11-047,A11,Mullan kainji,Erythrina variegata,Dr. Thomas Varghese,Dedicated
+VM33-A11-048,A11,Native Olive,Olea paniculata,CSE Batch of 2019,Pledged
+VM33-A11-049,A11,Native Quince,Alectryon subcinereus,Alumni Batch of 2005,Pledged
+VM33-A11-050,A11,Orchid Tree,Bauhinia variegata,,Open
+VM33-A11-051,A11,Pigmy Bamboo,Pleiovlastus pygmaeus,,Pending audit
+VM33-A11-052,A11,Pigmy Bamboo,Pleiovlastus pygmaeus,,Open
+VM33-A11-053,A11,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A11-054,A11,Podini Tree,Macaranga peltata,Ayurveda Dept. Well-wishers,Pledged
+VM33-A11-055,A11,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A11-056,A11,Podini Tree,Macaranga peltata,,Open
+VM33-A11-057,A11,Podini Tree,Macaranga peltata,Nakshatra Vanam Trust,Dedicated
+VM33-A11-058,A11,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A11-059,A11,Podini Tree,Macaranga peltata,Dr. Saritha Menon,Pledged
+VM33-A11-060,A11,Podini Tree,Macaranga peltata,,Open
+VM33-A11-061,A11,Podini Tree,Macaranga peltata,Civil Engineering Dept.,Pledged
+VM33-A11-062,A11,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A11-063,A11,Podini Tree,Macaranga peltata,Nakshatra Vanam Trust,Pledged
+VM33-A11-064,A11,Podini Tree,Macaranga peltata,,Pending audit
+VM33-A11-065,A11,Royal palm,Roystonea regia,Parent-Teacher Association,Pledged
+VM33-A11-066,A11,Royal palm,Roystonea regia,,Open
+VM33-A11-067,A11,Royal palm,Roystonea regia,,Open
+VM33-A11-068,A11,Royal palm,Roystonea regia,,Pending audit
+VM33-A11-069,A11,Royal palm,Roystonea regia,Dr. Saritha Menon,Pledged
+VM33-A11-070,A11,Royal palm,Roystonea regia,,Open
+VM33-A11-071,A11,Sheema konna,Gliricidia sepium,,Open
+VM33-A11-072,A11,Sheema konna,Gliricidia sepium,Rakesh Hari (Alumnus),Pledged
+VM33-A11-073,A11,Sugar Berry Tree,Celtis laevigata,Mechanical Engineering Dept.,Dedicated
+VM33-A11-074,A11,Vaka Tree,Albizia lebbeck,,Open
+VM33-A11-075,A11,Vella Chembakam,Magnolia champaca,,Pending audit
+VM33-A11-076,A11,Vella Chembakam,Magnolia champaca,,Pending audit
+VM33-A11-077,A11,Vella Chembakam,Magnolia champaca,Dr. Saritha Menon,Dedicated
+VM33-A11-078,A11,Vella Chembakam,Magnolia champaca,,Open
+VM33-A11-081,A11,Water Hickory,Carya aquatica,,Open
+VM33-A11-082,A11,West Indian elm tree,Guazuma ulmifolia,Vidya Alumni Association,Dedicated
+VM33-A11-083,A11,White ash,Fraxinus americana,In memory of Sri K. Raghavan,Pledged
+VM33-A11-084,A11,White teak,Gmelina arborea,Vidya Alumni Association,Pledged
+VM33-A11-085,A11,White teak,Gmelina arborea,,Open
+VM33-A11-086,A11,Yellow Elder,Tecoma stans,Vidya Trust,Dedicated
