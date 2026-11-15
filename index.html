@@ -750,7 +750,7 @@
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="donateModalTitle">
     <button class="modal-close" id="donateModalClose" type="button" aria-label="Close">&times;</button>
     <h3 id="donateModalTitle">Sponsor a Tree</h3>
-    <p class="modal-dek">Pledge to plant and dedicate this tree as part of the Plus 500 Tree Club. This is a demo form — nothing is actually submitted or stored.</p>
+    <p class="modal-dek" id="donateDek">Pledge to plant and dedicate this tree as part of the Plus 500 Tree Club.</p>
     <div class="tree-context" id="donateTreeContext"></div>
     <form id="donateForm" novalidate>
       <div class="form-group">
@@ -769,9 +769,16 @@
         </div>
         <p class="form-error" id="donateEmailError">Please enter a valid email, and make sure both match.</p>
       </div>
+      <div class="form-group">
+        <span class="group-label">Dedication</span> <span style="color:var(--muted-2); font-size:.76rem">(optional)</span>
+        <div class="form-row" style="grid-template-columns:1fr"><div><label for="donateDedication">e.g. "In memory of Sri K. Raghavan" or "CSE Batch of 2019"</label><input type="text" id="donateDedication" maxlength="120"></div></div>
+        <label style="display:flex; gap:8px; align-items:center; margin-top:12px; font-size:.84rem; color:var(--muted)"><input type="checkbox" id="donatePublic" checked> Show my name (or dedication) on the public register</label>
+      </div>
+      <div style="position:absolute; left:-9999px" aria-hidden="true"><label>Website <input type="text" id="donateWebsite" tabindex="-1" autocomplete="off"></label></div>
+      <p class="form-error" id="donateServerError"></p>
       <div class="modal-actions">
         <button type="button" class="btn-secondary" id="donateCancel">Cancel</button>
-        <button type="submit" class="btn-primary">Submit Pledge</button>
+        <button type="submit" class="btn-primary" id="donateSubmit">Submit Pledge</button>
       </div>
     </form>
   </div>
@@ -866,13 +873,14 @@
   var regBody = document.getElementById("regBody");
   var regEmpty = document.getElementById("regEmpty");
   var regCount = document.getElementById("regCount");
+  function esc(v){ return String(v == null ? "" : v).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
   function statusCellHTML(status){
     var pill = '<span class="status-pill ' + status + '">' + STATUS_LABEL[status] + '</span>';
     if (status !== "open") return '<div class="status-cell">' + pill + '</div>';
     return '<div class="status-cell">' + pill + '<button type="button" class="donate-btn">Donate</button></div>';
   }
   function donorCellHTML(name){
-    return name ? '<span class="donor filled">' + name + '</span>' : '<span class="donor">—</span>';
+    return name ? '<span class="donor filled">' + esc(name) + '</span>' : '<span class="donor">—</span>';
   }
   function renderRegister(){
   regBody.textContent = "";
@@ -885,10 +893,10 @@
     tr.dataset.botanical = row[3];
     tr.dataset.search = (row[0] + " " + row[2] + " " + row[3] + " " + row[5]).toLowerCase();
     tr.innerHTML =
-      '<td class="mono">' + row[0] + '</td>' +
-      '<td>' + row[1] + '</td>' +
-      '<td>' + row[2] + '</td>' +
-      '<td>' + row[3] + '</td>' +
+      '<td class="mono">' + esc(row[0]) + '</td>' +
+      '<td>' + esc(row[1]) + '</td>' +
+      '<td>' + esc(row[2]) + '</td>' +
+      '<td>' + esc(row[3]) + '</td>' +
       '<td class="donor-cell">' + donorCellHTML(row[5]) + '</td>' +
       '<td>' + statusCellHTML(row[4]) + '</td>';
     regBody.appendChild(tr);
@@ -962,6 +970,7 @@
   var donateEmailError = document.getElementById("donateEmailError");
   var donateToast = document.getElementById("donateToast");
   var activeDonateRow = null;
+  var pledgedLocally = {}; // tag -> donor text, kept until the sheet itself shows the pledge
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var toastTimer = null;
 
@@ -971,6 +980,7 @@
     donateForm.reset();
     donateNameError.classList.remove("show");
     donateEmailError.classList.remove("show");
+    donateServerError.classList.remove("show");
     donateModal.hidden = false;
     donateFirst.focus();
   }
@@ -995,27 +1005,63 @@
   donateModal.addEventListener("click", function(e){ if (e.target === donateModal) closeDonateModal(); });
   document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !donateModal.hidden) closeDonateModal(); });
 
+  var donateDek = document.getElementById("donateDek");
+  var donateDedication = document.getElementById("donateDedication");
+  var donatePublic = document.getElementById("donatePublic");
+  var donateWebsite = document.getElementById("donateWebsite");
+  var donateServerError = document.getElementById("donateServerError");
+  var donateSubmit = document.getElementById("donateSubmit");
+  var pledgeUrl = ((window.VM33_CONFIG || {}).pledgeEndpoint || "").trim();
+  donateDek.textContent = pledgeUrl
+    ? "Pledge to plant and dedicate this tree as part of the Plus 500 Tree Club. Your pledge is recorded by the Green Campus team, who will contact you on the email you give."
+    : "Pledge to plant and dedicate this tree as part of the Plus 500 Tree Club. Demo mode: no pledge service is connected, so nothing is saved.";
+
+  function showPledged(row, donor){
+    row.querySelector(".status-cell").innerHTML = '<span class="status-pill pledged">Pledged</span>';
+    var dc = row.querySelector(".donor-cell");
+    if (dc) dc.innerHTML = donorCellHTML(donor);
+    updateProgress();
+  }
+
   donateForm.addEventListener("submit", function(e){
     e.preventDefault();
+    donateServerError.classList.remove("show");
     var nameOk = donateFirst.value.trim() !== "" && donateLast.value.trim() !== "";
     var e1 = donateEmail.value.trim(), e2 = donateEmailConfirm.value.trim();
     var emailOk = EMAIL_RE.test(e1) && e1.toLowerCase() === e2.toLowerCase();
     donateNameError.classList.toggle("show", !nameOk);
     donateEmailError.classList.toggle("show", !emailOk);
-    if (!nameOk || !emailOk) return;
+    if (!nameOk || !emailOk || !activeDonateRow) return;
+    if (donateWebsite.value) return; // honeypot: bots fill hidden fields
 
-    if (activeDonateRow){
-      var cell = activeDonateRow.querySelector(".status-cell");
-      cell.innerHTML = '<span class="status-pill pledged">Pledged</span>';
-      var first = donateFirst.value.trim();
-      var last = donateLast.value.trim();
-      var donorCell = activeDonateRow.querySelector(".donor-cell");
-      if (donorCell) donorCell.innerHTML = '<span class="donor filled">' + first + " " + last + '</span>';
-      var tag = activeDonateRow.dataset.tag;
-      updateProgress();
+    var row = activeDonateRow, tag = row.dataset.tag;
+    var first = donateFirst.value.trim(), full = first + " " + donateLast.value.trim();
+    var dedication = donateDedication.value.trim(), isPublic = donatePublic.checked;
+    var shown = isPublic ? (dedication || full) : "Anonymous";
+
+    function done(){
+      pledgedLocally[tag] = shown;
+      showPledged(row, shown);
       closeDonateModal();
-      showToast("Thank you, " + first + " — your pledge for " + tag + " has been noted on this page. (Demo only: not actually saved.)");
+      showToast("Thank you, " + first + " \u2014 your pledge for " + tag + " " + (pledgeUrl ? "has been recorded." : "has been noted on this page. (Demo only: not actually saved.)"));
     }
+    if (!pledgeUrl){ done(); return; }
+
+    donateSubmit.disabled = true; donateSubmit.textContent = "Sending\u2026";
+    var body = new URLSearchParams();
+    body.set("tag", tag); body.set("name", full); body.set("email", e1);
+    body.set("dedication", dedication); body.set("public", isPublic ? "1" : "0");
+    fetch(pledgeUrl, {method:"POST", body:body})
+      .then(function(r){ return r.json(); })
+      .then(function(res){
+        if (res && res.ok) done();
+        else { donateServerError.textContent = (res && res.error) || "Sorry, the pledge could not be saved."; donateServerError.classList.add("show"); if (res && res.taken){ loadTrees(); } }
+      })
+      .catch(function(){
+        donateServerError.textContent = "Could not reach the pledge service. Please check your connection and try again.";
+        donateServerError.classList.add("show");
+      })
+      .then(function(){ donateSubmit.disabled = false; donateSubmit.textContent = "Submit Pledge"; });
   });
 
   // CSV download of the register (respects the current search + zone filter)
@@ -1279,6 +1325,13 @@
   }
   var lastSig = "", srcText = document.getElementById("regSourceText"), loading = false;
   function applyTrees(rows, label){
+    rows = rows.map(function(r){
+      if (pledgedLocally[r[0]]){
+        if (r[4] === "open") return [r[0], r[1], r[2], r[3], "pledged", pledgedLocally[r[0]]];
+        delete pledgedLocally[r[0]]; // sheet has caught up
+      }
+      return r;
+    });
     var sig = rows.length + "|" + rows.map(function(r){ return r.join("\u0001"); }).join("\u0002");
     if (sig !== lastSig){
       lastSig = sig; DATA.trees = rows;
