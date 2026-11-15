@@ -175,9 +175,6 @@
   .site-plan{margin:0 0 30px; max-width:420px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px; box-shadow:var(--shadow)}
   .site-plan img{width:100%; height:auto; display:block; border-radius:8px}
   .site-plan figcaption{font-size:.8rem; color:var(--muted); margin-top:10px; text-align:center}
-  .review-photo{margin:0 0 34px; border-radius:14px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow)}
-  .review-photo img{width:100%; height:auto; max-height:360px; object-fit:cover; display:block}
-  .review-photo figcaption{font-size:.8rem; color:var(--muted); padding:12px 16px; background:var(--surface)}
   .zone-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
   @media (max-width:860px){ .zone-grid{grid-template-columns:repeat(2,1fr)} }
   @media (max-width:560px){ .zone-grid{grid-template-columns:1fr} }
@@ -299,14 +296,6 @@
   .flow-chain span.node{font-family:'Archivo',sans-serif; font-weight:700; color:#eef3ec; font-size:.92rem; white-space:nowrap}
   .flow-chain span.arrow{color:var(--gold)}
 
-  /* ---------- roadmap ---------- */
-  .steps{display:flex; flex-direction:column; gap:26px}
-  .step{display:grid; grid-template-columns:50px 180px 1fr; gap:18px; align-items:start}
-  @media (max-width:760px){ .step{grid-template-columns:40px 1fr; } .step .raci{grid-column:1/-1; margin-left:58px} }
-  .step .idx{font-family:'Archivo',sans-serif; font-weight:800; font-size:1.3rem; color:var(--accent-soft); -webkit-text-stroke:1.3px var(--accent)}
-  .step h4{font-size:1rem}
-  .step .raci{font-size:.86rem; color:var(--muted); display:grid; gap:4px}
-  .step .raci b{color:var(--fg); font-weight:600}
 
   footer.site{background:var(--surface-dark); color:#cfe0d4; padding-block:56px 40px}
   footer.site .wrap{display:flex; flex-direction:column; gap:22px}
@@ -332,7 +321,6 @@
       <a href="#vegetation">Vegetation</a>
       <a href="#register">Tree Register</a>
       <a href="#impact">Impact</a>
-      <a href="#roadmap">Roadmap</a>
       <a href="#about">About Us</a>
     </nav>
   </div>
@@ -685,46 +673,6 @@
   </div>
 </section>
 
-<section class="page" id="roadmap" data-tab="roadmap">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow"><b>VIDYA MISSION 33</b><span class="sep">|</span><span>VAST TCR</span><span class="sep">|</span><span>GREEN CAMPUS</span><span class="sep">|</span><span class="cur">Proposal Approval Request</span></div>
-      <h2>What we're asking the Executive Committee for</h2>
-    </div>
-    <figure class="review-photo reveal">
-      <img src="images/campus_review.jpg" alt="Institution leadership at the campus site-plan board during the Green Campus review" loading="lazy">
-      <figcaption>Campus review, 20 August 2026 — the walk-through that shaped this proposal.</figcaption>
-    </figure>
-    <div class="steps reveal">
-      <div class="step">
-        <div class="idx mono">01</div>
-        <h4>Approve the direction</h4>
-        <p style="color:var(--muted); font-size:.92rem">Approve the VAST Green Campus Master Plan as a VM:33 institutional initiative.</p>
-      </div>
-      <div class="step">
-        <div class="idx mono">02</div>
-        <h4>Establish governance</h4>
-        <div class="raci">
-          <div><b>Zone Owners</b> → monthly inspection, activity, evidence &amp; corrective action</div>
-          <div><b>Green Campus Committee</b> → programme governance, priorities, review &amp; escalation</div>
-          <div><b>Institution Management</b> → execution, budget &amp; operational implementation</div>
-          <div><b>Executive Committee</b> → strategic oversight &amp; periodic review</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="idx mono">03</div>
-        <h4>Detailed proposals</h4>
-        <p style="color:var(--muted); font-size:.92rem">Prepare DPRs, cost estimates and business cases for prioritized initiatives.</p>
-      </div>
-      <div class="step">
-        <div class="idx mono">04</div>
-        <h4>Establish measurement</h4>
-        <p style="color:var(--muted); font-size:.92rem">Mandate monthly KPIs and annual Green Campus evidence reporting.</p>
-      </div>
-    </div>
-    <p class="cite reveal" style="margin-top:28px">Note: individual capital expenditure proposals will be submitted separately for approval, based on DPRs and business cases.</p>
-  </div>
-</section>
 
 <section class="page" id="about" data-tab="about">
   <div class="wrap">
@@ -2134,7 +2082,7 @@
   navbtn.addEventListener("click", function(){ navlinks.classList.toggle("open"); });
 
   // tabs: each nav link shows its own page, hides the rest
-  var TABS = ["facts","vision","zones","initiatives","vegetation","register","impact","roadmap","about"];
+  var TABS = ["facts","vision","zones","initiatives","vegetation","register","impact","about"];
   var navLinkMap = {};
   navlinks.querySelectorAll("a").forEach(function(a){ navLinkMap[a.getAttribute("href").slice(1)] = a; });
   var pagesByTab = {};
