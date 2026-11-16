@@ -192,7 +192,7 @@
   .vrow .val{font-family:'IBM Plex Mono',monospace; font-size:.78rem; text-align:right; font-variant-numeric:tabular-nums}
   .vtrack{height:15px; background:var(--surface-2); border-radius:5px; overflow:hidden; display:flex}
   .vseg{height:100%}
-  .vseg.dedicated{background:var(--accent)} .vseg.pledged{background:#3b74b5} .vseg.pending{background:var(--gold)} .vseg.open{background:var(--muted-2)} .vseg.all{background:var(--accent)}
+  .vseg.dedicated{background:var(--accent)} .vseg.pledged{background:#3b74b5} .vseg.pending{background:var(--gold)} .vseg.open{background:var(--muted-2)} .vseg.awaiting{background:repeating-linear-gradient(45deg,var(--gold-soft),var(--gold-soft) 3px,var(--gold) 3px,var(--gold) 5px)} .vseg.all{background:var(--accent)}
   .vlegend{display:flex; gap:14px; flex-wrap:wrap; font-size:.76rem; color:var(--muted); margin-bottom:10px}
   .vlegend i{display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:6px}
   .vmore{margin-top:10px; background:none; border:1px solid var(--accent); color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; padding:6px 12px; border-radius:999px; cursor:pointer}
@@ -251,6 +251,7 @@
   .status-pill.dedicated{background:var(--accent-soft); color:var(--accent-strong)}
   .status-pill.pending{background:var(--gold-soft); color:var(--gold)}
   .status-pill.pledged{background:#dbe5f1; color:#2e5a9e}
+  .status-pill.awaiting{background:transparent; color:var(--gold); border:1px dashed var(--gold)}
   .status-pill.open{background:transparent; color:var(--muted); border:1px dashed var(--line-strong)}
   @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .status-pill.pledged{background:#1c2c3c; color:#8db4e0} }
   :root[data-theme="dark"] .status-pill.pledged{background:#1c2c3c; color:#8db4e0}
@@ -556,7 +557,7 @@
         <div class="vcard">
           <h4>Trees in each zone</h4>
           <p class="hint">Bar length = number of trees; colours show register status.</p>
-          <div class="vlegend"><span><i style="background:var(--accent)"></i>Dedicated</span><span><i style="background:#3b74b5"></i>Pledged</span><span><i style="background:var(--gold)"></i>Pending audit</span><span><i style="background:var(--muted-2)"></i>Open</span></div>
+          <div class="vlegend"><span><i style="background:var(--accent)"></i>Dedicated</span><span><i style="background:#3b74b5"></i>Pledged</span><span><i style="background:var(--gold-soft); border:1px solid var(--gold)"></i>Awaiting verification</span><span><i style="background:var(--gold)"></i>Pending audit</span><span><i style="background:var(--muted-2)"></i>Open</span></div>
           <div id="vZones"></div>
         </div>
         <div class="vcard">
@@ -626,7 +627,7 @@
       <b class="ttl">About this register</b>
       <ul>
         <li>Tag No. — the unique accession tag fixed to each tree once it is surveyed</li>
-        <li><strong>Open</strong> — a planting slot identified, not yet sponsored; <strong>Pledged</strong> — a Trustee, alumnus, student or well-wisher has committed to it; <strong>Dedicated</strong> — planted and formally dedicated; <strong>Pending audit</strong> — already standing, awaiting the next environmental audit</li>
+        <li><strong>Open</strong> — a planting slot identified, not yet sponsored; <strong>Pledged</strong> — a Trustee, alumnus, student or well-wisher has committed to it; <strong>Dedicated</strong> — planted and formally dedicated; <strong>Awaiting verification</strong> — someone has pledged the tree; the donor must confirm by email and the Green Campus Committee must approve it before it shows as Pledged; <strong>Pending audit</strong> — already standing, awaiting the next environmental audit</li>
         <li>Figures below are placeholders only, shown to demonstrate the format — not a real inventory</li>
         <li>The real register will carry one row per tree across all <span data-bind="treeProjected">1,446</span> trees once the Plus 500 Tree Club planting and the accessioning survey are complete</li>
       </ul>
@@ -833,7 +834,7 @@
     trees: [] // loaded from the Google Sheet / data/trees.csv at runtime (see config.js)
   };
 
-  var STATUS_LABEL = {pending:"Pending audit", pledged:"Pledged", open:"Open", dedicated:"Dedicated"};
+  var STATUS_LABEL = {pending:"Pending audit", pledged:"Pledged", open:"Open", dedicated:"Dedicated", awaiting:"Awaiting verification"};
 
   var grid = document.getElementById("initGrid");
   DATA.initiatives.forEach(function(it){
@@ -992,7 +993,7 @@
     donateToast.textContent = msg;
     donateToast.classList.add("show");
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(function(){ donateToast.classList.remove("show"); }, 4000);
+    toastTimer = setTimeout(function(){ donateToast.classList.remove("show"); }, 8000);
   }
 
   regBody.addEventListener("click", function(e){
@@ -1013,13 +1014,16 @@
   var donateSubmit = document.getElementById("donateSubmit");
   var pledgeUrl = ((window.VM33_CONFIG || {}).pledgeEndpoint || "").trim();
   donateDek.textContent = pledgeUrl
-    ? "Pledge to plant and dedicate this tree as part of the Plus 500 Tree Club. Your pledge is recorded by the Green Campus team, who will contact you on the email you give."
+    ? "Pledge to plant and dedicate this tree as part of the Plus 500 Tree Club. We will email you a link to confirm the pledge, and the Green Campus Committee then verifies it before it appears as Pledged."
     : "Pledge to plant and dedicate this tree as part of the Plus 500 Tree Club. Demo mode: no pledge service is connected, so nothing is saved.";
 
   function showPledged(row, donor){
-    row.querySelector(".status-cell").innerHTML = '<span class="status-pill pledged">Pledged</span>';
+    var live = !!pledgeUrl;
+    row.querySelector(".status-cell").innerHTML = live
+      ? '<span class="status-pill awaiting">Awaiting verification</span>'
+      : '<span class="status-pill pledged">Pledged</span>';
     var dc = row.querySelector(".donor-cell");
-    if (dc) dc.innerHTML = donorCellHTML(donor);
+    if (dc) dc.innerHTML = donorCellHTML(live ? "" : donor);
     updateProgress();
   }
 
@@ -1040,10 +1044,12 @@
     var shown = isPublic ? (dedication || full) : "Anonymous";
 
     function done(){
-      pledgedLocally[tag] = shown;
+      pledgedLocally[tag] = pledgeUrl ? "" : shown;
       showPledged(row, shown);
       closeDonateModal();
-      showToast("Thank you, " + first + " \u2014 your pledge for " + tag + " " + (pledgeUrl ? "has been recorded." : "has been noted on this page. (Demo only: not actually saved.)"));
+      showToast(pledgeUrl
+        ? "Thank you, " + first + " \u2014 please check your email for a link to confirm the pledge for " + tag + ". It is shown as Awaiting verification until then."
+        : "Thank you, " + first + " \u2014 your pledge for " + tag + " has been noted on this page. (Demo only: not actually saved.)");
     }
     if (!pledgeUrl){ done(); return; }
 
@@ -1212,7 +1218,7 @@
     T.forEach(function(r){
       var sp = species[r[3]] || (species[r[3]] = {bot:r[3], n:0, names:{}, zones:{}});
       sp.n++; sp.names[r[2]] = (sp.names[r[2]] || 0) + 1; sp.zones[r[1]] = 1;
-      var z = zones[r[1]] || (zones[r[1]] = {n:0, sp:{}, dedicated:0, pledged:0, pending:0, open:0});
+      var z = zones[r[1]] || (zones[r[1]] = {n:0, sp:{}, dedicated:0, pledged:0, pending:0, open:0, awaiting:0});
       z.n++; z.sp[r[3]] = 1; z[r[4]]++;
     });
     var spList = Object.keys(species).map(function(k){
@@ -1256,8 +1262,8 @@
     zKeys.forEach(function(k){
       var z = zones[k], nsp = Object.keys(z.sp).length;
       var b = row(k + " \u00b7 " + (zoneNames[k] || ""), nsp + " species", z.n,
-        [["dedicated", z.dedicated], ["pledged", z.pledged], ["pending", z.pending], ["open", z.open]], 100 / zMax, function(){ goRegister(k, ""); });
-      b.title = z.n + " trees (" + z.dedicated + " dedicated, " + z.pledged + " pledged, " + z.pending + " pending audit, " + z.open + " open)";
+        [["dedicated", z.dedicated], ["pledged", z.pledged], ["awaiting", z.awaiting], ["pending", z.pending], ["open", z.open]], 100 / zMax, function(){ goRegister(k, ""); });
+      b.title = z.n + " trees (" + z.dedicated + " dedicated, " + z.pledged + " pledged, " + z.awaiting + " awaiting verification, " + z.pending + " pending audit, " + z.open + " open)";
       zWrap.appendChild(b);
     });
 
@@ -1279,7 +1285,7 @@
 
   // ---------- data loading: Google Sheet (CSV) with bundled snapshot fallback ----------
   var CFG = window.VM33_CONFIG || {};
-  var STATUS_KEY = {"dedicated":"dedicated", "pledged":"pledged", "open":"open", "pending audit":"pending", "pending":"pending"};
+  var STATUS_KEY = {"dedicated":"dedicated", "pledged":"pledged", "open":"open", "pending audit":"pending", "pending":"pending", "awaiting verification":"awaiting", "awaiting":"awaiting"};
   function parseCSV(text){
     var rows = [], row = [], f = "", q = false, i = 0, c;
     text = text.replace(/^\ufeff/, "");
@@ -1323,11 +1329,12 @@
       else if (k === "treeProjected") e.textContent = (n + 500).toLocaleString("en-IN");
     });
   }
+  var pledgeUrlCfg = !!((CFG.pledgeEndpoint || "").trim());
   var lastSig = "", srcText = document.getElementById("regSourceText"), loading = false;
   function applyTrees(rows, label){
     rows = rows.map(function(r){
       if (pledgedLocally[r[0]]){
-        if (r[4] === "open") return [r[0], r[1], r[2], r[3], "pledged", pledgedLocally[r[0]]];
+        if (r[4] === "open") return [r[0], r[1], r[2], r[3], pledgeUrlCfg ? "awaiting" : "pledged", pledgedLocally[r[0]]];
         delete pledgedLocally[r[0]]; // sheet has caught up
       }
       return r;

@@ -28,18 +28,28 @@ Google caches published sheets for a few minutes, so changes may take a little w
 If the sheet cannot be reached the site falls back to the snapshot in `data/trees.csv`.
 To refresh that snapshot, download the sheet tab as CSV and replace the file.
 
-### Pledges (Plus 500 Tree Club)
+### Pledges and verification (Plus 500 Tree Club)
 
-The **Donate** form on an Open tree sends the pledge to a small Google Apps Script attached to the
-same Sheet (`apps-script/pledges.gs`). For each pledge it re-checks the tree is still Open, marks it
-**Pledged**, writes the donor text into the register, and logs name + email in a private **Pledges** tab.
-The website then shows the new status on its next refresh.
+A pledge never goes straight to **Pledged** on the public register. It is verified by the people concerned:
 
-Set up once:
-1. In the Google Sheet: **Extensions → Apps Script**, paste `apps-script/pledges.gs`, save.
-2. **Deploy → New deployment → Web app**; *Execute as:* **Me**, *Who has access:* **Anyone**. Authorise when asked.
-3. Copy the web-app URL into `pledgeEndpoint` in `config.js`, commit and push.
-4. Publish only the **Tree Register** tab to the web, never the **Pledges** tab (it holds emails).
+| Step | Who | What happens |
+|---|---|---|
+| 1. Pledge | Donor, on the website | Tree shows **Awaiting verification** (reserved, no name shown). The donor gets an email with a confirmation link. |
+| 2. Confirm | Donor | Clicking the link proves the email is theirs. Follow-up becomes *Awaiting committee approval* and the committee is emailed. |
+| 3. Approve | Green Campus Committee | In the **Pledges** tab set Follow-up to **Approved - pledged**. The register shows **Pledged** with the donor text. |
+| 4. Plant | Zone owner | After planting set Follow-up to **Planted - dedicated**. The register shows **Dedicated**. |
+
+- **Rejected**, or a pledge the donor does not confirm within 3 days, re-opens the tree and the donor is told.
+- Each verification stamps **who** and **when** in the Pledges tab. Manual edits to the register's Status or Donor columns are written to a **Status log** tab.
+- Approval is refused if the donor has not confirmed, and "Planted" is refused before "Approved".
+
+Set up once, in the Google Sheet:
+1. **Extensions → Apps Script**: paste `apps-script/pledges.gs`. Fill in `CONFIG`:
+   `APPROVER_EMAILS` (who may approve; empty = anyone with edit access) and `NOTIFY_EMAILS` (who is emailed for approval).
+2. Run **`setupTriggers`** once and authorise it. This adds the edit trigger, the daily clean-up and the Follow-up dropdown.
+3. **Deploy → New deployment → Web app**; *Execute as:* **Me**, *Who has access:* **Anyone**.
+4. Copy the web-app URL into `pledgeEndpoint` in `config.js`, commit and push.
+5. Publish only the **Tree Register** tab to the web, never **Pledges** or **Status log** (they hold emails).
 
 With `pledgeEndpoint` empty the form runs in demo mode and saves nothing.
 
