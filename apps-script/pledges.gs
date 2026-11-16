@@ -22,7 +22,8 @@
  *      the daily clean-up and the Follow-up dropdown).
  *   3. Deploy > New deployment > Web app: Execute as "Me", access "Anyone". Copy the URL into
  *      `pledgeEndpoint` in config.js. (Re-deploy a new version after changing this file.)
- *   4. Publish only the "Tree Register" tab to the web. Never publish "Pledges" or "Status log".
+ *   4. The website reads the register from this web app (?action=register), so "Publish to web" is optional.
+ *      If you do publish, publish only "Tree Register", never "Pledges" or "Status log".
  */
 var CONFIG = {
   REGISTER_SHEET: 'Tree Register',
@@ -98,6 +99,7 @@ function doPost(e) {
 
 function doGet(e) {
   var p = (e && e.parameter) || {};
+  if (p.action === 'register') return registerCsv_();
   if (p.action !== 'confirm') return json_({ ok: true, service: 'VM33 pledge receiver' });
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
@@ -123,6 +125,19 @@ function doGet(e) {
   } finally {
     lock.releaseLock();
   }
+}
+
+/** The "Tree Register" tab as CSV, always current (no Publish-to-web delay). Only this tab is exposed. */
+function registerCsv_() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(CONFIG.REGISTER_SHEET);
+  if (!sheet) return json_({ ok: false, error: 'Register not found.' });
+  var csv = sheet.getDataRange().getValues().map(function (row) {
+    return row.map(function (v) {
+      v = String(v == null ? '' : v);
+      return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
+    }).join(',');
+  }).join('\r\n');
+  return ContentService.createTextOutput(csv).setMimeType(ContentService.MimeType.CSV);
 }
 
 /* --------------------------------------------------- committee / zone owner */

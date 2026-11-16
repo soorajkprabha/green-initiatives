@@ -1358,19 +1358,27 @@
   function fetchText(url){
     return fetch(url, {cache:"no-store"}).then(function(r){ if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); });
   }
+  function bust(u){ return u + (u.indexOf("?") >= 0 ? "&" : "?") + "_=" + Date.now(); }
   function loadTrees(){
     if (loading) return Promise.resolve(); loading = true;
-    var live = (CFG.sheetCsvUrl || "").trim(), snap = CFG.fallbackCsv || "data/trees.csv";
-    var p = live
-      ? fetchText(live + (live.indexOf("?") >= 0 ? "&" : "?") + "_=" + Date.now()).then(function(t){ applyTrees(treesFromCSV(t), "Live from Google Sheet"); })
-          .catch(function(){ return fetchText(snap).then(function(t){ applyTrees(treesFromCSV(t), "Sheet unreachable \u2014 showing saved snapshot"); }); })
-      : fetchText(snap).then(function(t){ applyTrees(treesFromCSV(t), "Saved snapshot (no live sheet connected)"); });
+    var live = (CFG.sheetCsvUrl || "").trim(), backup = (CFG.backupCsvUrl || "").trim(), snap = CFG.fallbackCsv || "data/trees.csv";
+    var attempts = [];
+    if (live) attempts.push([live, "Live from Google Sheet"]);
+    if (backup) attempts.push([backup, "Published sheet copy (can lag a few minutes)"]);
+    var p = attempts.reduce(function(chain, a){
+        return chain.catch(function(){ return fetchText(bust(a[0])).then(function(t){ applyTrees(treesFromCSV(t), a[1]); }); });
+      }, Promise.reject(new Error("start")))
+      .catch(function(){
+        return fetchText(snap).then(function(t){
+          applyTrees(treesFromCSV(t), attempts.length ? "Sheet unreachable \u2014 showing saved snapshot" : "Saved snapshot (no live sheet connected)");
+        });
+      });
     return p.catch(function(err){ if (srcText) srcText.textContent = "Could not load tree data (" + err.message + ")"; })
             .then(function(){ loading = false; });
   }
   var refreshBtn = document.getElementById("regRefresh");
   if (refreshBtn) refreshBtn.addEventListener("click", function(){ loadTrees(); });
-  if (CFG.sheetCsvUrl && CFG.refreshMinutes > 0){
+  if ((CFG.sheetCsvUrl || CFG.backupCsvUrl) && CFG.refreshMinutes > 0){
     setInterval(function(){ if (!document.hidden) loadTrees(); }, CFG.refreshMinutes * 60000);
     document.addEventListener("visibilitychange", function(){ if (!document.hidden) loadTrees(); });
   }

@@ -15,18 +15,19 @@ Status is one of `Dedicated`, `Pledged`, `Open`, `Pending audit`.
 
 ### Connect the sheet
 
-1. The shared file `vast-tree-register.xlsx` is an Excel file. Open it with Google Sheets and choose
-   **File → Save as Google Sheets** (a native Sheet is needed for publishing).
-2. In the Sheet: **File → Share → Publish to web**. Select the **Tree Register** tab, format
-   **Comma-separated values (.csv)**, click **Publish**, and copy the link.
-3. Paste the link into `config.js` as `sheetCsvUrl`, commit and push.
+The website reads the register **live from the pledge web app** (the Apps Script described below), so there
+is no "Publish to web" delay and it always reads the same spreadsheet the pledges are written to.
 
-From then on, edit the sheet and the website follows: it re-checks on load, every
-`refreshMinutes` (default 5) while open, and when you press **Refresh now** on the Tree Register tab.
-Google caches published sheets for a few minutes, so changes may take a little while to appear.
+1. Set up the script as described under *Pledges and verification* below.
+2. In `config.js`, `sheetCsvUrl` is the web-app URL followed by `?action=register`.
+3. `backupCsvUrl` (optional) is a "Publish to web" CSV link of the **Tree Register** tab, used only if the web app
+   cannot be reached. If both fail, the site shows the snapshot in `data/trees.csv`.
 
-If the sheet cannot be reached the site falls back to the snapshot in `data/trees.csv`.
-To refresh that snapshot, download the sheet tab as CSV and replace the file.
+The site re-checks on load, every `refreshMinutes` (default 5) while open, when you return to the tab, and when you
+press **Refresh now** on the Tree Register tab. The line above the register says which source is in use.
+
+After changing `apps-script/pledges.gs`, paste the new code into Apps Script and use
+**Deploy → Manage deployments → ✏️ → Version: New version → Deploy**. The web-app URL stays the same.
 
 ### Pledges and verification (Plus 500 Tree Club)
 
@@ -49,7 +50,7 @@ Set up once, in the Google Sheet:
 2. Run **`setupTriggers`** once and authorise it. This adds the edit trigger, the daily clean-up and the Follow-up dropdown.
 3. **Deploy → New deployment → Web app**; *Execute as:* **Me**, *Who has access:* **Anyone**.
 4. Copy the web-app URL into `pledgeEndpoint` in `config.js`, commit and push.
-5. Publish only the **Tree Register** tab to the web, never **Pledges** or **Status log** (they hold emails).
+5. If you also use "Publish to web" for the backup link, publish only the **Tree Register** tab, never **Pledges** or **Status log** (they hold emails).
 
 With `pledgeEndpoint` empty the form runs in demo mode and saves nothing.
 
