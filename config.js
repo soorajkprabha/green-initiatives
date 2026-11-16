@@ -8,9 +8,9 @@
  * refreshMinutes - how often an open page re-checks the sheet (0 = only on load / Refresh button).
  */
 window.VM33_CONFIG = {
-  sheetCsvUrl: "https://script.google.com/macros/s/AKfycbx5JAUWCZYv9YR7zDkOB7lQ0nmaUUF6clAksE3E5FWM1GYbYuGQfQwCmYXm99b3aHVQ/exec?action=register",
+  sheetCsvUrl: "https://script.google.com/macros/s/AKfycbweGSYTa4YoAABL4niIoSg2_6Z-6cXpZDjK8-oTqZ22wevX7xY8xUDBxmQjI7oKwfU/exec?action=register",
   backupCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSuO0Msiel1wgjwSrLmRIlxShS1anry3emxV5BcnSyHeS2zMptKRxhLilUPhMBC7g/pub?gid=1799749575&single=true&output=csv",
   fallbackCsv: "data/trees.csv",
-  pledgeEndpoint: "https://script.google.com/macros/s/AKfycbx5JAUWCZYv9YR7zDkOB7lQ0nmaUUF6clAksE3E5FWM1GYbYuGQfQwCmYXm99b3aHVQ/exec",
+  pledgeEndpoint: "https://script.google.com/macros/s/AKfycbweGSYTa4YoAABL4niIoSg2_6Z-6cXpZDjK8-oTqZ22wevX7xY8xUDBxmQjI7oKwfU/exec",
   refreshMinutes: 5
 };
