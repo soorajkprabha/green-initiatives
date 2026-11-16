@@ -100,7 +100,7 @@ function doPost(e) {
 function doGet(e) {
   var p = (e && e.parameter) || {};
   if (p.action === 'register') return registerCsv_();
-  if (p.action !== 'confirm') return json_({ ok: true, service: 'VM33 pledge receiver' });
+  if (p.action !== 'confirm') return json_({ ok: true, service: 'VM33 pledge receiver', version: 'register-v2', action: p.action || '' });
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
   try {
