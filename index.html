@@ -971,7 +971,13 @@
   var donateEmailError = document.getElementById("donateEmailError");
   var donateToast = document.getElementById("donateToast");
   var activeDonateRow = null;
-  var pledgedLocally = {}; // tag -> donor text, kept until the sheet itself shows the pledge
+  // Pledges made in this browser, kept for 30 min (or until the published sheet shows them), so a reload
+  // does not flip the tree back to Open while Google's published copy of the sheet is still catching up.
+  var PEND_KEY = "vm33_pending_pledges", PEND_TTL = 30 * 60000;
+  function pendLoad(){ try { var o = JSON.parse(localStorage.getItem(PEND_KEY) || "{}"), n = Date.now(), k;
+    for (k in o) if (!o[k] || n - o[k].ts > PEND_TTL) delete o[k]; return o; } catch (e) { return {}; } }
+  function pendSave(o){ try { localStorage.setItem(PEND_KEY, JSON.stringify(o)); } catch (e) {} }
+  var pledgedLocally = pendLoad(); // tag -> {donor, ts}
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var toastTimer = null;
 
@@ -1044,7 +1050,7 @@
     var shown = isPublic ? (dedication || full) : "Anonymous";
 
     function done(){
-      pledgedLocally[tag] = pledgeUrl ? "" : shown;
+      pledgedLocally[tag] = {donor: pledgeUrl ? "" : shown, ts: Date.now()}; pendSave(pledgedLocally);
       showPledged(row, shown);
       closeDonateModal();
       showToast(pledgeUrl
@@ -1332,13 +1338,16 @@
   var pledgeUrlCfg = !!((CFG.pledgeEndpoint || "").trim());
   var lastSig = "", srcText = document.getElementById("regSourceText"), loading = false;
   function applyTrees(rows, label){
+    var changed = false;
     rows = rows.map(function(r){
-      if (pledgedLocally[r[0]]){
-        if (r[4] === "open") return [r[0], r[1], r[2], r[3], pledgeUrlCfg ? "awaiting" : "pledged", pledgedLocally[r[0]]];
-        delete pledgedLocally[r[0]]; // sheet has caught up
+      var pl = pledgedLocally[r[0]];
+      if (pl){
+        if (r[4] === "open" && Date.now() - pl.ts < PEND_TTL) return [r[0], r[1], r[2], r[3], pledgeUrlCfg ? "awaiting" : "pledged", pl.donor];
+        delete pledgedLocally[r[0]]; changed = true; // sheet has caught up (or the hold expired)
       }
       return r;
     });
+    if (changed) pendSave(pledgedLocally);
     var sig = rows.length + "|" + rows.map(function(r){ return r.join("\u0001"); }).join("\u0002");
     if (sig !== lastSig){
       lastSig = sig; DATA.trees = rows;
@@ -1353,7 +1362,7 @@
     if (loading) return Promise.resolve(); loading = true;
     var live = (CFG.sheetCsvUrl || "").trim(), snap = CFG.fallbackCsv || "data/trees.csv";
     var p = live
-      ? fetchText(live).then(function(t){ applyTrees(treesFromCSV(t), "Live from Google Sheet"); })
+      ? fetchText(live + (live.indexOf("?") >= 0 ? "&" : "?") + "_=" + Date.now()).then(function(t){ applyTrees(treesFromCSV(t), "Live from Google Sheet"); })
           .catch(function(){ return fetchText(snap).then(function(t){ applyTrees(treesFromCSV(t), "Sheet unreachable \u2014 showing saved snapshot"); }); })
       : fetchText(snap).then(function(t){ applyTrees(treesFromCSV(t), "Saved snapshot (no live sheet connected)"); });
     return p.catch(function(err){ if (srcText) srcText.textContent = "Could not load tree data (" + err.message + ")"; })
