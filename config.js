@@ -9,6 +9,6 @@
 window.VM33_CONFIG = {
   sheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSuO0Msiel1wgjwSrLmRIlxShS1anry3emxV5BcnSyHeS2zMptKRxhLilUPhMBC7g/pub?gid=1799749575&single=true&output=csv",
   fallbackCsv: "data/trees.csv",
-  pledgeEndpoint: "",
+  pledgeEndpoint: "https://script.google.com/macros/s/AKfycbx5JAUWCZYv9YR7zDkOB7lQ0nmaUUF6clAksE3E5FWM1GYbYuGQfQwCmYXm99b3aHVQ/exec",
   refreshMinutes: 5
 };
