@@ -1,0 +1,31 @@
+/* Sustainability dashboard (data from the VAST Green Campus audits and institution records) */
+.dash .dnote{color:var(--muted); font-size:.9rem; max-width:70ch}
+.dash .dgrid4{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:22px 0}
+@media (max-width:1000px){ .dash .dgrid4{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:520px){ .dash .dgrid4{grid-template-columns:1fr} }
+.dash .dcard{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 16px 10px; box-shadow:var(--shadow); min-width:0}
+.dash .dcard h4{font-size:.98rem}
+.dash .dcard .dsub{font-size:.76rem; color:var(--muted-2); margin:2px 0 6px}
+.dash .dchart{width:100%; height:230px}
+.dash .dchart.tall{height:340px}
+.dash h3.dh{font-size:1.35rem; margin:34px 0 8px}
+.dash .drow{display:flex; flex-wrap:wrap; gap:12px 16px; align-items:center; margin:12px 0}
+.dash .dsearch{font:inherit; font-size:.92rem; padding:10px 14px; border-radius:10px; border:1px solid var(--line-strong); background:var(--surface); color:var(--fg); min-width:220px; flex:1; max-width:340px}
+.dash .dchk{display:inline-flex; align-items:center; gap:6px; font-size:.78rem; color:var(--muted)}
+.dash .dtag{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.66rem; letter-spacing:.02em; padding:2px 9px; border-radius:999px; white-space:nowrap; background:var(--accent-soft); color:var(--accent-strong)}
+.dash .dtag.update{background:#dbe5f1; color:#2e5a9e}
+.dash .dtag.derived{background:var(--surface-2); color:var(--muted)}
+.dash .dtag.estimate{background:var(--gold-soft); color:var(--gold)}
+.dash .dtag.proposed, .dash .dtag.target{background:var(--rust-soft); color:var(--rust)}
+.dash .dtag.none{background:transparent; color:var(--muted); border:1px dashed var(--line-strong)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .dash .dtag.update{background:#1c2c3c; color:#8db4e0} }
+:root[data-theme="dark"] .dash .dtag.update{background:#1c2c3c; color:#8db4e0}
+.dash table.dirtbl{min-width:700px}
+.dash td.n, .dash th.n{text-align:right; font-family:'IBM Plex Mono',monospace; font-variant-numeric:tabular-nums}
+.dash .dflag{display:inline-block; margin-left:6px; color:var(--gold); cursor:help; font-size:.8rem}
+.dash .dsrc{font-size:.76rem; color:var(--muted)}
+.dash select{font:inherit; font-size:.9rem; padding:9px 12px; border-radius:10px; border:1px solid var(--line-strong); background:var(--surface); color:var(--fg)}
+.dash label.dfield{display:flex; flex-direction:column; gap:4px; font-size:.76rem; color:var(--muted)}
+.dash .dempty{padding:24px; text-align:center; color:var(--muted); font-size:.92rem}
+.dash .dsum{font-size:.88rem; color:var(--muted); margin:6px 0 10px}
+.dash .dsum b{color:var(--fg)}

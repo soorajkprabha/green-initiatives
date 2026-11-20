@@ -347,6 +347,7 @@
       <a href="#initiatives">Initiatives</a>
       <a href="#vegetation">Vegetation</a>
       <a href="#register">Tree Register</a>
+      <a href="#dashboard">Dashboard</a>
       <a href="#impact">Impact</a>
       <a href="#about">About Us</a>
     </nav>
@@ -663,6 +664,17 @@
   </div>
 </section>
 
+<section class="page dash" id="dashboard" data-tab="dashboard">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><b>VIDYA MISSION 33</b><span class="sep">|</span><span>VAST TCR</span><span class="sep">|</span><span>GREEN CAMPUS</span><span class="sep">|</span><span class="cur">Sustainability Dashboard</span></div>
+      <h2>Every headline indicator in one place</h2>
+      <p class="dek">Emissions, solar, energy and biodiversity indicators from the 2024&ndash;25 green, energy and environment audits and the institution&rsquo;s own records, each with its unit, class and source.</p>
+    </div>
+    <div id="dashRoot">Loading dashboard&hellip;</div>
+  </div>
+</section>
+
 <section class="page" id="impact" data-tab="impact">
   <div class="wrap">
     <div class="section-head reveal">
@@ -795,8 +807,11 @@
 </footer>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="config.js"></script>
+<script src="js/dashboard.js"></script>
 <script>
 (function(){
   "use strict";
@@ -1389,7 +1404,7 @@
   navbtn.addEventListener("click", function(){ navlinks.classList.toggle("open"); });
 
   // tabs: each nav link shows its own page, hides the rest
-  var TABS = ["facts","vision","zones","initiatives","vegetation","register","impact","about"];
+  var TABS = ["facts","vision","zones","initiatives","vegetation","register","dashboard","impact","about"];
   var navLinkMap = {};
   navlinks.querySelectorAll("a").forEach(function(a){ navLinkMap[a.getAttribute("href").slice(1)] = a; });
   var pagesByTab = {};
@@ -1405,6 +1420,7 @@
     navlinks.classList.remove("open");
     if (push !== false && location.hash.slice(1) !== tab) history.pushState(null, "", "#" + tab);
     var first = pagesByTab[tab][0];
+    if (tab === "dashboard" && window.VM33Dashboard) window.VM33Dashboard.show();
     if (scroll && first) first.scrollIntoView({block:"start"});
   }
 
