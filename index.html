@@ -288,7 +288,7 @@
   .modal h3{font-size:1.3rem; margin-bottom:4px}
   .modal .modal-dek{font-size:.86rem; color:var(--muted); margin-bottom:16px}
   .modal-close{position:absolute; top:16px; right:16px; width:30px; height:30px; border-radius:50%; background:var(--surface-2); border:none; font-size:1.1rem; line-height:1; color:var(--muted); cursor:pointer}
-  .pay-box{display:flex; gap:16px; align-items:center; background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:14px; margin:-8px 0 20px}
+  .pay-box{display:flex; gap:16px; align-items:center; background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:14px; margin:6px 0 18px}
   .pay-box[hidden]{display:none}
   .pay-qr{width:164px; height:164px; flex:none; background:#fff; border-radius:8px; padding:6px; border:1px solid var(--line)}
   .step-label{font:600 .74rem 'IBM Plex Mono',monospace; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:0 0 12px}
@@ -774,17 +774,8 @@
     <h3 id="donateModalTitle">Sponsor a Tree</h3>
     <p class="modal-dek" id="donateDek">Pledge to plant and dedicate this tree as part of the Plus 500 Tree Club.</p>
     <div class="tree-context" id="donateTreeContext"></div>
-    <div class="pay-box" id="donatePay" hidden>
-      <img class="pay-qr" id="donatePayQr" alt="UPI QR code for paying the tree contribution" width="164" height="164">
-      <div class="pay-text">
-        <h4>Step 1. Pay Rs <span id="donatePayAmt"></span> by UPI</h4>
-        <p>Scan with any UPI app (Google Pay, PhonePe, Paytm, BHIM). Put the tree number <b id="donatePayTag"></b> in the payment note. After paying, note the 12-digit UPI reference number from your app.</p>
-        <a class="pay-link" id="donatePayLink" href="#">Pay with your UPI app</a>
-        <p>The payee name shows as &ldquo;Merchant&rdquo;. Your pledge is confirmed automatically once the payment is verified.</p>
-      </div>
-    </div>
     <form id="donateForm" novalidate>
-      <p class="step-label">Step 2. Your details</p>
+      <p class="step-label">Step 1. Your details</p>
       <div class="form-group">
         <span class="group-label">Name</span><span class="required-tag">(Required)</span>
         <div class="form-row">
@@ -801,17 +792,26 @@
         </div>
         <p class="form-error" id="donateEmailError">Please enter a valid email, and make sure both match.</p>
       </div>
-      <div class="form-group" id="donateRefGroup">
-        <span class="group-label">UPI reference number</span><span class="required-tag">(Required)</span>
-        <div class="form-row" style="grid-template-columns:1fr"><div><label for="donateRef">12 digits, shown in your UPI app after you pay</label><input type="text" id="donateRef" inputmode="numeric" maxlength="16" autocomplete="off"></div></div>
-        <p class="form-error" id="donateRefError">Please enter the 12-digit UPI reference number from your payment.</p>
-      </div>
       <div class="form-group">
         <span class="group-label">Dedication</span> <span style="color:var(--muted-2); font-size:.76rem">(optional)</span>
         <div class="form-row" style="grid-template-columns:1fr"><div><label for="donateDedication">e.g. "In memory of Sri K. Raghavan" or "CSE Batch of 2019"</label><input type="text" id="donateDedication" maxlength="120"></div></div>
         <label style="display:flex; gap:8px; align-items:center; margin-top:12px; font-size:.84rem; color:var(--muted)"><input type="checkbox" id="donatePublic" checked> Show my name (or dedication) on the public register</label>
       </div>
       <div style="position:absolute; left:-9999px" aria-hidden="true"><label>Website <input type="text" id="donateWebsite" tabindex="-1" autocomplete="off"></label></div>
+      <div class="pay-box" id="donatePay" hidden>
+        <img class="pay-qr" id="donatePayQr" alt="UPI QR code for paying the tree contribution" width="164" height="164">
+        <div class="pay-text">
+          <h4>Step 2. Pay Rs <span id="donatePayAmt"></span> by UPI</h4>
+          <p>Scan with any UPI app (Google Pay, PhonePe, Paytm, BHIM). Put the tree number <b id="donatePayTag"></b> in the payment note. After paying, enter the 12-digit UPI reference number from your app below.</p>
+          <a class="pay-link" id="donatePayLink" href="#">Pay with your UPI app</a>
+          <p>The payee name shows as &ldquo;Merchant&rdquo;. Your pledge is confirmed automatically once the payment is verified.</p>
+        </div>
+      </div>
+      <div class="form-group" id="donateRefGroup">
+        <span class="group-label">UPI reference number</span><span class="required-tag">(Required)</span>
+        <div class="form-row" style="grid-template-columns:1fr"><div><label for="donateRef">12 digits, shown in your UPI app after you pay</label><input type="text" id="donateRef" inputmode="numeric" maxlength="16" autocomplete="off"></div></div>
+        <p class="form-error" id="donateRefError">Please enter the 12-digit UPI reference number from your payment.</p>
+      </div>
       <p class="form-error" id="donateServerError"></p>
       <div class="modal-actions">
         <button type="button" class="btn-secondary" id="donateCancel">Cancel</button>
@@ -835,7 +835,7 @@
 <link rel="stylesheet" href="css/dashboard.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="config.js"></script>
+<script>document.write('<script src="config.js?v=' + Date.now() + '"><\/script>');</script>
 <script src="js/dashboard.js"></script>
 <script>
 (function(){
@@ -1074,7 +1074,7 @@
   var donateSubmit = document.getElementById("donateSubmit");
   var pledgeUrl = ((window.VM33_CONFIG || {}).pledgeEndpoint || "").trim();
   donateDek.textContent = pledgeUrl
-    ? "Pledge to plant and dedicate this tree. Pay the contribution by UPI, then enter your details. Once your payment is verified the tree shows Pledged and is slated for planting."
+    ? "Pledge to plant and dedicate this tree. Enter your details, pay the contribution by UPI, and add the payment reference. Once your payment is verified the tree shows Pledged and is slated for planting."
     : "Pledge to plant and dedicate this tree. Demo mode: no pledge service is connected, so nothing is saved.";
 
   function showPledged(row, donor, verified){
