@@ -289,7 +289,9 @@
   .modal .modal-dek{font-size:.86rem; color:var(--muted); margin-bottom:16px}
   .modal-close{position:absolute; top:16px; right:16px; width:30px; height:30px; border-radius:50%; background:var(--surface-2); border:none; font-size:1.1rem; line-height:1; color:var(--muted); cursor:pointer}
   .pay-box{display:flex; gap:16px; align-items:center; background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:14px; margin:-8px 0 20px}
+  .pay-box[hidden]{display:none}
   .pay-qr{width:164px; height:164px; flex:none; background:#fff; border-radius:8px; padding:6px; border:1px solid var(--line)}
+  .step-label{font:600 .74rem 'IBM Plex Mono',monospace; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:0 0 12px}
   .pay-text h4{font-size:.98rem; margin-bottom:4px}
   .pay-text p{font-size:.8rem; color:var(--muted); margin:0 0 6px; line-height:1.45}
   .pay-text p b{color:var(--fg); font-family:'IBM Plex Mono',monospace; font-weight:600}
@@ -565,7 +567,7 @@
         <div class="vcard">
           <h4>Trees in each zone</h4>
           <p class="hint">Bar length = number of trees; colours show register status.</p>
-          <div class="vlegend"><span><i style="background:var(--accent)"></i>Dedicated</span><span><i style="background:#3b74b5"></i>Pledged</span><span><i style="background:var(--gold-soft); border:1px solid var(--gold)"></i>Awaiting verification</span><span><i style="background:var(--gold)"></i>Pending audit</span><span><i style="background:var(--muted-2)"></i>Open</span></div>
+          <div class="vlegend"><span><i style="background:var(--accent)"></i>Dedicated</span><span><i style="background:#3b74b5"></i>Pledged</span><span><i style="background:var(--gold-soft); border:1px solid var(--gold)"></i>Payment pending</span><span><i style="background:var(--gold)"></i>Pending audit</span><span><i style="background:var(--muted-2)"></i>Open</span></div>
           <div id="vZones"></div>
         </div>
         <div class="vcard">
@@ -635,7 +637,7 @@
       <b class="ttl">About this register</b>
       <ul>
         <li>Tag No. — the unique accession tag fixed to each tree once it is surveyed</li>
-        <li><strong>Open</strong> — a planting slot identified, not yet sponsored; <strong>Pledged</strong> — a Trustee, alumnus, student or well-wisher has committed to it; <strong>Dedicated</strong> — planted and formally dedicated; <strong>Awaiting verification</strong> — someone has pledged the tree; the donor must confirm by email and the Green Campus Committee must approve it before it shows as Pledged; <strong>Pending audit</strong> — already standing, awaiting the next environmental audit</li>
+        <li><strong>Open</strong> — a planting slot identified, not yet sponsored; <strong>Pledged</strong> — a Trustee, alumnus, student or well-wisher has committed to it; <strong>Dedicated</strong> — planted and formally dedicated; <strong>Payment pending</strong> — a donor has reserved the tree and the payment is being verified; it shows as Pledged once the payment is matched; <strong>Pending audit</strong> — already standing, awaiting the next environmental audit</li>
         <li>Figures below are placeholders only, shown to demonstrate the format — not a real inventory</li>
         <li>The real register will carry one row per tree across all <span data-bind="treeProjected">1,446</span> trees once the Plus 500 Tree Club planting and the accessioning survey are complete</li>
       </ul>
@@ -775,13 +777,14 @@
     <div class="pay-box" id="donatePay" hidden>
       <img class="pay-qr" id="donatePayQr" alt="UPI QR code for paying the tree contribution" width="164" height="164">
       <div class="pay-text">
-        <h4>Pay Rs <span id="donatePayAmt"></span> by UPI</h4>
-        <p>Scan with any UPI app (Google Pay, PhonePe, Paytm, BHIM). Put the tree number <b id="donatePayTag"></b> in the payment note, then submit your pledge below.</p>
+        <h4>Step 1. Pay Rs <span id="donatePayAmt"></span> by UPI</h4>
+        <p>Scan with any UPI app (Google Pay, PhonePe, Paytm, BHIM). Put the tree number <b id="donatePayTag"></b> in the payment note. After paying, note the 12-digit UPI reference number from your app.</p>
         <a class="pay-link" id="donatePayLink" href="#">Pay with your UPI app</a>
-        <p>The payee name shows as &ldquo;Merchant&rdquo;. Your pledge is confirmed once the team has verified the payment.</p>
+        <p>The payee name shows as &ldquo;Merchant&rdquo;. Your pledge is confirmed automatically once the payment is verified.</p>
       </div>
     </div>
     <form id="donateForm" novalidate>
+      <p class="step-label">Step 2. Your details</p>
       <div class="form-group">
         <span class="group-label">Name</span><span class="required-tag">(Required)</span>
         <div class="form-row">
@@ -797,6 +800,11 @@
           <div><label for="donateEmailConfirm">Confirm Email</label><input type="email" id="donateEmailConfirm" autocomplete="email"></div>
         </div>
         <p class="form-error" id="donateEmailError">Please enter a valid email, and make sure both match.</p>
+      </div>
+      <div class="form-group" id="donateRefGroup">
+        <span class="group-label">UPI reference number</span><span class="required-tag">(Required)</span>
+        <div class="form-row" style="grid-template-columns:1fr"><div><label for="donateRef">12 digits, shown in your UPI app after you pay</label><input type="text" id="donateRef" inputmode="numeric" maxlength="16" autocomplete="off"></div></div>
+        <p class="form-error" id="donateRefError">Please enter the 12-digit UPI reference number from your payment.</p>
       </div>
       <div class="form-group">
         <span class="group-label">Dedication</span> <span style="color:var(--muted-2); font-size:.76rem">(optional)</span>
@@ -865,7 +873,7 @@
     trees: [] // loaded from the Google Sheet / data/trees.csv at runtime (see config.js)
   };
 
-  var STATUS_LABEL = {pending:"Pending audit", pledged:"Pledged", open:"Open", dedicated:"Dedicated", awaiting:"Awaiting verification"};
+  var STATUS_LABEL = {pending:"Pending audit", pledged:"Pledged", open:"Open", dedicated:"Dedicated", awaiting:"Payment pending"};
 
   var grid = document.getElementById("initGrid");
   DATA.initiatives.forEach(function(it){
@@ -1015,6 +1023,8 @@
   // UPI payment block: QR image plus a tap-to-pay link for phones (both configured in config.js)
   function showPaymentBox(tag){
     var box = document.getElementById("donatePay"), cfg = window.VM33_CONFIG || {};
+    document.getElementById("donateRefGroup").hidden = !(cfg.paymentQr && cfg.upiLink);
+    donateRefError.classList.remove("show");
     if (!cfg.paymentQr || !cfg.upiLink){ box.hidden = true; return; }
     var q = new URLSearchParams(cfg.upiLink.split("?")[1] || ""), amt = parseFloat(q.get("am"));
     document.getElementById("donatePayQr").src = cfg.paymentQr;
@@ -1059,20 +1069,21 @@
   var donateDedication = document.getElementById("donateDedication");
   var donatePublic = document.getElementById("donatePublic");
   var donateWebsite = document.getElementById("donateWebsite");
+  var donateRef = document.getElementById("donateRef"), donateRefError = document.getElementById("donateRefError");
   var donateServerError = document.getElementById("donateServerError");
   var donateSubmit = document.getElementById("donateSubmit");
   var pledgeUrl = ((window.VM33_CONFIG || {}).pledgeEndpoint || "").trim();
   donateDek.textContent = pledgeUrl
-    ? "Pledge to plant and dedicate this tree as part of the Plus 500 Tree Club. We will email you a link to confirm the pledge, and the Green Campus Committee then verifies it before it appears as Pledged."
-    : "Pledge to plant and dedicate this tree as part of the Plus 500 Tree Club. Demo mode: no pledge service is connected, so nothing is saved.";
+    ? "Pledge to plant and dedicate this tree. Pay the contribution by UPI, then enter your details. Once your payment is verified the tree shows Pledged and is slated for planting."
+    : "Pledge to plant and dedicate this tree. Demo mode: no pledge service is connected, so nothing is saved.";
 
-  function showPledged(row, donor){
-    var live = !!pledgeUrl;
-    row.querySelector(".status-cell").innerHTML = live
-      ? '<span class="status-pill awaiting">Awaiting verification</span>'
+  function showPledged(row, donor, verified){
+    var live = !!pledgeUrl, pending = live && !verified;
+    row.querySelector(".status-cell").innerHTML = pending
+      ? '<span class="status-pill awaiting">Payment pending</span>'
       : '<span class="status-pill pledged">Pledged</span>';
     var dc = row.querySelector(".donor-cell");
-    if (dc) dc.innerHTML = donorCellHTML(live ? "" : donor);
+    if (dc) dc.innerHTML = donorCellHTML(pending ? "" : donor);
     updateProgress();
   }
 
@@ -1082,9 +1093,12 @@
     var nameOk = donateFirst.value.trim() !== "" && donateLast.value.trim() !== "";
     var e1 = donateEmail.value.trim(), e2 = donateEmailConfirm.value.trim();
     var emailOk = EMAIL_RE.test(e1) && e1.toLowerCase() === e2.toLowerCase();
+    var needRef = !document.getElementById("donateRefGroup").hidden;
+    var ref = donateRef.value.replace(/\s+/g, ""), refOk = !needRef || /^\d{12}$/.test(ref);
     donateNameError.classList.toggle("show", !nameOk);
     donateEmailError.classList.toggle("show", !emailOk);
-    if (!nameOk || !emailOk || !activeDonateRow) return;
+    donateRefError.classList.toggle("show", !refOk);
+    if (!nameOk || !emailOk || !refOk || !activeDonateRow) return;
     if (donateWebsite.value) return; // honeypot: bots fill hidden fields
 
     var row = activeDonateRow, tag = row.dataset.tag;
@@ -1092,24 +1106,26 @@
     var dedication = donateDedication.value.trim(), isPublic = donatePublic.checked;
     var shown = isPublic ? (dedication || full) : "Anonymous";
 
-    function done(){
-      pledgedLocally[tag] = {donor: pledgeUrl ? "" : shown, ts: Date.now()}; pendSave(pledgedLocally);
-      showPledged(row, shown);
+    function done(verified){
+      pledgedLocally[tag] = {donor: (pledgeUrl && !verified) ? "" : shown, ts: Date.now(), verified: !!verified}; pendSave(pledgedLocally);
+      showPledged(row, shown, verified);
       closeDonateModal();
-      showToast(pledgeUrl
-        ? "Thank you, " + first + " \u2014 please check your email for a link to confirm the pledge for " + tag + ". It is shown as Awaiting verification until then."
-        : "Thank you, " + first + " \u2014 your pledge for " + tag + " has been noted on this page. (Demo only: not actually saved.)");
+      showToast(!pledgeUrl
+        ? "Thank you, " + first + " \u2014 your pledge for " + tag + " has been noted on this page. (Demo only: not actually saved.)"
+        : verified
+          ? "Thank you, " + first + " \u2014 your payment is verified and " + tag + " is pledged. It will be planted in the next planting season."
+          : "Thank you, " + first + " \u2014 " + tag + " is reserved for you. It shows as Pledged as soon as your payment is verified.");
     }
-    if (!pledgeUrl){ done(); return; }
+    if (!pledgeUrl){ done(false); return; }
 
     donateSubmit.disabled = true; donateSubmit.textContent = "Sending\u2026";
     var body = new URLSearchParams();
     body.set("tag", tag); body.set("name", full); body.set("email", e1);
-    body.set("dedication", dedication); body.set("public", isPublic ? "1" : "0");
+    body.set("dedication", dedication); body.set("public", isPublic ? "1" : "0"); body.set("ref", ref);
     fetch(pledgeUrl, {method:"POST", body:body})
       .then(function(r){ return r.json(); })
       .then(function(res){
-        if (res && res.ok) done();
+        if (res && res.ok) done(!!res.verified);
         else { donateServerError.textContent = (res && res.error) || "Sorry, the pledge could not be saved."; donateServerError.classList.add("show"); if (res && res.taken){ loadTrees(); } }
       })
       .catch(function(){
@@ -1312,7 +1328,7 @@
       var z = zones[k], nsp = Object.keys(z.sp).length;
       var b = row(k + " \u00b7 " + (zoneNames[k] || ""), nsp + " species", z.n,
         [["dedicated", z.dedicated], ["pledged", z.pledged], ["awaiting", z.awaiting], ["pending", z.pending], ["open", z.open]], 100 / zMax, function(){ goRegister(k, ""); });
-      b.title = z.n + " trees (" + z.dedicated + " dedicated, " + z.pledged + " pledged, " + z.awaiting + " awaiting verification, " + z.pending + " pending audit, " + z.open + " open)";
+      b.title = z.n + " trees (" + z.dedicated + " dedicated, " + z.pledged + " pledged, " + z.awaiting + " payment pending, " + z.pending + " pending audit, " + z.open + " open)";
       zWrap.appendChild(b);
     });
 
@@ -1334,7 +1350,7 @@
 
   // ---------- data loading: Google Sheet (CSV) with bundled snapshot fallback ----------
   var CFG = window.VM33_CONFIG || {};
-  var STATUS_KEY = {"dedicated":"dedicated", "pledged":"pledged", "open":"open", "pending audit":"pending", "pending":"pending", "awaiting verification":"awaiting", "awaiting":"awaiting"};
+  var STATUS_KEY = {"dedicated":"dedicated", "pledged":"pledged", "open":"open", "pending audit":"pending", "pending":"pending", "payment pending":"awaiting", "awaiting verification":"awaiting", "awaiting":"awaiting"};
   function parseCSV(text){
     var rows = [], row = [], f = "", q = false, i = 0, c;
     text = text.replace(/^\ufeff/, "");
@@ -1385,7 +1401,7 @@
     rows = rows.map(function(r){
       var pl = pledgedLocally[r[0]];
       if (pl){
-        if (r[4] === "open" && Date.now() - pl.ts < PEND_TTL) return [r[0], r[1], r[2], r[3], pledgeUrlCfg ? "awaiting" : "pledged", pl.donor];
+        if (r[4] === "open" && Date.now() - pl.ts < PEND_TTL) return [r[0], r[1], r[2], r[3], (pledgeUrlCfg && !pl.verified) ? "awaiting" : "pledged", pl.donor];
         delete pledgedLocally[r[0]]; changed = true; // sheet has caught up (or the hold expired)
       }
       return r;
