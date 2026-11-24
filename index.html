@@ -288,6 +288,14 @@
   .modal h3{font-size:1.3rem; margin-bottom:4px}
   .modal .modal-dek{font-size:.86rem; color:var(--muted); margin-bottom:16px}
   .modal-close{position:absolute; top:16px; right:16px; width:30px; height:30px; border-radius:50%; background:var(--surface-2); border:none; font-size:1.1rem; line-height:1; color:var(--muted); cursor:pointer}
+  .pay-box{display:flex; gap:16px; align-items:center; background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:14px; margin:-8px 0 20px}
+  .pay-qr{width:164px; height:164px; flex:none; background:#fff; border-radius:8px; padding:6px; border:1px solid var(--line)}
+  .pay-text h4{font-size:.98rem; margin-bottom:4px}
+  .pay-text p{font-size:.8rem; color:var(--muted); margin:0 0 6px; line-height:1.45}
+  .pay-text p b{color:var(--fg); font-family:'IBM Plex Mono',monospace; font-weight:600}
+  .pay-link{display:inline-block; margin:2px 0 8px; font:600 .74rem 'IBM Plex Mono',monospace; letter-spacing:.03em; text-transform:uppercase; background:var(--accent); color:#fff; text-decoration:none; padding:8px 12px; border-radius:9px}
+  @media (hover:hover) and (pointer:fine){ .pay-link{display:none} }
+  @media (max-width:520px){ .pay-box{flex-direction:column; align-items:flex-start} }
   .tree-context{background:var(--accent-soft); color:var(--accent-strong); border-radius:10px; padding:12px 14px; font-size:.84rem; margin-bottom:22px; font-family:'IBM Plex Mono',monospace}
   .form-group{margin-bottom:20px}
   .group-label{font-family:'Archivo',sans-serif; font-weight:700; font-size:.92rem}
@@ -764,6 +772,15 @@
     <h3 id="donateModalTitle">Sponsor a Tree</h3>
     <p class="modal-dek" id="donateDek">Pledge to plant and dedicate this tree as part of the Plus 500 Tree Club.</p>
     <div class="tree-context" id="donateTreeContext"></div>
+    <div class="pay-box" id="donatePay" hidden>
+      <img class="pay-qr" id="donatePayQr" alt="UPI QR code for paying the tree contribution" width="164" height="164">
+      <div class="pay-text">
+        <h4>Pay Rs <span id="donatePayAmt"></span> by UPI</h4>
+        <p>Scan with any UPI app (Google Pay, PhonePe, Paytm, BHIM). Put the tree number <b id="donatePayTag"></b> in the payment note, then submit your pledge below.</p>
+        <a class="pay-link" id="donatePayLink" href="#">Pay with your UPI app</a>
+        <p>The payee name shows as &ldquo;Merchant&rdquo;. Your pledge is confirmed once the team has verified the payment.</p>
+      </div>
+    </div>
     <form id="donateForm" novalidate>
       <div class="form-group">
         <span class="group-label">Name</span><span class="required-tag">(Required)</span>
@@ -995,6 +1012,17 @@
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var toastTimer = null;
 
+  // UPI payment block: QR image plus a tap-to-pay link for phones (both configured in config.js)
+  function showPaymentBox(tag){
+    var box = document.getElementById("donatePay"), cfg = window.VM33_CONFIG || {};
+    if (!cfg.paymentQr || !cfg.upiLink){ box.hidden = true; return; }
+    var q = new URLSearchParams(cfg.upiLink.split("?")[1] || ""), amt = parseFloat(q.get("am"));
+    document.getElementById("donatePayQr").src = cfg.paymentQr;
+    document.getElementById("donatePayAmt").textContent = isNaN(amt) ? "" : amt.toLocaleString("en-IN");
+    document.getElementById("donatePayTag").textContent = tag;
+    document.getElementById("donatePayLink").href = cfg.upiLink + "&tn=" + encodeURIComponent("Tree " + tag);
+    box.hidden = false;
+  }
   function openDonateModal(row){
     activeDonateRow = row;
     donateContext.textContent = row.dataset.tag + " — " + row.dataset.local + " (" + row.dataset.botanical + "), Zone " + row.dataset.zone;
@@ -1002,6 +1030,7 @@
     donateNameError.classList.remove("show");
     donateEmailError.classList.remove("show");
     donateServerError.classList.remove("show");
+    showPaymentBox(row.dataset.tag);
     donateModal.hidden = false;
     donateFirst.focus();
   }

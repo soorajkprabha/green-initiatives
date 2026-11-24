@@ -52,6 +52,8 @@ Set up once, in the Google Sheet:
 4. Copy the web-app URL into `pledgeEndpoint` in `config.js`, commit and push.
 5. If you also use "Publish to web" for the backup link, publish only the **Tree Register** tab, never **Pledges** or **Status log** (they hold emails).
 
+**Payment QR.** The pledge form shows a UPI QR code (`images/payment-upi-qr.png`) with a tap-to-pay link for phones that adds the tree number as the payment note. Both come from `paymentQr` and `upiLink` in `config.js`; the amount shown is read from `upiLink`. If the payee, account or amount changes, replace the image **and** the link together and check that the QR scans to the same details. Leave either empty to hide the payment block. The QR is a static UPI code, so a payment is matched to a pledge by the tree number in the payment note, checked against the bank statement.
+
 With `pledgeEndpoint` empty the form runs in demo mode and saves nothing.
 
 ### Notes
