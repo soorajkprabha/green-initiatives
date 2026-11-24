@@ -802,15 +802,15 @@
         <img class="pay-qr" id="donatePayQr" alt="UPI QR code for paying the tree contribution" width="164" height="164">
         <div class="pay-text">
           <h4>Step 2. Pay Rs <span id="donatePayAmt"></span> by UPI</h4>
-          <p>Scan with any UPI app (Google Pay, PhonePe, Paytm, BHIM). Put the tree number <b id="donatePayTag"></b> in the payment note. After paying, enter the 12-digit UPI reference number from your app below.</p>
+          <p>Scan with any UPI app (Google Pay, PhonePe, Paytm, BHIM). Put the tree number <b id="donatePayTag"></b> in the payment note. After paying, enter the last 4 digits of the UPI reference number from your app below.</p>
           <a class="pay-link" id="donatePayLink" href="#">Pay with your UPI app</a>
           <p>The payee name shows as &ldquo;Merchant&rdquo;. Your pledge is confirmed automatically once the payment is verified.</p>
         </div>
       </div>
       <div class="form-group" id="donateRefGroup">
-        <span class="group-label">UPI reference number</span><span class="required-tag">(Required)</span>
-        <div class="form-row" style="grid-template-columns:1fr"><div><label for="donateRef">12 digits, shown in your UPI app after you pay</label><input type="text" id="donateRef" inputmode="numeric" maxlength="16" autocomplete="off"></div></div>
-        <p class="form-error" id="donateRefError">Please enter the 12-digit UPI reference number from your payment.</p>
+        <span class="group-label">Last 4 digits of the UPI reference number</span><span class="required-tag">(Required)</span>
+        <div class="form-row" style="grid-template-columns:1fr"><div><label for="donateRef">Shown in your UPI app after you pay (also called UTR or transaction ID)</label><input type="text" id="donateRef" inputmode="numeric" maxlength="4" autocomplete="off" style="max-width:9rem" placeholder="1234"></div></div>
+        <p class="form-error" id="donateRefError">Please enter the last 4 digits of the UPI reference number from your payment.</p>
       </div>
       <p class="form-error" id="donateServerError"></p>
       <div class="modal-actions">
@@ -1094,7 +1094,7 @@
     var e1 = donateEmail.value.trim(), e2 = donateEmailConfirm.value.trim();
     var emailOk = EMAIL_RE.test(e1) && e1.toLowerCase() === e2.toLowerCase();
     var needRef = !document.getElementById("donateRefGroup").hidden;
-    var ref = donateRef.value.replace(/\s+/g, ""), refOk = !needRef || /^\d{12}$/.test(ref);
+    var ref = donateRef.value.replace(/\s+/g, ""), refOk = !needRef || /^\d{4}$/.test(ref);
     donateNameError.classList.toggle("show", !nameOk);
     donateEmailError.classList.toggle("show", !emailOk);
     donateRefError.classList.toggle("show", !refOk);

@@ -1,10 +1,13 @@
 /**
  * Online tree pledges for the Green Campus website (policy v0.2, section 4.3).
  *
- *   1. The donor picks an available tree, pays by UPI, and submits the form with the UPI reference number.
- *      The tree shows "Payment pending" (reserved) and no name is shown yet.
- *   2. The script looks for that payment in the "Payments" tab. When it finds the reference with the full
- *      amount, the tree shows "Pledged" with the donor's chosen name or dedication, and is slated for planting.
+ *   1. The donor picks an available tree, pays by UPI, and submits the form with the LAST 4 DIGITS of the UPI
+ *      reference number. The tree shows "Payment pending" (reserved) and no name is shown yet.
+ *   2. The script looks for that payment in the "Payments" tab: a payment of at least the contribution whose
+ *      reference ends in those digits, dated close to the pledge. It verifies only when exactly ONE payment and
+ *      ONE pending pledge fit, since 4 digits can collide. Then the tree shows "Pledged" with the donor's chosen
+ *      name or dedication, and is slated for planting. If it is ambiguous the pledge stays pending with a note;
+ *      staff resolve it by typing the full 12-digit reference into the pledge's "UPI ref" cell.
  *      No email confirmation, no committee approval.
  *   3. After planting, the planting team sets the tree's Status in the Tree Register to "Dedicated".
  *
@@ -60,7 +63,7 @@ function doPost(e) {
 function doGet(e) {
   var p = (e && e.parameter) || {};
   if (p.action === 'register') return registerCsv_();
-  return json_({ ok: true, service: 'VM33 pledge receiver', version: 'online-v3', action: p.action || '' });
+  return json_({ ok: true, service: 'VM33 pledge receiver', version: 'online-v4', action: p.action || '' });
 }
 
 function newPledge_(p) {
@@ -69,8 +72,8 @@ function newPledge_(p) {
   if (!tag || !name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { ok: false, error: 'Please check your name and email address.' };
   }
-  if (!/^\d{12}$/.test(ref)) {
-    return { ok: false, error: 'Please enter the 12-digit UPI reference number from your payment.' };
+  if (!/^(\d{4}|\d{12})$/.test(ref)) {
+    return { ok: false, error: 'Please enter the last 4 digits of the UPI reference number from your payment.' };
   }
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var reg = registerInfo_(ss);
@@ -84,7 +87,7 @@ function newPledge_(p) {
   var sheet = pledgeSheet_(ss), data = sheet.getDataRange().getValues(), mine = 0;
   for (var i = 1; i < data.length; i++) {
     var live = String(data[i][8]) !== RELEASED;
-    if (live && digits_(data[i][9]) === ref) return { ok: false, error: 'This payment reference has already been used for a pledge.' };
+    if (live && ref.length === 12 && digits_(data[i][9]) === ref) return { ok: false, error: 'This payment reference has already been used for a pledge.' };
     if (live && String(data[i][4]).toLowerCase() === email) mine++;
   }
   if (mine >= CONFIG.MAX_PLEDGES_PER_EMAIL) {
@@ -117,36 +120,51 @@ function recordPayment_(p) {
 function verifyPayments_() {
   var ss = SpreadsheetApp.getActiveSpreadsheet(), pledges = pledgeSheet_(ss), payments = paymentSheet_(ss);
   var pl = pledges.getDataRange().getValues(), pay = payments.getDataRange().getValues();
-  var reg = registerInfo_(ss), count = 0;
-  for (var i = 1; i < pl.length; i++) {
+  var reg = registerInfo_(ss), count = 0, i, j;
+  var pendingRefs = {};                                   // how many pending pledges share the same digits
+  for (i = 1; i < pl.length; i++) if (String(pl[i][8]) === STATUS.PENDING) { var q = digits_(pl[i][9]); pendingRefs[q] = (pendingRefs[q] || 0) + 1; }
+
+  for (i = 1; i < pl.length; i++) {
     if (String(pl[i][8]) !== STATUS.PENDING) continue;
     var ref = digits_(pl[i][9]);
-    for (var j = 1; j < pay.length; j++) {
-      if (String(pay[j][6]) || digits_(pay[j][1]) !== ref) continue;
+    if (pendingRefs[ref] > 1) { note_(pledges, i, 'Another pending pledge has the same payment digits: check by hand and type the full 12-digit reference'); continue; }
+    var fits = [], short = null;
+    for (j = 1; j < pay.length; j++) {
+      if (String(pay[j][6])) continue;                    // already matched to a pledge
+      var pr = digits_(pay[j][1]);
+      if (!pr || !(ref.length === 12 ? pr === ref : pr.slice(-ref.length) === ref)) continue;
+      if (!inWindow_(pay[j][0], pl[i][1])) continue;
       var amount = Number(String(pay[j][2]).replace(/[^0-9.]/g, ''));
-      if (amount < CONFIG.CONTRIBUTION) {
-        pledges.getRange(i + 1, 13).setValue('Payment found but the amount is short: ' + amount);
-        continue;
-      }
-      var idx = reg ? findTreeRow_(reg, String(pl[i][2])) : -1;
-      if (idx >= 0) setRegister_(reg, idx, STATUS.PLEDGED, String(pl[i][7]));
-      pledges.getRange(i + 1, 9).setValue(STATUS.PLEDGED);
-      pledges.getRange(i + 1, 11).setValue(new Date());
-      pledges.getRange(i + 1, 13).setValue('');
-      payments.getRange(j + 1, 7).setValue(String(pl[i][0]));
-      pay[j][6] = String(pl[i][0]);
-      count++;
-      mail_(String(pl[i][4]), 'Your tree pledge is confirmed (' + pl[i][2] + ')',
-        'Dear ' + pl[i][3] + ',\n\nThank you. Your payment is verified and tree ' + pl[i][2] + ' is now pledged in your name for the ' +
-        CONFIG.ORG_NAME + '. It will be planted in the next planting season, and you can follow its status on the website.\n');
-      if (CONFIG.NOTIFY_EMAILS.length) {
-        mail_(CONFIG.NOTIFY_EMAILS.join(','), 'Pledge verified: ' + pl[i][2], pl[i][3] + ' pledged tree ' + pl[i][2] + '. It is ready to be slated for planting.\n');
-      }
-      break;
+      if (amount >= CONFIG.CONTRIBUTION) fits.push(j); else short = amount;
+    }
+    if (fits.length === 0) { if (short !== null) note_(pledges, i, 'Payment found but the amount is short: ' + short); continue; }
+    if (fits.length > 1) { note_(pledges, i, 'More than one payment ends in these digits: check by hand and type the full 12-digit reference'); continue; }
+    j = fits[0];
+    var idx = reg ? findTreeRow_(reg, String(pl[i][2])) : -1;
+    if (idx >= 0) setRegister_(reg, idx, STATUS.PLEDGED, String(pl[i][7]));
+    pledges.getRange(i + 1, 9).setValue(STATUS.PLEDGED);
+    pledges.getRange(i + 1, 11).setValue(new Date());
+    pledges.getRange(i + 1, 13).setValue('');
+    payments.getRange(j + 1, 7).setValue(String(pl[i][0]));
+    pay[j][6] = String(pl[i][0]);
+    count++;
+    mail_(String(pl[i][4]), 'Your tree pledge is confirmed (' + pl[i][2] + ')',
+      'Dear ' + pl[i][3] + ',\n\nThank you. Your payment is verified and tree ' + pl[i][2] + ' is now pledged in your name for the ' +
+      CONFIG.ORG_NAME + '. It will be planted in the next planting season, and you can follow its status on the website.\n');
+    if (CONFIG.NOTIFY_EMAILS.length) {
+      mail_(CONFIG.NOTIFY_EMAILS.join(','), 'Pledge verified: ' + pl[i][2], pl[i][3] + ' pledged tree ' + pl[i][2] + '. It is ready to be slated for planting.\n');
     }
   }
   return count;
 }
+
+/** A payment counts if it is dated from 2 days before the pledge to HOLD_DAYS after it (undated payments count). */
+function inWindow_(payTime, pledgeTime) {
+  var t = new Date(payTime).getTime(), p = new Date(pledgeTime).getTime();
+  if (isNaN(t) || isNaN(p)) return true;
+  return t >= p - 2 * 86400000 && t <= p + CONFIG.HOLD_DAYS * 86400000;
+}
+function note_(sheet, i, text) { sheet.getRange(i + 1, 13).setValue(text); }
 
 /** Every 15 minutes (trigger): pick up payments that were added to the Payments tab. */
 function checkPayments() { withLock_(verifyPayments_); }

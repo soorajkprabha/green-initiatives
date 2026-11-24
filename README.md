@@ -35,11 +35,12 @@ The flow follows the revised policy: no email confirmation and no committee appr
 
 | Step | Who | What happens |
 | --- | --- | --- |
-| 1. Pay and pledge | Donor, on the website | The donor picks an available tree, pays by UPI (QR or tap-to-pay, with the tree number as the note), and submits the form with the 12-digit UPI reference number. The tree shows **Payment pending** (reserved, no name shown). |
-| 2. Payment verified | Script, automatically | The script matches the reference and amount with a row in the **Payments** tab. The tree then shows **Pledged** with the donor's chosen name or dedication, and the donor gets a confirmation email. |
+| 1. Pay and pledge | Donor, on the website | The donor picks an available tree, pays by UPI (QR or tap-to-pay, with the tree number as the note), and submits the form with the **last 4 digits** of the UPI reference number. The tree shows **Payment pending** (reserved, no name shown). |
+| 2. Payment verified | Script, automatically | The script looks in the **Payments** tab for one payment of at least the contribution whose reference ends in those digits and which is dated close to the pledge. The tree then shows **Pledged** with the donor's chosen name or dedication, and the donor gets a confirmation email. |
 | 3. Planting | Planting team | After planting, the team sets the tree's Status in the Tree Register to **Dedicated**. The Pledges tab is stamped automatically. |
 
 - **The Payments tab** is the feed of received payments (columns: Time, UPI ref, Amount, Payer, Note, Source). Until a payment gateway or bank feed is connected, someone pastes the UPI credits from the bank statement into it; matching then happens at once (edit trigger) and every 15 minutes. A feed can also post to the web app: set `PAYMENT_FEED_SECRET` in the script and send `action=payment&secret=...&ref=...&amount=...`.
+- **Why exactly one match.** Four digits can collide, so a pledge is verified only when exactly one payment and one pending pledge fit. If two payments end in the same digits, or two pending pledges share them, the pledge stays pending with a note in the Pledges tab. Staff settle it by typing the full 12-digit reference into that pledge's **UPI ref** cell; a 12-digit reference matches exactly.
 - A payment below the contribution amount (`CONTRIBUTION` in the script, Rs 2,500) does not verify a pledge; the Pledges tab notes it.
 - An unpaid reservation is released after `HOLD_DAYS` (3) and the tree shows Open again.
 - Manual edits to the register's Status or Donor columns are written to the **Status log** tab.
