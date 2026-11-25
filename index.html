@@ -289,6 +289,7 @@
   .modal .modal-dek{font-size:.86rem; color:var(--muted); margin-bottom:16px}
   .modal-close{position:absolute; top:16px; right:16px; width:30px; height:30px; border-radius:50%; background:var(--surface-2); border:none; font-size:1.1rem; line-height:1; color:var(--muted); cursor:pointer}
   .pay-box{display:flex; gap:16px; align-items:center; background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:14px; margin:6px 0 18px}
+  .status-cell .status-pill.sr-only{position:absolute; width:1px; height:1px; padding:0; border:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
   .pay-box[hidden]{display:none}
   .pay-qr{width:164px; height:164px; flex:none; background:#fff; border-radius:8px; padding:6px; border:1px solid var(--line)}
   .step-label{font:600 .74rem 'IBM Plex Mono',monospace; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:0 0 12px}
@@ -917,7 +918,8 @@
   function statusCellHTML(status){
     var pill = '<span class="status-pill ' + status + '">' + STATUS_LABEL[status] + '</span>';
     if (status !== "open") return '<div class="status-cell">' + pill + '</div>';
-    return '<div class="status-cell">' + pill + '<button type="button" class="donate-btn">Donate</button></div>';
+    // Open trees show only the Donate button; the pill stays in the markup for screen readers, progress and CSV
+    return '<div class="status-cell"><span class="status-pill open sr-only">Open</span><button type="button" class="donate-btn" aria-label="Donate to pledge this tree">Donate</button></div>';
   }
   function donorCellHTML(name){
     return name ? '<span class="donor filled">' + esc(name) + '</span>' : '<span class="donor">—</span>';
